@@ -43,6 +43,13 @@
   .feature-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
   .feature-list strong { color: var(--accent-blue); }
   .recommendation { margin-top: auto; background: rgba(14, 165, 233, 0.05); border-radius: 12px; padding: 20px; font-size: 0.95rem; border-left: 3px solid var(--accent-blue); color: var(--text-main); font-weight: 600; }
+  .workflow-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 20px; padding: 40px; position: relative; box-shadow: var(--card-shadow); }
+  .workflow-badge { position: absolute; top: -15px; right: 30px; background: linear-gradient(135deg, #f43f5e, #fb7185); color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
+  .step-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+  .step { display: flex; align-items: flex-start; gap: 20px; background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid var(--card-border); }
+  .step-num { background: var(--accent-pink); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
+  .step-content { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+  .step-content strong { color: var(--text-main); display: block; margin-bottom: 8px; font-size: 1.15rem; }
 </style>
 </head>
 <body>
@@ -51,9 +58,9 @@
   <div class="header"><h1>Ad Design Radar</h1><p>Week of July 20, 2026</p></div>
   <div class="summary-box">
     <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
-    <p>本周（7月第三周）的突破点是<strong>“广告尺寸的无损延展”与“原生配乐生成”</strong>。Photoshop 更新了 Generative Expand V2，对于素材多尺寸分发不再需要设计师硬填背景。同时，Suno Pro 开放了商业化授权的音乐音效生成，彻底解决了广告配乐的版权侵权隐患和找音乐的耗时痛点。</p>
+    <p>本周（7月第三周）的突破点是<strong>“广告尺寸的无损延展”与“原生配乐生成”</strong>。Photoshop 更新了 Generative Expand V2，对于素材多尺寸分发不再需要设计师硬填背景。同时，Suno Pro 开放了商业化授权的音乐音效生成，彻底解决了广告配乐的版权侵权隐患和找音乐的耗时痛点。这两者的结合极大减少了设计师在素材收尾阶段的处理摩擦。</p>
   </div>
-  <h2 class="section-title">🔥 Top 2 Tools & Deep Dive</h2>
+  <h2 class="section-title">🔥 Top 3 Tools & Deep Dive</h2>
   <div class="grid">
     <div class="card software">
       <div class="tags"><span class="tag software">Creative Software</span></div>
@@ -74,6 +81,51 @@
         <li><strong>优缺点分析:</strong> 原创洗脑 BGM 工厂，绝不侵权；缺点是无法完全精细控制每一秒的鼓点（无法像工程文件那样拆分音轨）。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 找不到免版权配乐时的最强外援。</div>
+    </div>
+    <div class="card image">
+      <div class="tags"><span class="tag image">AI Image</span></div>
+      <h3 class="tool-name">03. Magnific AI Style Transfer</h3>
+      <p class="insight-text">顶级图生图放大工具 Magnific 推出了风格迁移引擎，能在提升素材分辨率的同时，无损切换素材的光影风格（比如从真实照片转换为 3D 渲染质感）。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 甲方提供的实拍白底产品图太死板。导入 Magnific，加入 Prompt “赛博朋克霓虹光，产品高光反射”，一键将其转化为极具质感的电竞外设视觉图。</li>
+        <li><strong>优缺点分析:</strong> 质感提升无出其右；但每次渲染的积分成本非常高，试错代价大。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 专治劣质素材，把 5 分钱的图变成 50 块的质感，适合高价值广告的主视觉处理。</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">⚡ 深度实战: 高效工作流拆解</h2>
+  <div class="workflow-card">
+    <div class="workflow-badge">ASSET RESCUE WORKFLOW</div>
+    <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main);">低质量素材“废图拯救”流水线</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">甲方素材分辨率极低、背景杂乱且尺寸不对时的终极救援方案：</p>
+    
+    <div class="step-container">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>原生剔除与质感放大 (Magnific)</strong>
+          拿到劣质实拍图后，先去背（Remove BG）。随后输入 Magnific，选择 "Product Photography" 引擎，将清晰度强制拉升 4 倍（Upscale 4x），此时产品边缘的锯齿和粗糙质感会被重塑为高精度商业打光质感。
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>AI 版位全尺寸重塑 (PS Generative Expand)</strong>
+          将高清化后的抠底产品放入 Photoshop。针对 9:16（竖屏短视频）或 1.91:1（Facebook 贴文）画好画板，直接用 Generative Expand 生成适合该产品调性的场景背景。
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-content">
+          <div style="display: flex; gap: 20px;">
+            <div class="step-num" style="background: var(--accent-blue);">3</div>
+            <div>
+              <strong>情绪配乐合成 (Suno Pro)</strong>
+              如果是用来做短视频轮播广告图，最后去 Suno 输入 <code>[Instrumental, Trap, Lo-Fi, Heavy Bass, 15 seconds]</code> 生成专属配乐，直接作为图片轮播的底噪混音。一条免版权的救场广告就成了。
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
