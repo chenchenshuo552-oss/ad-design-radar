@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Design Radar | Intelligence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+  :root {
+    --bg-main: #f8fafc;
+    --bg-secondary: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --accent-blue: #0ea5e9;
+    --accent-purple: #8b5cf6;
+    --accent-pink: #f43f5e;
+    --accent-green: #10b981;
+    --accent-orange: #f59e0b;
+    
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-border: rgba(226, 232, 240, 0.8);
+    --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-main);
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    line-height: 1.7;
+    margin: 0;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Header Styles */
+  .header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+  }
+
+  .header p {
+    font-size: 1.2rem;
+    color: var(--accent-blue);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* Summary Section */
+  .summary-box {
+    background: linear-gradient(145deg, rgba(14,165,233,0.05) 0%, rgba(255,255,255,0.9) 100%);
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 0 16px 16px 0;
+    padding: 30px;
+    margin-bottom: 50px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--card-shadow);
+  }
+
+  .summary-box h3 {
+    margin-top: 0;
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .summary-box p {
+    font-size: 1.1rem;
+    color: var(--text-main);
+  }
+
+  /* Grid Layout for Cards */
+  .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  /* Card Design */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 35px;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 5px;
+    background: var(--card-border);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(15, 23, 42, 0.1);
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15);
+  }
+
+  .card.plugin:hover::before { background: var(--accent-green); }
+  .card.image:hover::before { background: var(--accent-purple); }
+  .card.video:hover::before { background: var(--accent-pink); }
+  .card.software:hover::before { background: var(--accent-orange); }
+
+  /* Tags */
+  .tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+
+  .tag.plugin { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
+  .tag.image { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.2); }
+  .tag.video { background: rgba(244, 63, 94, 0.1); color: var(--accent-pink); border: 1px solid rgba(244, 63, 94, 0.2); }
+  .tag.software { background: rgba(245, 158, 11, 0.1); color: var(--accent-orange); border: 1px solid rgba(245, 158, 11, 0.2); }
+
+  .tool-name {
+    font-size: 1.6rem;
+    margin: 0 0 15px 0;
+    color: var(--text-main);
+    font-weight: 800;
+  }
+  
+  .insight-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 15px 20px;
+  }
+
+  .feature-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  .feature-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: bold;
+  }
+
+  .feature-list strong {
+    color: var(--accent-blue);
+  }
+
+  .recommendation {
+    margin-top: auto;
+    background: rgba(14, 165, 233, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 0.95rem;
+    border-left: 3px solid var(--accent-blue);
+    color: var(--text-main);
+    font-weight: 600;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Ad Design Radar</h1>
+    <p>Week of August 03, 2026</p>
+  </div>
+
+  <div class="summary-box">
+    <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
+    <p>本周（8月第一周）的核心趋势在于**“黄金前三秒（Hook）的工业化生成”**。各大剪辑软件和 AI 平台开始集中发力解决短视频广告“留存率”的问题。CapCut 桌面版灰度测试了原生 AI Hook 模块，而 Midjourney v6.5 的更新则让我们终于可以直接在生成的图像中嵌入排版完美的英文营销文案（Copywriting），极大减少了后期去 Photoshop 里加字的步骤。</p>
+  </div>
+
+  <h2 class="section-title">🔥 Top 2 Tools & Deep Dive</h2>
+
+  <div class="grid">
+    <!-- Card 1 -->
+    <div class="card software">
+      <div class="tags"><span class="tag software">Editing Software</span></div>
+      <h3 class="tool-name">01. CapCut Pro AI Hooks</h3>
+      <p class="insight-text">CapCut 桌面版新引入的自动化工作流，能够直接分析原素材的高光时刻，自动拼剪出 3-5 个不同风格的“前三秒吸睛画面”。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 做 TikTok 投放时，一条素材往往需要 A/B 测试 5 种不同的开头。现在直接把 1 分钟的原片丢进去，它能自动提取冲突画面、爆点表情，并自动打上大字报。</li>
+        <li><strong>优缺点分析:</strong> 大幅节省测试初期的剪辑时间；缺点是套路感较重，需要人工做最后的语感微调。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 专为批量产出 TikTok 跑量素材设计，适合起量阶段的快速铺场。
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card image">
+      <div class="tags"><span class="tag image">AI Image</span></div>
+      <h3 class="tool-name">02. Midjourney v6.5 Text Render</h3>
+      <p class="insight-text">千呼万唤始出来，MJ v6.5 终于解决了文字渲染的问题，支持长句和指定字体的完美融合生成。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 以前做 Facebook 贴文图片，要先用 MJ 生成底图，再去 Figma/PS 加字排版。现在可以直接在 Prompt 里用双引号圈定文案，例如 `product photography, neon sign saying "50% OFF TODAY"`，生成的文字边缘完美融入光影。</li>
+        <li><strong>优缺点分析:</strong> 减少了图文割裂感，提升了素材的“原生感”；缺点是对中文的支持依然很差。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 制作 Facebook/Instagram 静态图单页广告时的首选，尤其适合欧美市场的英文排版。
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

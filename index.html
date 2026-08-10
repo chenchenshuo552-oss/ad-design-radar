@@ -6,19 +6,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ad Design Radar Archive</title>
         <style>
-            body { font-family: -apple-system, sans-serif; padding: 40px; background: #f8fafc; color: #0f172a; }
-            h1 { color: #0ea5e9; }
+            body { font-family: -apple-system, sans-serif; padding: 40px; background: #f8fafc; color: #0f172a; max-width: 800px; margin: 0 auto; }
+            h1 { color: #0ea5e9; font-size: 2.5rem; margin-bottom: 30px; }
+            .subtitle { color: #475569; font-size: 1.1rem; margin-bottom: 40px; }
             ul { list-style: none; padding: 0; }
-            li { margin: 15px 0; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-            a { text-decoration: none; color: #0f172a; font-weight: 600; font-size: 1.1rem; }
+            li { margin: 15px 0; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s; }
+            li:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+            a { text-decoration: none; color: #0f172a; font-weight: 700; font-size: 1.2rem; display: block; }
             a:hover { color: #0ea5e9; }
+            .date-badge { display: inline-block; background: #e0f2fe; color: #0284c7; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; margin-bottom: 10px; font-weight: bold; }
         </style>
     </head>
     <body>
-        <h1>Ad Design Radar Archive</h1>
-        <p>所有往期报告归档：</p>
+        <h1>Ad Design Radar</h1>
+        <p class="subtitle">每周广告设计与创意技术情报归档。</p>
         <ul>
-            <li><a href="AdDesignRadar_20260810.html">Ad Design Radar - 20260810</a></li>
+            <li>
+                    <span class="date-badge">2026年08月10日</span><br>
+                    <a href="AdDesignRadar_20260810.html">阅读当周情报报告 &rarr;</a>
+                </li><li>
+                    <span class="date-badge">2026年08月03日</span><br>
+                    <a href="AdDesignRadar_20260803.html">阅读当周情报报告 &rarr;</a>
+                </li>
         </ul>
     </body>
     </html>
