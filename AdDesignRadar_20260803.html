@@ -43,54 +43,84 @@
   .feature-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
   .feature-list strong { color: var(--accent-blue); }
   .recommendation { margin-top: auto; background: rgba(14, 165, 233, 0.05); border-radius: 12px; padding: 20px; font-size: 0.95rem; border-left: 3px solid var(--accent-blue); color: var(--text-main); font-weight: 600; }
-  .workflow-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 20px; padding: 40px; position: relative; box-shadow: var(--card-shadow); }
+  .workflow-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 20px; padding: 40px; position: relative; box-shadow: var(--card-shadow); margin-bottom: 50px; }
   .workflow-badge { position: absolute; top: -15px; right: 30px; background: linear-gradient(135deg, #f43f5e, #fb7185); color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
   .step-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
   .step { display: flex; align-items: flex-start; gap: 20px; background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid var(--card-border); }
   .step-num { background: var(--accent-pink); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
   .step-content { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
   .step-content strong { color: var(--text-main); display: block; margin-bottom: 8px; font-size: 1.15rem; }
+  .final-summary { background: #1e293b; color: white; padding: 40px; border-radius: 20px; margin-top: 20px; }
+  .final-summary h2 { margin-top: 0; color: #38bdf8; }
+  .final-summary p { font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; }
+  .final-summary strong { color: white; }
 </style>
 </head>
 <body>
 <div class="container">
   <a href="index.html" class="back-link">← 返回目录</a>
   <div class="header"><h1>Ad Design Radar</h1><p>Week of August 03, 2026</p></div>
+  
   <div class="summary-box">
     <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
-    <p>本周（8月第一周）的核心趋势在于<strong>“黄金前三秒（Hook）的工业化生成”</strong>。各大剪辑软件和 AI 平台开始集中发力解决短视频广告“留存率”的问题。CapCut 桌面版灰度测试了原生 AI Hook 模块，而 Midjourney v6.5 的更新则让我们终于可以直接在生成的图像中嵌入排版完美的英文营销文案（Copywriting），极大减少了后期去 Photoshop 里加字的步骤。同时，Luma Dream Machine 带来了首尾帧关键帧动画的突破。</p>
+    <p>本周（8月第一周）的核心趋势在于<strong>“黄金前三秒（Hook）的工业化生成”</strong>。各大剪辑软件和 AI 平台开始集中发力解决短视频广告“留存率”的问题。此外，Midjourney v6.5 的更新解决了商业图文排版痛点，而 ElevenLabs 和 Luma 的新特性则进一步完善了音视频同步素材链条。</p>
   </div>
-  <h2 class="section-title">🔥 Top 3 Tools & Deep Dive</h2>
+  
+  <h2 class="section-title">🔥 Top 5 Tools & Deep Dive</h2>
   <div class="grid">
     <div class="card software">
       <div class="tags"><span class="tag software">Editing Software</span></div>
       <h3 class="tool-name">01. CapCut Pro AI Hooks</h3>
-      <p class="insight-text">CapCut 桌面版新引入的自动化工作流，能够直接分析原素材的高光时刻，自动拼剪出 3-5 个不同风格的“前三秒吸睛画面”。</p>
+      <p class="insight-text">分析原素材高光时刻，自动拼剪出 3-5 个不同风格的“前三秒吸睛画面”。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 做 TikTok 投放时，一条素材往往需要 A/B 测试 5 种不同的开头。现在直接把 1 分钟的原片丢进去，它能自动提取冲突画面、爆点表情，并自动打上大字报。</li>
-        <li><strong>优缺点分析:</strong> 大幅节省测试初期的剪辑时间；缺点是套路感较重，需要人工做最后的语感微调。</li>
+        <li><strong>商业实战:</strong> 针对 TikTok 跑量素材，直接丢入 1 分钟原片，自动提取冲突画面、爆点表情打上大字报进行 A/B 测试。</li>
+        <li><strong>优缺点分析:</strong> 大幅节省测试初期的粗剪时间；缺点是套路感较重，容易有机器味。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 专为批量产出 TikTok 跑量素材设计，适合起量阶段的快速铺场。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> TikTok 起量阶段快速铺场测试首选。</div>
     </div>
+    
     <div class="card image">
       <div class="tags"><span class="tag image">AI Image</span></div>
       <h3 class="tool-name">02. Midjourney v6.5 Text Render</h3>
-      <p class="insight-text">千呼万唤始出来，MJ v6.5 终于解决了文字渲染的问题，支持长句和指定字体的完美融合生成。</p>
+      <p class="insight-text">彻底解决文字渲染问题，支持长句和指定字体的完美光影融合。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 以前做 Facebook 贴文图片，要先用 MJ 生成底图，再去 Figma/PS 加字排版。现在可以直接在 Prompt 里用双引号圈定文案，例如 <code>product photography, neon sign saying "50% OFF TODAY"</code>，生成的文字边缘完美融入光影。</li>
-        <li><strong>优缺点分析:</strong> 减少了图文割裂感，提升了素材的“原生感”；缺点是对中文的支持依然很差。</li>
+        <li><strong>商业实战:</strong> 做 Facebook 贴文图片时，直接在 Prompt 圈定文案 <code>neon sign "50% OFF"</code>，无需再去 PS 后期加字。</li>
+        <li><strong>优缺点分析:</strong> 提升素材“原生感”；对中文字体支持仍然极差。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 制作 Facebook/Instagram 静态图单页广告时的首选，尤其适合欧美市场的英文排版。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 欧美市场英文单图广告排版神器。</div>
     </div>
+    
     <div class="card video">
       <div class="tags"><span class="tag video">AI Video</span></div>
       <h3 class="tool-name">03. Luma Dream Machine End-Frame Control</h3>
-      <p class="insight-text">继首帧生成后，Luma 彻底开放了“尾帧锁定”功能，你可以同时指定视频的第一帧和最后一帧，让 AI 自行填补中间的过渡动画。</p>
+      <p class="insight-text">开放了“尾帧锁定”功能，同时指定首尾帧，AI 自行填补奇幻过渡动画。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 广告片需要一个极具张力的转场。第一帧放“破烂的旧鞋”，最后一帧放“光鲜的新鞋”，Luma 能自动生成极其顺滑且奇幻的修复动画，这是传统特效软件需要耗费整天才能完成的 Morph 效果。</li>
-        <li><strong>优缺点分析:</strong> 创意空间巨大，专治各种不可能的转场；但不可控性依然存在，中间的变身过程有时会显得惊悚。</li>
+        <li><strong>商业实战:</strong> 制作强反差的 Before/After 广告片（如旧鞋变新鞋的魔法过渡转场）。</li>
+        <li><strong>优缺点分析:</strong> 创意空间巨大，专治不可能的转场；但中间变身过程不可控，有时过于惊悚。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 广告中用来做 Before/After 的前后对比，吸睛效果满分。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 用于制作极具视觉冲击力的特效广告转场。</div>
+    </div>
+
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">AI Audio</span></div>
+      <h3 class="tool-name">04. ElevenLabs Voice Emotion Tuning</h3>
+      <p class="insight-text">新增精确到句子级别的情绪滑动条（愤怒、惊喜、窃白）。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 游戏出海广告和短剧素材中，可以通过拉条直接生成跌宕起伏的旁白，而不需要依赖提示词“盲猜”语气。</li>
+        <li><strong>优缺点分析:</strong> 情绪表达行业顶尖；但在中文连读上偶有机械停顿感。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 出海素材，尤其是 UGC 演员配音的不二之选。</div>
+    </div>
+
+    <div class="card software">
+      <div class="tags"><span class="tag software">Creative Asset</span></div>
+      <h3 class="tool-name">05. Envato Elements AI Search</h3>
+      <p class="insight-text">素材库迎来了基于画面的语义搜索，直接丢入竞品广告截图，就能找出版权无忧的相似实拍视频和 BGM。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 扒同行爆款时，无需绞尽脑汁猜搜索词，以图搜视频找相似空镜，一比一复刻跑量模版。</li>
+        <li><strong>优缺点分析:</strong> 找 B-roll 效率提升巨大；但版权库的素材质感依然偏向传统图库风。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 适合对素材量消耗极大的团队批量找安全空镜。</div>
     </div>
   </div>
 
@@ -99,34 +129,26 @@
     <div class="workflow-badge">TIKTOK SCROLL-STOPPER</div>
     <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main);">高停留率“前三秒盲盒”量产法</h3>
     <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">针对消耗不动的素材，用低成本的工具组合榨取其剩余投放价值：</p>
-    
     <div class="step-container">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-content">
-          <strong>原生画面魔改转场 (Luma)</strong>
-          将原本平平无奇的视频抽帧（提取头尾）。放进 Luma Dream Machine，利用 End-Frame Control 强制它生成一段极为怪诞、违背物理常识的中间过渡作为开场。用猎奇心理锁住用户的第一眼。
-        </div>
+        <div class="step-content"><strong>原生画面魔改转场 (Luma)</strong> 将平平无奇的视频提取头尾，利用 End-Frame Control 强制生成违背物理常识的中间过渡作为开场。</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <div class="step-content">
-          <strong>原生营销大字报 (MJ v6.5)</strong>
-          不再使用干瘪的红底白字。使用 Midjourney 直接渲染出带有诸如 <code>"WAIT WHAT?"</code> 或 <code>"DON'T SCROLL"</code> 的 3D 立体金属文字图片，抠底后直接盖在视频画面上方，视觉冲击力远大于常规字幕。
-        </div>
+        <div class="step-content"><strong>原生营销大字报 (MJ v6.5)</strong> 使用 Midjourney 渲染出 <code>"WAIT WHAT?"</code> 3D 立体文字图片，抠底盖在画面上方。</div>
       </div>
       <div class="step">
-        <div class="step-content">
-          <div style="display: flex; gap: 20px;">
-            <div class="step-num" style="background: var(--accent-blue);">3</div>
-            <div>
-              <strong>高光组合暴力剪辑 (CapCut AI Hooks)</strong>
-              如果是口播素材，将其导入 CapCut，运行 AI Hooks。让模型从原片里抓出 3 句音量最大、情绪最激动的话，直接拼接到第 1、2 步做好的视觉包装后面，立刻生成 5 条全新的前三秒素材矩阵。
-            </div>
-          </div>
-        </div>
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>高光组合暴力剪辑 (CapCut)</strong> 将生成的视觉包装丢入 CapCut AI Hooks 模块，拼接情绪激烈的原音切片，瞬间产出 5 条新开头素材。</div>
       </div>
     </div>
+  </div>
+
+  <div class="final-summary">
+    <h2>📝 每周总结 Weekly Summary</h2>
+    <p>本周（2026年8月3日当周）的核心主题非常明确：<strong>前端视觉的自动化</strong>与<strong>原生感</strong>。从 Midjourney 解决图内排版，到 Luma 解决特效转场，再到 CapCut 暴力提炼前三秒，工具开发商显然已经意识到了广告投放的核心痛点——<strong>“没人有耐心看铺垫”</strong>。</p>
+    <p>对于广告设计师和投手来说，这是一个明确的信号：<strong>不要把时间花在枯燥的排字和找空镜上</strong>。本周这些更新赋予了我们极其廉价地测试“猎奇开头”的能力。未来一到两周，建议各位将测试重心放在 <strong>A/B 测不同的前三秒猎奇动画和原生大字报上</strong>，让 Luma 和 CapCut 成为你廉价的素材裂变引擎。</p>
   </div>
 </div>
 </body></html>
