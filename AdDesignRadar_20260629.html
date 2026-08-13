@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ad Design Radar | Intelligence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+  :root {
+    --bg-main: #f8fafc; --bg-secondary: #ffffff; --text-main: #0f172a; --text-muted: #475569;
+    --accent-blue: #0ea5e9; --accent-purple: #8b5cf6; --accent-pink: #f43f5e;
+    --accent-green: #10b981; --accent-orange: #f59e0b;
+    --card-bg: rgba(255, 255, 255, 0.85); --card-border: rgba(226, 232, 240, 0.8);
+    --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  }
+  body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%), radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%); background-attachment: fixed; color: var(--text-main); line-height: 1.7; margin: 0; padding: 40px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s; }
+  .back-link:hover { transform: translateX(-5px); }
+  .header { text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid var(--card-border); }
+  .header h1 { font-size: 3.5rem; font-weight: 800; margin: 0 0 10px 0; background: linear-gradient(135deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
+  .header p { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+  .summary-box { background: linear-gradient(145deg, rgba(14,165,233,0.05) 0%, rgba(255,255,255,0.9) 100%); border-left: 4px solid var(--accent-blue); border-radius: 0 16px 16px 0; padding: 30px; margin-bottom: 50px; backdrop-filter: blur(10px); box-shadow: var(--card-shadow); }
+  .summary-box h3 { margin-top: 0; color: var(--accent-blue); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .summary-box p { font-size: 1.1rem; color: var(--text-main); }
+  .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 60px; }
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px; backdrop-filter: blur(12px); box-shadow: var(--card-shadow); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--card-border); transition: all 0.3s ease; }
+  .card:hover { transform: translateY(-8px); border-color: rgba(15, 23, 42, 0.1); box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15); }
+  .card.plugin:hover::before { background: var(--accent-green); }
+  .card.image:hover::before { background: var(--accent-purple); }
+  .card.video:hover::before { background: var(--accent-pink); }
+  .card.software:hover::before { background: var(--accent-orange); }
+  .tags { display: flex; gap: 10px; margin-bottom: 20px; }
+  .tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; border-radius: 8px; }
+  .tag.plugin { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
+  .tag.image { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.2); }
+  .tag.video { background: rgba(244, 63, 94, 0.1); color: var(--accent-pink); border: 1px solid rgba(244, 63, 94, 0.2); }
+  .tag.software { background: rgba(245, 158, 11, 0.1); color: var(--accent-orange); border: 1px solid rgba(245, 158, 11, 0.2); }
+  .tool-name { font-size: 1.6rem; margin: 0 0 15px 0; color: var(--text-main); font-weight: 800; }
+  .insight-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8; }
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; background: #f1f5f9; border-radius: 12px; padding: 15px 20px; }
+  .feature-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-main); position: relative; padding-left: 20px; }
+  .feature-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
+  .feature-list strong { color: var(--accent-blue); }
+  .recommendation { margin-top: auto; background: rgba(14, 165, 233, 0.05); border-radius: 12px; padding: 20px; font-size: 0.95rem; border-left: 3px solid var(--accent-blue); color: var(--text-main); font-weight: 600; }
+  .workflow-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 20px; padding: 40px; position: relative; box-shadow: var(--card-shadow); margin-bottom: 50px; }
+  .workflow-badge { position: absolute; top: -15px; right: 30px; background: linear-gradient(135deg, #f43f5e, #fb7185); color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
+  .step-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+  .step { display: flex; align-items: flex-start; gap: 20px; background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid var(--card-border); }
+  .step-num { background: var(--accent-pink); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
+  .step-content { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+  .step-content strong { color: var(--text-main); display: block; margin-bottom: 8px; font-size: 1.15rem; }
+  .final-summary { background: #1e293b; color: white; padding: 40px; border-radius: 20px; margin-top: 20px; }
+  .final-summary h2 { margin-top: 0; color: #38bdf8; }
+  .final-summary p { font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; }
+  .final-summary strong { color: white; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← 返回目录</a>
+  <div class="header"><h1>Ad Design Radar</h1><p>Week of June 29, 2026</p></div>
+  
+  <div class="summary-box">
+    <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
+    <p>本周的核心关注点是<strong>“版位适配与极致本地化”</strong>。当一个广告创意被验证有效后，如何快速将其延展到全球 10 个语种、5 种屏幕尺寸？本周 Figma 和一系列排版工具的 AI 升级，将这种痛苦的机械排版劳动彻底终结。</p>
+  </div>
+  
+  <h2 class="section-title">🔥 Top 5 Tools & Deep Dive</h2>
+  <div class="grid">
+    
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">UI / Workflow</span></div>
+      <h3 class="tool-name">01. Figma Auto Layout AI</h3>
+      <p class="insight-text">基于图层语义自动猜测并应用响应式 Auto Layout 布局。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 做出一套主视觉后，一键生成 1:1, 4:5, 16:9, 9:16 等所有广告版位，并且文本和按钮自动安全适配边缘。</li>
+        <li><strong>优缺点分析:</strong> 复杂的非规则排版仍需手动调整 Constraint。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 设计团队告别重复劳动、准时下班的救星。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Workflow</span></div>
+      <h3 class="tool-name">02. DeepL Pro Ad Translator</h3>
+      <p class="insight-text">专为营销语境优化的翻译 API，懂得保留行业俚语和 CTA 按钮规范。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 将英文的 'Shop Now' 准确翻译为符合当地购物习惯的缩略语，而不是机械直译，极大提升本地转化率。</li>
+        <li><strong>优缺点分析:</strong> 对极其小众的文化梗理解有时不到位。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 多国家并行买量的首选翻译引擎。</div>
+    </div>
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">Plugin</span></div>
+      <h3 class="tool-name">03. Smartmockups AI Match</h3>
+      <p class="insight-text">智能将你的 UI 设计或产品图完美贴合到全球各地的实拍场景样机中。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 制作针对中东市场的广告，一键将产品 UI 放入中东模特手持的手机屏幕中，光影、透视、手指遮挡自动计算。</li>
+        <li><strong>优缺点分析:</strong> 部分高精度样机的渲染速度较慢。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 低成本建立本地化视觉信任感的神器。</div>
+    </div>
+    <div class="card image">
+      <div class="tags"><span class="tag image">AI Image</span></div>
+      <h3 class="tool-name">04. PS Generative Fill Localization</h3>
+      <p class="insight-text">利用创成式填充局部替换广告图中的文化敏感元素。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 将欧美广告原片背景中的“圣诞树”框选，输入 'Lunar New Year decorations'，无缝将其替换为亚洲新年元素。</li>
+        <li><strong>优缺点分析:</strong> 需要仔细检查生成元素的细节光影连贯性。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 一张神图走天下的必备修改工具。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Creative Software</span></div>
+      <h3 class="tool-name">05. Canva Brand Hub AI</h3>
+      <p class="insight-text">自动抓取你品牌的颜色和字体规范，一键套用到任意 AI 生成的草图上。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 保证外包或初级设计师利用 AI 生成的几百张图，其色调和排版都严格符合公司的 Brand Guidelines。</li>
+        <li><strong>优缺点分析:</strong> 高级复杂的图形特效无法完全被规范化。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 控制大批量素材视觉下限的品控工具。</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">⚡ 深度实战: 高效工作流拆解</h2>
+  <div class="workflow-card">
+    <div class="workflow-badge">PRO WORKFLOW</div>
+    <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main);">全球化广告极速铺量工作流</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">如何将一张英文海报，在 1 小时内转化为 5 个国家的全版位素材包：</p>
+    <div class="step-container">
+      
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>响应式母版建立 (Figma)</strong> 在 Figma 中建立带有 AI Auto Layout 的英文母版，确保所有图层自适应对齐。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>本地化翻译 (DeepL API)</strong> 利用插件接入 DeepL，一键将设计稿中的所有英文图层替换为德/法/日/西 4 种语言。由于有 Auto Layout，长短不一的文字会自动撑开不破版。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>文化元素替换 (PS)</strong> 将导出的图片放入 PS，利用 Generative Fill 替换掉不符合当地文化习俗的配景或模特特征。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>实景样机套用 (Smartmockups)</strong> 将本地化后的设计图贴入符合该国家风貌的真实场景样机中，导出最终投放素材。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-summary">
+    <h2 class="section-title">📝 每周总结 Weekly Summary</h2>
+    <p>广告投放的终局是精细化运营。<strong>最好的广告，是让用户觉得这根本不是外来广告，而是他们身边发生的事。</strong> 极致的本地化翻译加上场景的文化融入，往往能带来比“炫酷特效”更高的 ROI。利用好这套自动化排版流，你可以轻易打出矩阵覆盖的威力。</p>
+  </div>
+</div>
+</body></html>

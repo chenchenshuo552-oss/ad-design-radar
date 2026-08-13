@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ad Design Radar | Intelligence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+  :root {
+    --bg-main: #f8fafc; --bg-secondary: #ffffff; --text-main: #0f172a; --text-muted: #475569;
+    --accent-blue: #0ea5e9; --accent-purple: #8b5cf6; --accent-pink: #f43f5e;
+    --accent-green: #10b981; --accent-orange: #f59e0b;
+    --card-bg: rgba(255, 255, 255, 0.85); --card-border: rgba(226, 232, 240, 0.8);
+    --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  }
+  body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%), radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%); background-attachment: fixed; color: var(--text-main); line-height: 1.7; margin: 0; padding: 40px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s; }
+  .back-link:hover { transform: translateX(-5px); }
+  .header { text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid var(--card-border); }
+  .header h1 { font-size: 3.5rem; font-weight: 800; margin: 0 0 10px 0; background: linear-gradient(135deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
+  .header p { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+  .summary-box { background: linear-gradient(145deg, rgba(14,165,233,0.05) 0%, rgba(255,255,255,0.9) 100%); border-left: 4px solid var(--accent-blue); border-radius: 0 16px 16px 0; padding: 30px; margin-bottom: 50px; backdrop-filter: blur(10px); box-shadow: var(--card-shadow); }
+  .summary-box h3 { margin-top: 0; color: var(--accent-blue); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .summary-box p { font-size: 1.1rem; color: var(--text-main); }
+  .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 60px; }
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px; backdrop-filter: blur(12px); box-shadow: var(--card-shadow); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--card-border); transition: all 0.3s ease; }
+  .card:hover { transform: translateY(-8px); border-color: rgba(15, 23, 42, 0.1); box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15); }
+  .card.plugin:hover::before { background: var(--accent-green); }
+  .card.image:hover::before { background: var(--accent-purple); }
+  .card.video:hover::before { background: var(--accent-pink); }
+  .card.software:hover::before { background: var(--accent-orange); }
+  .tags { display: flex; gap: 10px; margin-bottom: 20px; }
+  .tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; border-radius: 8px; }
+  .tag.plugin { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
+  .tag.image { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.2); }
+  .tag.video { background: rgba(244, 63, 94, 0.1); color: var(--accent-pink); border: 1px solid rgba(244, 63, 94, 0.2); }
+  .tag.software { background: rgba(245, 158, 11, 0.1); color: var(--accent-orange); border: 1px solid rgba(245, 158, 11, 0.2); }
+  .tool-name { font-size: 1.6rem; margin: 0 0 15px 0; color: var(--text-main); font-weight: 800; }
+  .insight-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8; }
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; background: #f1f5f9; border-radius: 12px; padding: 15px 20px; }
+  .feature-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-main); position: relative; padding-left: 20px; }
+  .feature-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
+  .feature-list strong { color: var(--accent-blue); }
+  .recommendation { margin-top: auto; background: rgba(14, 165, 233, 0.05); border-radius: 12px; padding: 20px; font-size: 0.95rem; border-left: 3px solid var(--accent-blue); color: var(--text-main); font-weight: 600; }
+  .workflow-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 20px; padding: 40px; position: relative; box-shadow: var(--card-shadow); margin-bottom: 50px; }
+  .workflow-badge { position: absolute; top: -15px; right: 30px; background: linear-gradient(135deg, #f43f5e, #fb7185); color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
+  .step-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+  .step { display: flex; align-items: flex-start; gap: 20px; background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid var(--card-border); }
+  .step-num { background: var(--accent-pink); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
+  .step-content { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+  .step-content strong { color: var(--text-main); display: block; margin-bottom: 8px; font-size: 1.15rem; }
+  .final-summary { background: #1e293b; color: white; padding: 40px; border-radius: 20px; margin-top: 20px; }
+  .final-summary h2 { margin-top: 0; color: #38bdf8; }
+  .final-summary p { font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; }
+  .final-summary strong { color: white; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← 返回目录</a>
+  <div class="header"><h1>Ad Design Radar</h1><p>Week of June 08, 2026</p></div>
+  
+  <div class="summary-box">
+    <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
+    <p>本周的核心趋势是<strong>“电商产品图的批量自动化”</strong>。随着年中大促临近，单张精修商品图已经无法满足多 SKU 测试需求。各大工具纷纷推出了批量去背、光影重构和自动排版功能，彻底解放了初级电商设计师的手工劳动。</p>
+  </div>
+  
+  <h2 class="section-title">🔥 Top 5 Tools & Deep Dive</h2>
+  <div class="grid">
+    
+    <div class="card image">
+      <div class="tags"><span class="tag image">AI Image</span></div>
+      <h3 class="tool-name">01. Krea AI Real-time</h3>
+      <p class="insight-text">实时渲染引擎，拖拽简单几何体即可实时生成逼真商品图。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 快速测试产品在不同光影（如晨光、霓虹）下的点击率，几秒出图。</li>
+        <li><strong>优缺点分析:</strong> 分辨率受限，需配合 Upscaler 使用。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 概念验证和草图阶段的无敌神器。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Editing Software</span></div>
+      <h3 class="tool-name">02. Photoroom Batch Pro</h3>
+      <p class="insight-text">工业级批量抠图与倒影生成，一次性处理 1000 张图。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 替换独立站全部 SKU 背景，统一视觉风格，无需手动调整边缘。</li>
+        <li><strong>优缺点分析:</strong> 对透明材质（如玻璃杯）的边缘处理仍需人工干预。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 电商团队日常必备。</div>
+    </div>
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">Plugin</span></div>
+      <h3 class="tool-name">03. AE Data-Driven Animation</h3>
+      <p class="insight-text">通过 JSON/CSV 数据源自动生成数百条视频变体。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 针对不同地区投放价格、折扣不同的动态视频素材，一次渲染几百个版本。</li>
+        <li><strong>优缺点分析:</strong> 前期表达式和工程设置学习成本极高。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 大体量买量团队的自动化基石。</div>
+    </div>
+    <div class="card image">
+      <div class="tags"><span class="tag image">AI Image</span></div>
+      <h3 class="tool-name">04. Midjourney v6 Product Mode</h3>
+      <p class="insight-text">提升了对产品几何形状的保持能力，配合垫图不再严重变形。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 生成极其吸睛的超现实环境背景（如深海、火山口）以衬托产品。</li>
+        <li><strong>优缺点分析:</strong> 无法保证产品 Logo 的完美还原，后期需在 PS 中贴图。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 做主视觉 KV 的核心发力点。</div>
+    </div>
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">Workflow</span></div>
+      <h3 class="tool-name">05. Shopify Magic Creatives</h3>
+      <p class="insight-text">直接在店铺后台生成社媒广告图。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 快速将爆款商品转化为 Facebook 轮播广告图。</li>
+        <li><strong>优缺点分析:</strong> 排版模板较为死板，缺乏高级设计感。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 适合小团队快速铺量测试。</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">⚡ 深度实战: 高效工作流拆解</h2>
+  <div class="workflow-card">
+    <div class="workflow-badge">PRO WORKFLOW</div>
+    <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main);">高产电商图矩阵流水线</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">如何在 1 小时内为 50 个产品生成高质量的广告图矩阵：</p>
+    <div class="step-container">
+      
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>白底图清洗 (Photoroom)</strong> 将产品图批量抠底，统一导出透明 PNG 并自动居中裁剪。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>背景渲染 (Midjourney)</strong> 批量生成带有明确透视和光源的高级空场景图作为底板。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>光影融合 (Krea / PS)</strong> 将产品放入场景，利用 AI 重新计算全局光照和阴影，生成极其真实的融合图。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>批量输出 (Figma)</strong> 导入 Figma 配合自动化数据填充插件，一键替换所有产品的文案、折扣标签和价格并导出。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-summary">
+    <h2 class="section-title">📝 每周总结 Weekly Summary</h2>
+    <p>电商大促的素材比拼已经变成了产能的比拼。利用这些自动化工具，设计师可以将精力集中在<strong>“光影设定”</strong>和<strong>“点击钩子”</strong>的设计上，把重复的替换和渲染工作交给机器。大批量的高质量图文测试，是当前降低获客成本（CPA）的最有效手段。</p>
+  </div>
+</div>
+</body></html>

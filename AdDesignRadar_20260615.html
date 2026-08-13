@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ad Design Radar | Intelligence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+  :root {
+    --bg-main: #f8fafc; --bg-secondary: #ffffff; --text-main: #0f172a; --text-muted: #475569;
+    --accent-blue: #0ea5e9; --accent-purple: #8b5cf6; --accent-pink: #f43f5e;
+    --accent-green: #10b981; --accent-orange: #f59e0b;
+    --card-bg: rgba(255, 255, 255, 0.85); --card-border: rgba(226, 232, 240, 0.8);
+    --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  }
+  body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%), radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%); background-attachment: fixed; color: var(--text-main); line-height: 1.7; margin: 0; padding: 40px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s; }
+  .back-link:hover { transform: translateX(-5px); }
+  .header { text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid var(--card-border); }
+  .header h1 { font-size: 3.5rem; font-weight: 800; margin: 0 0 10px 0; background: linear-gradient(135deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
+  .header p { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+  .summary-box { background: linear-gradient(145deg, rgba(14,165,233,0.05) 0%, rgba(255,255,255,0.9) 100%); border-left: 4px solid var(--accent-blue); border-radius: 0 16px 16px 0; padding: 30px; margin-bottom: 50px; backdrop-filter: blur(10px); box-shadow: var(--card-shadow); }
+  .summary-box h3 { margin-top: 0; color: var(--accent-blue); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .summary-box p { font-size: 1.1rem; color: var(--text-main); }
+  .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 60px; }
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px; backdrop-filter: blur(12px); box-shadow: var(--card-shadow); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--card-border); transition: all 0.3s ease; }
+  .card:hover { transform: translateY(-8px); border-color: rgba(15, 23, 42, 0.1); box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15); }
+  .card.plugin:hover::before { background: var(--accent-green); }
+  .card.image:hover::before { background: var(--accent-purple); }
+  .card.video:hover::before { background: var(--accent-pink); }
+  .card.software:hover::before { background: var(--accent-orange); }
+  .tags { display: flex; gap: 10px; margin-bottom: 20px; }
+  .tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; border-radius: 8px; }
+  .tag.plugin { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
+  .tag.image { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.2); }
+  .tag.video { background: rgba(244, 63, 94, 0.1); color: var(--accent-pink); border: 1px solid rgba(244, 63, 94, 0.2); }
+  .tag.software { background: rgba(245, 158, 11, 0.1); color: var(--accent-orange); border: 1px solid rgba(245, 158, 11, 0.2); }
+  .tool-name { font-size: 1.6rem; margin: 0 0 15px 0; color: var(--text-main); font-weight: 800; }
+  .insight-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8; }
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; background: #f1f5f9; border-radius: 12px; padding: 15px 20px; }
+  .feature-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-main); position: relative; padding-left: 20px; }
+  .feature-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
+  .feature-list strong { color: var(--accent-blue); }
+  .recommendation { margin-top: auto; background: rgba(14, 165, 233, 0.05); border-radius: 12px; padding: 20px; font-size: 0.95rem; border-left: 3px solid var(--accent-blue); color: var(--text-main); font-weight: 600; }
+  .workflow-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 20px; padding: 40px; position: relative; box-shadow: var(--card-shadow); margin-bottom: 50px; }
+  .workflow-badge { position: absolute; top: -15px; right: 30px; background: linear-gradient(135deg, #f43f5e, #fb7185); color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
+  .step-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+  .step { display: flex; align-items: flex-start; gap: 20px; background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid var(--card-border); }
+  .step-num { background: var(--accent-pink); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
+  .step-content { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+  .step-content strong { color: var(--text-main); display: block; margin-bottom: 8px; font-size: 1.15rem; }
+  .final-summary { background: #1e293b; color: white; padding: 40px; border-radius: 20px; margin-top: 20px; }
+  .final-summary h2 { margin-top: 0; color: #38bdf8; }
+  .final-summary p { font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; }
+  .final-summary strong { color: white; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← 返回目录</a>
+  <div class="header"><h1>Ad Design Radar</h1><p>Week of June 15, 2026</p></div>
+  
+  <div class="summary-box">
+    <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
+    <p>本周的主题是<strong>“3D资产平民化与空间交互广告”</strong>。传统的 3D 渲染通常需要 C4D 和漫长的学习曲线，但本周 Spline AI 和 Luma Genie 等工具的爆发，让任何平面设计师都能在几分钟内搭建出支持交互的 3D 广告资产。</p>
+  </div>
+  
+  <h2 class="section-title">🔥 Top 5 Tools & Deep Dive</h2>
+  <div class="grid">
+    
+    <div class="card software">
+      <div class="tags"><span class="tag software">Creative Software</span></div>
+      <h3 class="tool-name">01. Spline AI Generation</h3>
+      <p class="insight-text">网页端轻量 3D 工具，直接通过 Prompt 生成可编辑的 3D 模型和材质。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 制作极具科技感的 3D 悬浮按钮或互动展示台，直接嵌入到落地页中。</li>
+        <li><strong>优缺点分析:</strong> 生成的模型拓扑结构较乱，不适合导入游戏引擎使用。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 网页和 UI 交互设计师的 3D 破冰利器。</div>
+    </div>
+    <div class="card image">
+      <div class="tags"><span class="tag image">AI Image</span></div>
+      <h3 class="tool-name">02. Luma Genie 2.0</h3>
+      <p class="insight-text">文本生成 3D 模型（Text-to-3D），支持导出 GLB/USDZ 格式。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 广告视频中需要一个不存在的奇幻道具（如发光的魔法药水），直接生成 3D 模型放入 AE 中渲染。</li>
+        <li><strong>优缺点分析:</strong> 模型表面纹理（Texture）分辨率目前还不够精细。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 短视频特效道具的极速生成器。</div>
+    </div>
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">Plugin</span></div>
+      <h3 class="tool-name">03. Meta Spark AR AI Update</h3>
+      <p class="insight-text">Instagram/Facebook 滤镜工具加入 AI 资产生成。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 为美妆客户制作“试色”或“趣味面具”广告，极大提升用户停留和互动率。</li>
+        <li><strong>优缺点分析:</strong> 平台限制较多，审核流程较长。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 突破传统视频，探索交互式广告（Playable Ads）的首选。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Workflow</span></div>
+      <h3 class="tool-name">04. Polycam Web Editor</h3>
+      <p class="insight-text">基于手机扫描的 3D 建模工具，推出了网页端高级材质编辑器。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 线下用手机扫描实体商品，上传后修复高光材质，直接作为 3D 资产用于广告旋转展示。</li>
+        <li><strong>优缺点分析:</strong> 对透明和强反光物体的扫描依然无解。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 鞋服、消费电子产品的低成本 3D 化路径。</div>
+    </div>
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">Plugin</span></div>
+      <h3 class="tool-name">05. C4D AI Texture Node</h3>
+      <p class="insight-text">Cinema 4D 官方集成的 AI 节点，通过文字描述即可生成复杂的无缝贴图。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 渲染高级海报时，快速生成“带有水滴的磨砂玻璃”等极其耗时的真实材质。</li>
+        <li><strong>优缺点分析:</strong> 仅支持正版最新 C4D，硬件门槛较高。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 专业 3D 设计师提升材质效率的杀手锏。</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">⚡ 深度实战: 高效工作流拆解</h2>
+  <div class="workflow-card">
+    <div class="workflow-badge">PRO WORKFLOW</div>
+    <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main);">平民版 3D 互动广告工作流</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">零 C4D 基础制作一条 3D 产品旋转广告：</p>
+    <div class="step-container">
+      
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>资产获取 (Luma / Polycam)</strong> 用文本生成基础 3D 模型，或者使用手机扫描实体商品导出模型。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>场景搭建 (Spline)</strong> 将模型导入 Spline，使用 AI 一键生成环境光和炫酷的发光底座。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>动画与录制 (Spline)</strong> 在 Spline 中设置模型 360 度缓动旋转，直接录屏或导出 WebGL 代码嵌入网页。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>视频合成 (CapCut)</strong> 将录屏素材导入剪辑软件，加上动感 BGM 和大字报，输出为 TikTok 短视频。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-summary">
+    <h2 class="section-title">📝 每周总结 Weekly Summary</h2>
+    <p>不要把 3D 仅仅看作一种炫技，它正在成为提升点击率（CTR）的<strong>核心降维打击手段</strong>。在满屏都是 2D 图文和实拍视频的 Feed 流中，一个可以交互或者质感极佳的 3D 悬浮物，能瞬间抓住用户的眼球。学会这套轻量级 3D 工作流，你的素材创意空间将被无限放大。</p>
+  </div>
+</div>
+</body></html>

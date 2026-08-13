@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ad Design Radar | Intelligence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+  :root {
+    --bg-main: #f8fafc; --bg-secondary: #ffffff; --text-main: #0f172a; --text-muted: #475569;
+    --accent-blue: #0ea5e9; --accent-purple: #8b5cf6; --accent-pink: #f43f5e;
+    --accent-green: #10b981; --accent-orange: #f59e0b;
+    --card-bg: rgba(255, 255, 255, 0.85); --card-border: rgba(226, 232, 240, 0.8);
+    --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  }
+  body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%), radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%); background-attachment: fixed; color: var(--text-main); line-height: 1.7; margin: 0; padding: 40px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s; }
+  .back-link:hover { transform: translateX(-5px); }
+  .header { text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid var(--card-border); }
+  .header h1 { font-size: 3.5rem; font-weight: 800; margin: 0 0 10px 0; background: linear-gradient(135deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
+  .header p { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+  .summary-box { background: linear-gradient(145deg, rgba(14,165,233,0.05) 0%, rgba(255,255,255,0.9) 100%); border-left: 4px solid var(--accent-blue); border-radius: 0 16px 16px 0; padding: 30px; margin-bottom: 50px; backdrop-filter: blur(10px); box-shadow: var(--card-shadow); }
+  .summary-box h3 { margin-top: 0; color: var(--accent-blue); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .summary-box p { font-size: 1.1rem; color: var(--text-main); }
+  .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 60px; }
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px; backdrop-filter: blur(12px); box-shadow: var(--card-shadow); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--card-border); transition: all 0.3s ease; }
+  .card:hover { transform: translateY(-8px); border-color: rgba(15, 23, 42, 0.1); box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15); }
+  .card.plugin:hover::before { background: var(--accent-green); }
+  .card.image:hover::before { background: var(--accent-purple); }
+  .card.video:hover::before { background: var(--accent-pink); }
+  .card.software:hover::before { background: var(--accent-orange); }
+  .tags { display: flex; gap: 10px; margin-bottom: 20px; }
+  .tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; border-radius: 8px; }
+  .tag.plugin { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
+  .tag.image { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.2); }
+  .tag.video { background: rgba(244, 63, 94, 0.1); color: var(--accent-pink); border: 1px solid rgba(244, 63, 94, 0.2); }
+  .tag.software { background: rgba(245, 158, 11, 0.1); color: var(--accent-orange); border: 1px solid rgba(245, 158, 11, 0.2); }
+  .tool-name { font-size: 1.6rem; margin: 0 0 15px 0; color: var(--text-main); font-weight: 800; }
+  .insight-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8; }
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; background: #f1f5f9; border-radius: 12px; padding: 15px 20px; }
+  .feature-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-main); position: relative; padding-left: 20px; }
+  .feature-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
+  .feature-list strong { color: var(--accent-blue); }
+  .recommendation { margin-top: auto; background: rgba(14, 165, 233, 0.05); border-radius: 12px; padding: 20px; font-size: 0.95rem; border-left: 3px solid var(--accent-blue); color: var(--text-main); font-weight: 600; }
+  .workflow-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 20px; padding: 40px; position: relative; box-shadow: var(--card-shadow); margin-bottom: 50px; }
+  .workflow-badge { position: absolute; top: -15px; right: 30px; background: linear-gradient(135deg, #f43f5e, #fb7185); color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
+  .step-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+  .step { display: flex; align-items: flex-start; gap: 20px; background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid var(--card-border); }
+  .step-num { background: var(--accent-pink); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
+  .step-content { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+  .step-content strong { color: var(--text-main); display: block; margin-bottom: 8px; font-size: 1.15rem; }
+  .final-summary { background: #1e293b; color: white; padding: 40px; border-radius: 20px; margin-top: 20px; }
+  .final-summary h2 { margin-top: 0; color: #38bdf8; }
+  .final-summary p { font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; }
+  .final-summary strong { color: white; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← 返回目录</a>
+  <div class="header"><h1>Ad Design Radar</h1><p>Week of July 13, 2026</p></div>
+  
+  <div class="summary-box">
+    <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
+    <p>本周的主题是<strong>“数据驱动与素材暴力切片”</strong>。买量进入深水区，单靠直觉做创意已经失效，我们必须用 AI 像机器一样去拆解、测试和裂变素材。本周长视频转短视频的切片工具和 Meta 的自动化投放后台迎来了极其强悍的协同更新。</p>
+  </div>
+  
+  <h2 class="section-title">🔥 Top 5 Tools & Deep Dive</h2>
+  <div class="grid">
+    
+    <div class="card software">
+      <div class="tags"><span class="tag software">Editing Software</span></div>
+      <h3 class="tool-name">01. Opus Clip Pro</h3>
+      <p class="insight-text">最顶级的长视频转短视频 AI 切片工具，新增了 B-roll 自动覆盖功能和更强的钩子预测。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 将甲方提供的长达 30 分钟无聊的产品介绍直播，一键切成 20 条自带爆点钩子、自带花式字幕和过场 B-roll 的 30 秒 TikTok 广告片。</li>
+        <li><strong>优缺点分析:</strong> AI 选择的爆点有时会显得断章取义，需要人工审核剔除。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 播客、直播切片素材团队的核武器。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Workflow</span></div>
+      <h3 class="tool-name">02. Meta Advantage+ Creative</h3>
+      <p class="insight-text">Meta 广告后台的创意自动优化选项大升级，引入了基于 AI 的元素级排列组合测试。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 只需上传 1 张底图、3 段文案、2 个不同的按钮。Meta 会自动拼接成几十种排列组合投放，并把预算集中在转化最好的那张拼图上。</li>
+        <li><strong>优缺点分析:</strong> 完全放弃了对最终成片外观的控制权。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 跑量阶段闭眼开启的功能，让算法决定排版。</div>
+    </div>
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">Plugin</span></div>
+      <h3 class="tool-name">03. Vidyo.ai Virality Score</h3>
+      <p class="insight-text">在剪辑素材时，实时预测该片段在社交媒体上可能获得的“病毒传播评分”。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 在素材完成粗剪后，通过该工具审查哪一段对话可能掉粉，哪里需要补充强音效，指导二次精剪。</li>
+        <li><strong>优缺点分析:</strong> 评分基于过往数据模型，对极其创新的反常识创意容易误判。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 给设计师提供理性的改稿依据，告别玄学。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Creative Software</span></div>
+      <h3 class="tool-name">04. Canva Bulk Create</h3>
+      <p class="insight-text">虽然是老功能，但本周深度集成了 ChatGPT 接口，可以直接在表格里用大模型生成成百上千条不同的文案并直接灌入海报。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 制作 100 张覆盖不同城市、不同年龄段痛点的细分图文广告（例如：纽约程序员必买.../德州主妇必看...），一键生成下载打包。</li>
+        <li><strong>优缺点分析:</strong> 排版形式高度一致，容易被平台判定为重复素材限流。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 图文广告裂变的效率天花板。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Workflow</span></div>
+      <h3 class="tool-name">05. Frame.io AI Tagger</h3>
+      <p class="insight-text">视频审阅平台加入了 AI 自动打标签和搜索能力。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 在一个拥有几千条历史素材的素材库里，直接搜索“一个戴眼镜的男人在笑”，瞬间定位到具体视频的具体秒数，极速复用老素材。</li>
+        <li><strong>优缺点分析:</strong> 对复杂隐喻和动作的识别还不够精准。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 中大型买量团队的素材库盘活神器。</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">⚡ 深度实战: 高效工作流拆解</h2>
+  <div class="workflow-card">
+    <div class="workflow-badge">PRO WORKFLOW</div>
+    <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main);">长视频榨干与裂变测试流</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">如何将一段毫无生机的产品介绍视频，榨取成上百条高转化广告变体：</p>
+    <div class="step-container">
+      
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>暴力切片 (Opus Clip)</strong> 将原视频导入，利用 AI 抓取金句，自动裁剪并生成 10 条 9:16 的竖屏高光片段，自带跳动字幕。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>B-roll 覆盖 (CapCut/Envato)</strong> 对这些片段中视觉沉闷的部分，利用 Envato 的画面搜索找空镜，或用 CapCut 的 AI B-roll 功能直接覆盖相关画面，保持视觉新鲜度。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>矩阵文案生成 (ChatGPT/Canva)</strong> 针对这 10 条切片，利用大模型写出 5 种不同痛点的开头钩子（Hook）文案，通过 Canva 批量生成带有这些大字报的透明 PNG 贴纸。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>黑盒投放测试 (Meta Advantage+)</strong> 将切好的视频片段和不同痛点的大字报贴纸全部扔进 Meta Advantage+ 后台，利用机器算法跑出点击率最高的黄金组合。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-summary">
+    <h2 class="section-title">📝 每周总结 Weekly Summary</h2>
+    <p>未来的高级广告设计师一定是个<strong>“数据分析师”</strong>。好创意不再是拍脑袋决定的，而是通过机器海量切片、排列组合、A/B 测试跑出来的。把精力花在建立这套自动化“榨汁机”上，让旧素材不断焕发新生，是应对流量成本高企的最佳策略。</p>
+  </div>
+</div>
+</body></html>

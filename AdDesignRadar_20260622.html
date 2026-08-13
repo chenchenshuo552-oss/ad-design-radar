@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ad Design Radar | Intelligence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+  :root {
+    --bg-main: #f8fafc; --bg-secondary: #ffffff; --text-main: #0f172a; --text-muted: #475569;
+    --accent-blue: #0ea5e9; --accent-purple: #8b5cf6; --accent-pink: #f43f5e;
+    --accent-green: #10b981; --accent-orange: #f59e0b;
+    --card-bg: rgba(255, 255, 255, 0.85); --card-border: rgba(226, 232, 240, 0.8);
+    --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  }
+  body { font-family: 'Inter', sans-serif; background-color: var(--bg-main); background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%), radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%); background-attachment: fixed; color: var(--text-main); line-height: 1.7; margin: 0; padding: 40px 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.2s; }
+  .back-link:hover { transform: translateX(-5px); }
+  .header { text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 1px solid var(--card-border); }
+  .header h1 { font-size: 3.5rem; font-weight: 800; margin: 0 0 10px 0; background: linear-gradient(135deg, #0f172a 0%, #475569 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px; }
+  .header p { font-size: 1.2rem; color: var(--accent-blue); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+  .summary-box { background: linear-gradient(145deg, rgba(14,165,233,0.05) 0%, rgba(255,255,255,0.9) 100%); border-left: 4px solid var(--accent-blue); border-radius: 0 16px 16px 0; padding: 30px; margin-bottom: 50px; backdrop-filter: blur(10px); box-shadow: var(--card-shadow); }
+  .summary-box h3 { margin-top: 0; color: var(--accent-blue); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .summary-box p { font-size: 1.1rem; color: var(--text-main); }
+  .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center; gap: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 60px; }
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 35px; backdrop-filter: blur(12px); box-shadow: var(--card-shadow); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--card-border); transition: all 0.3s ease; }
+  .card:hover { transform: translateY(-8px); border-color: rgba(15, 23, 42, 0.1); box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.15); }
+  .card.plugin:hover::before { background: var(--accent-green); }
+  .card.image:hover::before { background: var(--accent-purple); }
+  .card.video:hover::before { background: var(--accent-pink); }
+  .card.software:hover::before { background: var(--accent-orange); }
+  .tags { display: flex; gap: 10px; margin-bottom: 20px; }
+  .tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; border-radius: 8px; }
+  .tag.plugin { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
+  .tag.image { background: rgba(139, 92, 246, 0.1); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.2); }
+  .tag.video { background: rgba(244, 63, 94, 0.1); color: var(--accent-pink); border: 1px solid rgba(244, 63, 94, 0.2); }
+  .tag.software { background: rgba(245, 158, 11, 0.1); color: var(--accent-orange); border: 1px solid rgba(245, 158, 11, 0.2); }
+  .tool-name { font-size: 1.6rem; margin: 0 0 15px 0; color: var(--text-main); font-weight: 800; }
+  .insight-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8; }
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; background: #f1f5f9; border-radius: 12px; padding: 15px 20px; }
+  .feature-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-main); position: relative; padding-left: 20px; }
+  .feature-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-blue); font-weight: bold; }
+  .feature-list strong { color: var(--accent-blue); }
+  .recommendation { margin-top: auto; background: rgba(14, 165, 233, 0.05); border-radius: 12px; padding: 20px; font-size: 0.95rem; border-left: 3px solid var(--accent-blue); color: var(--text-main); font-weight: 600; }
+  .workflow-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); border: 1px solid rgba(244, 63, 94, 0.2); border-radius: 20px; padding: 40px; position: relative; box-shadow: var(--card-shadow); margin-bottom: 50px; }
+  .workflow-badge { position: absolute; top: -15px; right: 30px; background: linear-gradient(135deg, #f43f5e, #fb7185); color: white; padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3); }
+  .step-container { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+  .step { display: flex; align-items: flex-start; gap: 20px; background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid var(--card-border); }
+  .step-num { background: var(--accent-pink); color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; flex-shrink: 0; }
+  .step-content { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
+  .step-content strong { color: var(--text-main); display: block; margin-bottom: 8px; font-size: 1.15rem; }
+  .final-summary { background: #1e293b; color: white; padding: 40px; border-radius: 20px; margin-top: 20px; }
+  .final-summary h2 { margin-top: 0; color: #38bdf8; }
+  .final-summary p { font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; }
+  .final-summary strong { color: white; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← 返回目录</a>
+  <div class="header"><h1>Ad Design Radar</h1><p>Week of June 22, 2026</p></div>
+  
+  <div class="summary-box">
+    <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
+    <p>本周的主题是<strong>“UGC 仿真与声音的工业化”</strong>。买量团队最大的痛点之一就是外籍演员难找、UGC 视频成本高。本周 ElevenLabs 和 HeyGen 发布的重磅功能，宣告了纯 AI 打造极其逼真的“真人种草视频”已经完全可行。</p>
+  </div>
+  
+  <h2 class="section-title">🔥 Top 5 Tools & Deep Dive</h2>
+  <div class="grid">
+    
+    <div class="card plugin">
+      <div class="tags"><span class="tag plugin">AI Audio</span></div>
+      <h3 class="tool-name">01. ElevenLabs Reader App & Voices</h3>
+      <p class="insight-text">新增了大量极具网感、带有呼吸声和环境底噪的真实语音模型。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 生成 TikTok 上的“开箱吐槽”或“好物分享”旁白，自带情绪起伏，极其真实。</li>
+        <li><strong>优缺点分析:</strong> 长文本依然需要分段生成以保持情绪的高昂感。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 所有海外素材团队不可或缺的配音工具。</div>
+    </div>
+    <div class="card video">
+      <div class="tags"><span class="tag video">AI Video</span></div>
+      <h3 class="tool-name">02. HeyGen UGC Avatar</h3>
+      <p class="insight-text">全新的休闲装扮数字人，支持手持手机拍摄的“自拍视角”和走动效果。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 彻底替代 Fiverr 上的真人演员，直接输入脚本文案，生成带着鼻音和手部动作的欧美素人推荐视频。</li>
+        <li><strong>优缺点分析:</strong> 手部动作有时会重复穿帮，不能进行复杂的商品展示。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 跑量 UGC 素材的绝对革命者。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Workflow</span></div>
+      <h3 class="tool-name">03. TikTok Symphony</h3>
+      <p class="insight-text">TikTok 官方推出的 AI 创意助手，内置脚本生成和原生配音。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 直接在 TikTok 后台输入产品链接，自动生成符合当地趋势梗（Trending sounds）的广告脚本。</li>
+        <li><strong>优缺点分析:</strong> 生成的脚本容易同质化，依然需要人工提炼爆点。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 缺乏灵感时的最佳外脑辅助。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Editing Software</span></div>
+      <h3 class="tool-name">04. CapCut Dynamic Captions AI</h3>
+      <p class="insight-text">自动识别语气强调部分，生成极具视觉冲击力的跳动和变色字幕。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 在信息流视频中，让字幕随着重点词汇（如 Free, Sale, Stop）放大爆炸，死死锁住用户注意力。</li>
+        <li><strong>优缺点分析:</strong> 特效过于花哨时可能引起部分用户的视觉疲劳。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 提升完播率（Retention Rate）的标配动作。</div>
+    </div>
+    <div class="card software">
+      <div class="tags"><span class="tag software">Editing Software</span></div>
+      <h3 class="tool-name">05. Descript Storyboard</h3>
+      <p class="insight-text">像编辑文档一样编辑视频，新增了基于文本的自动多机位切换。</p>
+      <ul class="feature-list">
+        <li><strong>商业实战:</strong> 导入一段干巴巴的长口播，AI 自动根据语境切出“近景/中景”，打破视觉沉闷。</li>
+        <li><strong>优缺点分析:</strong> 原视频必须是高分辨率，否则裁剪近景时会模糊。</li>
+      </ul>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 长视频和播客切片广告的效率之王。</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">⚡ 深度实战: 高效工作流拆解</h2>
+  <div class="workflow-card">
+    <div class="workflow-badge">PRO WORKFLOW</div>
+    <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main);">全矩阵虚假 UGC 种草流水线</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">零演员、零拍摄，一天产出 10 条真人出镜的种草视频：</p>
+    <div class="step-container">
+      
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong>爆款拆解与脚本 (TikTok Symphony)</strong> 找到竞品爆款视频，用 AI 拆解其前三秒钩子（Hook），重写为 5 个不同切入点的口播脚本。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong>情绪配音 (ElevenLabs)</strong> 选择极具网感的“Gen-Z”声音模型，生成带有呼吸和停顿的配音音频。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong>数字人演绎 (HeyGen UGC)</strong> 选择手持自拍视角的数字人，将音频导入生成视频，确保唇形和情绪完美对齐。</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong>包装与发布 (CapCut)</strong> 加持极具冲击力的动态弹跳字幕，配上当前 TikTok 最火的背景音乐，直接进入 Meta/TikTok 后台跑量。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-summary">
+    <h2 class="section-title">📝 每周总结 Weekly Summary</h2>
+    <p>AI 数字人和语音技术已经跨越了“恐怖谷”。在讲究“原生感（Native-looking）”的短视频广告时代，<strong>看起来像普通人随手拍的视频往往比精美的棚拍广告转化率更高</strong>。掌握这套 UGC 仿真工作流，意味着你的素材产能将不再受制于演员档期和拍摄预算。</p>
+  </div>
+</div>
+</body></html>
