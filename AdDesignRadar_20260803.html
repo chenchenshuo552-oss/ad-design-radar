@@ -3,99 +3,69 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ad Design Radar | Intelligence</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
   :root {
-    --bg-main: #f4f4f5; 
-    --text-main: #18181b; 
-    --text-muted: #52525b;
-    --accent-blue: #2563eb; 
-    --accent-purple: #7c3aed; 
-    --accent-pink: #e11d48;
-    --accent-green: #059669; 
-    --accent-orange: #d97706;
-    --card-bg: rgba(255, 255, 255, 0.7); 
-    --card-border: rgba(255, 255, 255, 0.5);
-    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    --bg: #ffffff;
+    --text: #111111;
+    --text-muted: #666666;
+    --border: #eaeaea;
   }
-  body { 
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif; 
-    background-color: var(--bg-main); 
-    background-image: 
-        radial-gradient(at 0% 0%, hsla(253,16%,7%,0.05) 0, transparent 50%), 
-        radial-gradient(at 50% 0%, hsla(225,39%,30%,0.05) 0, transparent 50%), 
-        radial-gradient(at 100% 0%, hsla(339,49%,30%,0.05) 0, transparent 50%);
-    background-attachment: fixed;
-    color: var(--text-main); 
-    line-height: 1.8; 
-    margin: 0; 
-    padding: 60px 20px; 
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    margin: 0;
+    padding: 60px 20px;
+    -webkit-font-smoothing: antialiased;
   }
-  .container { max-width: 1000px; margin: 0 auto; }
-  .back-link { 
-    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 30px; 
-    color: var(--text-muted); text-decoration: none; font-weight: 600; 
-    padding: 8px 16px; background: rgba(255,255,255,0.5); border-radius: 20px;
-    backdrop-filter: blur(10px); transition: all 0.3s ease;
+  .container { max-width: 680px; margin: 0 auto; }
+  .back-link {
+    display: inline-block; margin-bottom: 50px; color: var(--text-muted);
+    text-decoration: none; font-size: 0.95rem; font-weight: 500;
+    transition: color 0.2s;
   }
-  .back-link:hover { transform: translateX(-5px); background: #fff; color: var(--accent-blue); box-shadow: var(--card-shadow); }
-  .header { text-align: center; margin-bottom: 60px; }
-  .header h1 { font-size: 4rem; font-weight: 800; margin: 0 0 10px 0; color: #18181b; letter-spacing: -1.5px; line-height: 1.1; }
-  .header p { font-size: 1.2rem; color: var(--accent-blue); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
+  .back-link:hover { color: var(--text); }
+  .header { margin-bottom: 50px; }
+  .header h1 { font-size: 2.2rem; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.02em; }
+  .header p { color: var(--text-muted); font-size: 1rem; margin: 0; }
   
-  .summary-box { 
-    background: var(--card-bg); border: 1px solid var(--card-border); 
-    border-radius: 24px; padding: 40px; margin-bottom: 60px; 
-    backdrop-filter: blur(20px); box-shadow: var(--card-shadow); 
-    position: relative; overflow: hidden;
-  }
-  .summary-box::before {
-    content: ''; position: absolute; left: 0; top: 0; width: 6px; height: 100%;
-    background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
-  }
-  .summary-box h3 { margin-top: 0; color: var(--text-main); font-size: 1.5rem; font-weight: 800; margin-bottom: 15px;}
-  .summary-box p { font-size: 1.15rem; color: var(--text-muted); margin: 0; }
+  .summary-box { padding: 0 0 40px 0; margin-bottom: 50px; border-bottom: 1px solid var(--border); }
+  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.1rem; font-weight: 600; }
+  .summary-box p { margin: 0; font-size: 1.05rem; color: var(--text-muted); }
   
-  .section-title { font-size: 2.2rem; font-weight: 800; margin: 60px 0 30px 0; letter-spacing: -0.5px; }
+  .section-title { font-size: 1.4rem; font-weight: 700; margin: 60px 0 30px 0; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
   
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 60px; }
-  .card { 
-    background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; 
-    padding: 35px; backdrop-filter: blur(20px); box-shadow: var(--card-shadow); 
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex; flex-direction: column;
-  }
-  .card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.9); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+  .grid { display: flex; flex-direction: column; gap: 60px; margin-bottom: 60px; }
+  .card { display: flex; flex-direction: column; }
   
-  .tags { margin-bottom: 20px; }
-  .tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 6px 14px; border-radius: 100px; background: #e2e8f0; color: #475569; }
+  .tags { margin-bottom: 12px; }
+  .tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
   
-  .tool-name { font-size: 1.8rem; margin: 0 0 15px 0; font-weight: 800; line-height: 1.3;}
-  .insight-text { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 25px; }
+  .tool-name { font-size: 1.3rem; font-weight: 700; margin: 0 0 12px 0; }
+  .tool-name a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s; padding-bottom: 2px; }
+  .tool-name a:hover { border-bottom-color: var(--text); }
   
-  .feature-list { list-style: none; padding: 0; margin: 0 0 30px 0; display: flex; flex-direction: column; gap: 15px; }
-  .feature-list li { background: rgba(255,255,255,0.5); padding: 15px 20px; border-radius: 12px; font-size: 0.95rem; border: 1px solid rgba(0,0,0,0.03); }
-  .feature-list strong { display: inline-block; color: var(--text-main); margin-bottom: 4px; font-size: 1rem; }
+  .insight-text { font-size: 1.05rem; color: var(--text); margin-bottom: 20px; }
   
-  .recommendation { margin-top: auto; padding-top: 20px; border-top: 1px dashed #cbd5e1; font-weight: 600; color: var(--accent-blue); }
+  .feature-list { list-style: none; padding: 0; margin: 0 0 20px 0; border-left: 2px solid var(--border); padding-left: 20px; }
+  .feature-list li { margin-bottom: 16px; font-size: 0.95rem; color: var(--text-muted); }
+  .feature-list strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 4px; }
   
-  .workflow-card { 
-    background: #fff; border-radius: 32px; padding: 50px; 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-bottom: 60px; 
-  }
-  .step-container { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
-  .step { display: flex; gap: 25px; align-items: flex-start; }
-  .step-num { 
-    background: var(--text-main); color: #fff; width: 40px; height: 40px; 
-    border-radius: 12px; display: flex; align-items: center; justify-content: center; 
-    font-weight: 800; font-size: 1.2rem; flex-shrink: 0; 
-  }
-  .step-content { background: #f8fafc; padding: 25px; border-radius: 16px; flex-grow: 1; border: 1px solid #f1f5f9; }
-  .step-content strong { color: var(--accent-blue); font-size: 1.1rem; display: block; margin-bottom: 8px; }
+  .recommendation { margin-top: 10px; font-size: 0.95rem; font-weight: 600; color: var(--text); }
   
-  .final-summary { background: #18181b; color: #e4e4e7; padding: 50px; border-radius: 32px; margin-top: 60px; }
-  .final-summary h2 { color: #fff; margin-top: 0; }
-  .final-summary strong { color: #fff; }
-  img { max-width: 100%; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+  .workflow-card { padding: 35px; background: #fafafa; border-radius: 12px; margin-bottom: 60px; }
+  .step-container { margin-top: 30px; display: flex; flex-direction: column; gap: 24px; }
+  .step { display: flex; gap: 20px; }
+  .step-num { font-weight: 600; color: #999; font-family: monospace; font-size: 1.1rem; padding-top: 2px; }
+  .step-content { flex-grow: 1; font-size: 0.95rem; color: var(--text-muted); }
+  .step-content strong { color: var(--text); display: block; margin-bottom: 4px; font-weight: 600; font-size: 1.05rem; }
+  
+  .final-summary { padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px; }
+  .final-summary h2 { font-size: 1.2rem; margin: 0 0 15px 0; }
+  .final-summary p { color: var(--text-muted); margin: 0; font-size: 1.05rem; }
+
 </style>
 
 <meta property="og:title" content="Ad Design Radar | 2026-08-03" />
@@ -119,7 +89,7 @@
   <div class="grid">
     <div class="card software">
       <div class="tags"><span class="tag software">Editing Software</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=CapCut%20Pro%20AI%20Hooks%20ai%20tool" target="_blank" style="color: inherit; text-decoration: none; text-decoration: none; padding-right: 5px; transition: all 0.2s;" onmouseover="this.style.color='var(--accent-blue)'; this.style.transform='translateX(4px)'; this.style.display='inline-block'" onmouseout="this.style.color='inherit'; this.style.transform='translateX(0)'">01. CapCut Pro AI Hooks ↗</a></h3>
+      <h3 class="tool-name"><a href="https://www.google.com/search?q=CapCut%20Pro%20AI%20Hooks%20ai%20tool" target="_blank"   >01. CapCut Pro AI Hooks</a></h3>
       <p class="insight-text">分析原素材高光时刻，自动拼剪出 3-5 个不同风格的“前三秒吸睛画面”。</p>
       <ul class="feature-list">
         <li><strong>商业实战:</strong> 针对 TikTok 跑量素材，直接丢入 1 分钟原片，自动提取冲突画面、爆点表情打上大字报进行 A/B 测试。</li>
@@ -130,7 +100,7 @@
     
     <div class="card image">
       <div class="tags"><span class="tag image">AI Image</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Midjourney%20v6.5%20Text%20Render%20ai%20tool" target="_blank" style="color: inherit; text-decoration: none; text-decoration: none; padding-right: 5px; transition: all 0.2s;" onmouseover="this.style.color='var(--accent-blue)'; this.style.transform='translateX(4px)'; this.style.display='inline-block'" onmouseout="this.style.color='inherit'; this.style.transform='translateX(0)'">02. Midjourney v6.5 Text Render ↗</a></h3>
+      <h3 class="tool-name"><a href="https://www.google.com/search?q=Midjourney%20v6.5%20Text%20Render%20ai%20tool" target="_blank"   >02. Midjourney v6.5 Text Render</a></h3>
       <p class="insight-text">彻底解决文字渲染问题，支持长句和指定字体的完美光影融合。</p>
       <ul class="feature-list">
         <li><strong>商业实战:</strong> 做 Facebook 贴文图片时，直接在 Prompt 圈定文案 <code>neon sign "50% OFF"</code>，无需再去 PS 后期加字。</li>
@@ -141,7 +111,7 @@
     
     <div class="card video">
       <div class="tags"><span class="tag video">AI Video</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Luma%20Dream%20Machine%20End-Frame%20Control%20ai%20tool" target="_blank" style="color: inherit; text-decoration: none; text-decoration: none; padding-right: 5px; transition: all 0.2s;" onmouseover="this.style.color='var(--accent-blue)'; this.style.transform='translateX(4px)'; this.style.display='inline-block'" onmouseout="this.style.color='inherit'; this.style.transform='translateX(0)'">03. Luma Dream Machine End-Frame Control ↗</a></h3>
+      <h3 class="tool-name"><a href="https://www.google.com/search?q=Luma%20Dream%20Machine%20End-Frame%20Control%20ai%20tool" target="_blank"   >03. Luma Dream Machine End-Frame Control</a></h3>
       <p class="insight-text">开放了“尾帧锁定”功能，同时指定首尾帧，AI 自行填补奇幻过渡动画。</p>
       <ul class="feature-list">
         <li><strong>商业实战:</strong> 制作强反差的 Before/After 广告片（如旧鞋变新鞋的魔法过渡转场）。</li>
@@ -152,7 +122,7 @@
 
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">AI Audio</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=ElevenLabs%20Voice%20Emotion%20Tuning%20ai%20tool" target="_blank" style="color: inherit; text-decoration: none; text-decoration: none; padding-right: 5px; transition: all 0.2s;" onmouseover="this.style.color='var(--accent-blue)'; this.style.transform='translateX(4px)'; this.style.display='inline-block'" onmouseout="this.style.color='inherit'; this.style.transform='translateX(0)'">04. ElevenLabs Voice Emotion Tuning ↗</a></h3>
+      <h3 class="tool-name"><a href="https://www.google.com/search?q=ElevenLabs%20Voice%20Emotion%20Tuning%20ai%20tool" target="_blank"   >04. ElevenLabs Voice Emotion Tuning</a></h3>
       <p class="insight-text">新增精确到句子级别的情绪滑动条（愤怒、惊喜、窃白）。</p>
       <ul class="feature-list">
         <li><strong>商业实战:</strong> 游戏出海广告和短剧素材中，可以通过拉条直接生成跌宕起伏的旁白，而不需要依赖提示词“盲猜”语气。</li>
@@ -163,7 +133,7 @@
 
     <div class="card software">
       <div class="tags"><span class="tag software">Creative Asset</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Envato%20Elements%20AI%20Search%20ai%20tool" target="_blank" style="color: inherit; text-decoration: none; text-decoration: none; padding-right: 5px; transition: all 0.2s;" onmouseover="this.style.color='var(--accent-blue)'; this.style.transform='translateX(4px)'; this.style.display='inline-block'" onmouseout="this.style.color='inherit'; this.style.transform='translateX(0)'">05. Envato Elements AI Search ↗</a></h3>
+      <h3 class="tool-name"><a href="https://www.google.com/search?q=Envato%20Elements%20AI%20Search%20ai%20tool" target="_blank"   >05. Envato Elements AI Search</a></h3>
       <p class="insight-text">素材库迎来了基于画面的语义搜索，直接丢入竞品广告截图，就能找出版权无忧的相似实拍视频和 BGM。</p>
       <ul class="feature-list">
         <li><strong>商业实战:</strong> 扒同行爆款时，无需绞尽脑汁猜搜索词，以图搜视频找相似空镜，一比一复刻跑量模版。</li>
@@ -217,57 +187,6 @@
   </div>
 </div>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop" title="回到顶部">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-  </button>
-  <style>
-    #backToTop {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(20px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 9999;
-    }
-    #backToTop.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-    #backToTop:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
-    }
-    @media (max-width: 768px) {
-      #backToTop { bottom: 20px; right: 20px; }
-    }
-  </style>
-  <script>
-    const backToTopBtn = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add("visible");
-      } else {
-        backToTopBtn.classList.remove("visible");
-      }
-    });
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  </script>
+  
 </body>
 </html>
