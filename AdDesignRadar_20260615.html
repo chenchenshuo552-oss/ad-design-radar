@@ -200,6 +200,18 @@
   .index-page .mini-tag.tool { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
   .index-page .mini-tag.workflow { background: #FAF5FF; color: #6D28D9; border-color: #E9D5FF; }
 
+  
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     .back-to-top { bottom: 20px; right: 20px; }
@@ -241,7 +253,7 @@
         <li><strong>🎯 商业实战:</strong> 制作极具科技感的 3D 悬浮按钮或互动展示台，直接嵌入到落地页中。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 生成的模型拓扑结构较乱，不适合导入游戏引擎使用。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 网页和 UI 交互设计师的 3D 破冰利器。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 网页和 UI 交互设计师的 3D 破冰利器</div>
     </div>
     <div class="card image">
       <div class="tags"><span class="tag image">AI Image</span></div>
@@ -257,7 +269,7 @@
         <li><strong>🎯 商业实战:</strong> 广告视频中需要一个不存在的奇幻道具（如发光的魔法药水），直接生成 3D 模型放入 AE 中渲染。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 模型表面纹理（Texture）分辨率目前还不够精细。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 短视频特效道具的极速生成器。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 短视频特效道具的极速生成器</div>
     </div>
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">Plugin</span></div>
@@ -273,7 +285,7 @@
         <li><strong>🎯 商业实战:</strong> 为美妆客户制作“试色”或“趣味面具”广告，极大提升用户停留和互动率。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 平台限制较多，审核流程较长。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 突破传统视频，探索交互式广告（Playable Ads）的首选。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 突破传统视频，探索交互式广告（Playable Ads）的首选</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Workflow</span></div>
@@ -289,7 +301,7 @@
         <li><strong>🎯 商业实战:</strong> 线下用手机扫描实体商品，上传后修复高光材质，直接作为 3D 资产用于广告旋转展示。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 对透明和强反光物体的扫描依然无解。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 鞋服、消费电子产品的低成本 3D 化路径。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 鞋服、消费电子产品的低成本 3D 化路径</div>
     </div>
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">Plugin</span></div>
@@ -305,7 +317,7 @@
         <li><strong>🎯 商业实战:</strong> 渲染高级海报时，快速生成“带有水滴的磨砂玻璃”等极其耗时的真实材质。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 仅支持正版最新 C4D，硬件门槛较高。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 专业 3D 设计师提升材质效率的杀手锏。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 专业 3D 设计师提升材质效率的杀手锏</div>
     </div>
   </div>
 

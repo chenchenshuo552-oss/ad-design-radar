@@ -200,6 +200,18 @@
   .index-page .mini-tag.tool { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
   .index-page .mini-tag.workflow { background: #FAF5FF; color: #6D28D9; border-color: #E9D5FF; }
 
+  
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     .back-to-top { bottom: 20px; right: 20px; }
@@ -241,7 +253,7 @@
         <li><strong>🎯 商业实战:</strong> 将甲方提供的长达 30 分钟无聊的产品介绍直播，一键切成 20 条自带爆点钩子、自带花式字幕和过场 B-roll 的 30 秒 TikTok 广告片。</li>
         <li><strong>⚖️ 优缺点分析:</strong> AI 选择的爆点有时会显得断章取义，需要人工审核剔除。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 播客、直播切片素材团队的核武器。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 播客、直播切片素材团队的核武器</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Workflow</span></div>
@@ -257,7 +269,7 @@
         <li><strong>🎯 商业实战:</strong> 只需上传 1 张底图、3 段文案、2 个不同的按钮。Meta 会自动拼接成几十种排列组合投放，并把预算集中在转化最好的那张拼图上。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 完全放弃了对最终成片外观的控制权。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 跑量阶段闭眼开启的功能，让算法决定排版。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 跑量阶段闭眼开启的功能，让算法决定排版</div>
     </div>
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">Plugin</span></div>
@@ -273,7 +285,7 @@
         <li><strong>🎯 商业实战:</strong> 在素材完成粗剪后，通过该工具审查哪一段对话可能掉粉，哪里需要补充强音效，指导二次精剪。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 评分基于过往数据模型，对极其创新的反常识创意容易误判。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 给设计师提供理性的改稿依据，告别玄学。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 给设计师提供理性的改稿依据，告别玄学</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Creative Software</span></div>
@@ -289,7 +301,7 @@
         <li><strong>🎯 商业实战:</strong> 制作 100 张覆盖不同城市、不同年龄段痛点的细分图文广告（例如：纽约程序员必买.../德州主妇必看...），一键生成下载打包。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 排版形式高度一致，容易被平台判定为重复素材限流。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 图文广告裂变的效率天花板。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 图文广告裂变的效率天花板</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Workflow</span></div>
@@ -305,7 +317,7 @@
         <li><strong>🎯 商业实战:</strong> 在一个拥有几千条历史素材的素材库里，直接搜索“一个戴眼镜的男人在笑”，瞬间定位到具体视频的具体秒数，极速复用老素材。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 对复杂隐喻和动作的识别还不够精准。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 中大型买量团队的素材库盘活神器。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 中大型买量团队的素材库盘活神器</div>
     </div>
   </div>
 

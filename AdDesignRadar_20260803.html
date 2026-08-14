@@ -200,6 +200,18 @@
   .index-page .mini-tag.tool { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
   .index-page .mini-tag.workflow { background: #FAF5FF; color: #6D28D9; border-color: #E9D5FF; }
 
+  
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     .back-to-top { bottom: 20px; right: 20px; }
@@ -240,7 +252,7 @@
         <li><strong>🎯 商业实战:</strong> 针对 TikTok 跑量素材，直接丢入 1 分钟原片，自动提取冲突画面、爆点表情打上大字报进行 A/B 测试。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 大幅节省测试初期的粗剪时间；缺点是套路感较重，容易有机器味。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> TikTok 起量阶段快速铺场测试首选。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> TikTok 起量阶段快速铺场测试首选</div>
     </div>
     
     <div class="card image">
@@ -257,7 +269,7 @@
         <li><strong>🎯 商业实战:</strong> 做 Facebook 贴文图片时，直接在 Prompt 圈定文案 <code>neon sign "50% OFF"</code>，无需再去 PS 后期加字。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 提升素材“原生感”；对中文字体支持仍然极差。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 欧美市场英文单图广告排版神器。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 欧美市场英文单图广告排版神器</div>
     </div>
     
     <div class="card video">
@@ -274,7 +286,7 @@
         <li><strong>🎯 商业实战:</strong> 制作强反差的 Before/After 广告片（如旧鞋变新鞋的魔法过渡转场）。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 创意空间巨大，专治不可能的转场；但中间变身过程不可控，有时过于惊悚。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 用于制作极具视觉冲击力的特效广告转场。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 用于制作极具视觉冲击力的特效广告转场</div>
     </div>
 
     <div class="card plugin">
@@ -291,7 +303,7 @@
         <li><strong>🎯 商业实战:</strong> 游戏出海广告和短剧素材中，可以通过拉条直接生成跌宕起伏的旁白，而不需要依赖提示词“盲猜”语气。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 情绪表达行业顶尖；但在中文连读上偶有机械停顿感。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 出海素材，尤其是 UGC 演员配音的不二之选。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 出海素材，尤其是 UGC 演员配音的不二之选</div>
     </div>
 
     <div class="card software">
@@ -308,7 +320,7 @@
         <li><strong>🎯 商业实战:</strong> 扒同行爆款时，无需绞尽脑汁猜搜索词，以图搜视频找相似空镜，一比一复刻跑量模版。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 找 B-roll 效率提升巨大；但版权库的素材质感依然偏向传统图库风。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 适合对素材量消耗极大的团队批量找安全空镜。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 适合对素材量消耗极大的团队批量找安全空镜</div>
     </div>
   </div>
 

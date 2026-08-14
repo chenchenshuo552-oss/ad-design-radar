@@ -200,6 +200,18 @@
   .index-page .mini-tag.tool { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
   .index-page .mini-tag.workflow { background: #FAF5FF; color: #6D28D9; border-color: #E9D5FF; }
 
+  
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     .back-to-top { bottom: 20px; right: 20px; }
@@ -241,7 +253,7 @@
         <li><strong>🎯 商业实战:</strong> 将 Figma 做好的文字海报导入，点击生成，所有的字、按钮、图标都会配上极其丝滑的缓动（Easing）出场动画。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 无法处理复杂的 3D 和摄像机景深动效。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> UI 设计师替代基础 AE 动画的终极方案。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> UI 设计师替代基础 AE 动画的终极方案</div>
     </div>
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">Plugin</span></div>
@@ -257,7 +269,7 @@
         <li><strong>🎯 商业实战:</strong> 在网页或者 App 广告中，需要一个“购物车弹跳”或者“金币掉落”的微动效，打字直接生成并导出 json，无损缩放极小体积。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 生成的动画相对简单，复杂动作逻辑偶尔混乱。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 提升落地页（Landing Page）转化质感的神器。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 提升落地页（Landing Page）转化质感的神器</div>
     </div>
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">Plugin</span></div>
@@ -273,7 +285,7 @@
         <li><strong>🎯 商业实战:</strong> 制作极具冲击力的黑五大促（Black Friday）倒计时视频，让巨大红字配合音效狂暴闪烁，极简且直接。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 需要在 AE 内部操作，对电脑配置要求较高。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 制作硬核打折、大字报素材的终极武器。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 制作硬核打折、大字报素材的终极武器</div>
     </div>
     <div class="card video">
       <div class="tags"><span class="tag video">AI Video</span></div>
@@ -289,7 +301,7 @@
         <li><strong>🎯 商业实战:</strong> 输入提示词“一个由冰块雕刻而成的单词 SALE，被火焰融化化为水”，直接生成一段带有惊艳特效的文字视频背景。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 对长句和非英文字符的渲染依然不可用。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 适合做片头 Title 或极短的高光 Logo 展示。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 适合做片头 Title 或极短的高光 Logo 展示</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Creative Software</span></div>
@@ -305,7 +317,7 @@
         <li><strong>🎯 商业实战:</strong> 输入产品的痛点文案，它会自动挑选符合调性的 AI 底图，并使用杂志封面级的高级排版规则叠加文字。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 企业级收费较贵，面向 C 端小团队门槛高。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 追求高级品牌感（Brand Awareness）的图文广告优选。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 追求高级品牌感（Brand Awareness）的图文广告优选</div>
     </div>
   </div>
 

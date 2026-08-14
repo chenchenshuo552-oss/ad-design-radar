@@ -202,6 +202,18 @@
   .index-page .mini-tag.tool { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
   .index-page .mini-tag.workflow { background: #FAF5FF; color: #6D28D9; border-color: #E9D5FF; }
 
+  
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     .back-to-top { bottom: 20px; right: 20px; }
@@ -249,8 +261,7 @@
         <li><strong>⚖️ 优缺点分析:</strong> 极大地降低了动效门槛；但对于高度复杂的 3D 和粒子特效，它依然无法取代 AE 或 C4D。</li>
       </ul>
       <div class="recommendation">
-        🌟 <strong>行业建议:</strong> 交互与动效设计师必须尽快适应在 Figma 内完成 80% 的轻量化商业动效交付。
-      </div>
+        🌟 <strong>行业建议:</strong> 交互与动效设计师必须尽快适应在 Figma 内完成 80% 的轻量化商业动效交付</div>
     </div>
 
     <!-- Card 2 -->
@@ -269,8 +280,7 @@
         <li><strong>⚖️ 优缺点分析:</strong> 商用素材延展性极强；但人物连贯性在超过 5 张图后依然会面临漂移问题，文字生成仍需人工拼写检查。</li>
       </ul>
       <div class="recommendation">
-        🌟 <strong>行业建议:</strong> 彻底抛弃靠垫字重抽整张图的习惯，将其作为电商商品视觉多版位延展的核心工具。
-      </div>
+        🌟 <strong>行业建议:</strong> 彻底抛弃靠垫字重抽整张图的习惯，将其作为电商商品视觉多版位延展的核心工具</div>
     </div>
 
     <!-- Card 3 -->
@@ -289,8 +299,7 @@
         <li><strong>⚖️ 优缺点分析:</strong> 修改成本极低，极大地拯救了废片；但复杂的逻辑剧情长视频依然受限。</li>
       </ul>
       <div class="recommendation">
-        🌟 <strong>行业建议:</strong> 将其作为高保真动态分镜库，用单图生成基础动作后，通过对话式微调光影，作为实拍前的预演。
-      </div>
+        🌟 <strong>行业建议:</strong> 将其作为高保真动态分镜库，用单图生成基础动作后，通过对话式微调光影，作为实拍前的预演</div>
     </div>
 
     <!-- Card 4 -->
@@ -309,8 +318,7 @@
         <li><strong>⚖️ 优缺点分析:</strong> 动作捕捉极为精准，30秒时长傲视群雄；但长时间下背景物件偶尔会发生逻辑突变，需要靠时间轴修改功能补救。</li>
       </ul>
       <div class="recommendation">
-        🌟 <strong>行业建议:</strong> TikTok 投流短视频的终极 B-roll 制造机，直接拿来做动作替换。
-      </div>
+        🌟 <strong>行业建议:</strong> TikTok 投流短视频的终极 B-roll 制造机，直接拿来做动作替换</div>
     </div>
   </div>
 
@@ -337,18 +345,13 @@
         </div>
       </div>
       <div class="step">
-        <div class="step-content">
-          <div style="display: flex; gap: 20px;">
-            <div class="step-num">3</div>
-            <div>
+        <div class="step-num">3</div>
+          <div class="step-content">
               <strong>像素级售后微调 (Gemini Omni)</strong>
               如果生成的 10 秒视频中，第 7-9 秒出现了手指穿模或背景抖动，将其导入 Gemini Omni。使用对话指令：“修复 7-9 秒的手部畸变，其余秒数与主体不可有任何变动”。
             </div>
-          </div>
         </div>
       </div>
-    </div>
-  </div>
 
 </div>
 

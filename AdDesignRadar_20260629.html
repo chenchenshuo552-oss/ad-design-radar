@@ -200,6 +200,18 @@
   .index-page .mini-tag.tool { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
   .index-page .mini-tag.workflow { background: #FAF5FF; color: #6D28D9; border-color: #E9D5FF; }
 
+  
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     .back-to-top { bottom: 20px; right: 20px; }
@@ -241,7 +253,7 @@
         <li><strong>🎯 商业实战:</strong> 做出一套主视觉后，一键生成 1:1, 4:5, 16:9, 9:16 等所有广告版位，并且文本和按钮自动安全适配边缘。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 复杂的非规则排版仍需手动调整 Constraint。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 设计团队告别重复劳动、准时下班的救星。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 设计团队告别重复劳动、准时下班的救星</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Workflow</span></div>
@@ -257,7 +269,7 @@
         <li><strong>🎯 商业实战:</strong> 将英文的 'Shop Now' 准确翻译为符合当地购物习惯的缩略语，而不是机械直译，极大提升本地转化率。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 对极其小众的文化梗理解有时不到位。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 多国家并行买量的首选翻译引擎。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 多国家并行买量的首选翻译引擎</div>
     </div>
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">Plugin</span></div>
@@ -273,7 +285,7 @@
         <li><strong>🎯 商业实战:</strong> 制作针对中东市场的广告，一键将产品 UI 放入中东模特手持的手机屏幕中，光影、透视、手指遮挡自动计算。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 部分高精度样机的渲染速度较慢。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 低成本建立本地化视觉信任感的神器。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 低成本建立本地化视觉信任感的神器</div>
     </div>
     <div class="card image">
       <div class="tags"><span class="tag image">AI Image</span></div>
@@ -289,7 +301,7 @@
         <li><strong>🎯 商业实战:</strong> 将欧美广告原片背景中的“圣诞树”框选，输入 'Lunar New Year decorations'，无缝将其替换为亚洲新年元素。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 需要仔细检查生成元素的细节光影连贯性。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 一张神图走天下的必备修改工具。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 一张神图走天下的必备修改工具</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Creative Software</span></div>
@@ -305,7 +317,7 @@
         <li><strong>🎯 商业实战:</strong> 保证外包或初级设计师利用 AI 生成的几百张图，其色调和排版都严格符合公司的 Brand Guidelines。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 高级复杂的图形特效无法完全被规范化。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 控制大批量素材视觉下限的品控工具。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 控制大批量素材视觉下限的品控工具</div>
     </div>
   </div>
 

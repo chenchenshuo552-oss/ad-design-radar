@@ -200,6 +200,18 @@
   .index-page .mini-tag.tool { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
   .index-page .mini-tag.workflow { background: #FAF5FF; color: #6D28D9; border-color: #E9D5FF; }
 
+  
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
   @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
     .back-to-top { bottom: 20px; right: 20px; }
@@ -241,7 +253,7 @@
         <li><strong>🎯 商业实战:</strong> 生成 TikTok 上的“开箱吐槽”或“好物分享”旁白，自带情绪起伏，极其真实。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 长文本依然需要分段生成以保持情绪的高昂感。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 所有海外素材团队不可或缺的配音工具。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 所有海外素材团队不可或缺的配音工具</div>
     </div>
     <div class="card video">
       <div class="tags"><span class="tag video">AI Video</span></div>
@@ -257,7 +269,7 @@
         <li><strong>🎯 商业实战:</strong> 彻底替代 Fiverr 上的真人演员，直接输入脚本文案，生成带着鼻音和手部动作的欧美素人推荐视频。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 手部动作有时会重复穿帮，不能进行复杂的商品展示。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 跑量 UGC 素材的绝对革命者。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 跑量 UGC 素材的绝对革命者</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Workflow</span></div>
@@ -273,7 +285,7 @@
         <li><strong>🎯 商业实战:</strong> 直接在 TikTok 后台输入产品链接，自动生成符合当地趋势梗（Trending sounds）的广告脚本。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 生成的脚本容易同质化，依然需要人工提炼爆点。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 缺乏灵感时的最佳外脑辅助。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 缺乏灵感时的最佳外脑辅助</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Editing Software</span></div>
@@ -289,7 +301,7 @@
         <li><strong>🎯 商业实战:</strong> 在信息流视频中，让字幕随着重点词汇（如 Free, Sale, Stop）放大爆炸，死死锁住用户注意力。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 特效过于花哨时可能引起部分用户的视觉疲劳。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 提升完播率（Retention Rate）的标配动作。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 提升完播率（Retention Rate）的标配动作</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Editing Software</span></div>
@@ -305,7 +317,7 @@
         <li><strong>🎯 商业实战:</strong> 导入一段干巴巴的长口播，AI 自动根据语境切出“近景/中景”，打破视觉沉闷。</li>
         <li><strong>⚖️ 优缺点分析:</strong> 原视频必须是高分辨率，否则裁剪近景时会模糊。</li>
       </ul>
-      <div class="recommendation">🌟 <strong>行业建议:</strong> 长视频和播客切片广告的效率之王。</div>
+      <div class="recommendation">🌟 <strong>行业建议:</strong> 长视频和播客切片广告的效率之王</div>
     </div>
   </div>
 
