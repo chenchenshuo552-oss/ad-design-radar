@@ -79,17 +79,13 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
   }
   
-  .card::before {
-    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 6px; 
-    background: var(--border);
-    transition: all 0.3s ease;
-  }
+  
 
   .card:hover { 
     transform: translateY(-6px) scale(1.01); background: var(--card-hover); border-color: #CBD5E1; 
     box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
   }
-  .card:hover::before { width: 8px; background: var(--brand-primary); }
+  
   
   .tags { margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
   /* 给工具分类 tag 加上颜色底色 */
@@ -179,15 +175,12 @@
     position: relative; overflow: hidden; backdrop-filter: blur(12px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); color: var(--text);
   }
-  .index-page .report-card::before {
-    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 6px;
-    background: var(--border); transition: all 0.3s ease;
-  }
+  
   .index-page .report-card:hover { 
-    background: var(--card-hover); transform: translateY(-6px) scale(1.01); 
-    border-color: #CBD5E1; box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+    background: var(--card-hover); transform: translateY(-8px); 
+    box-shadow: 0 25px 30px -5px rgba(37, 99, 235, 0.12), 0 10px 15px -3px rgba(37, 99, 235, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.05);
   }
-  .index-page .report-card:hover::before { width: 8px; background: var(--brand-primary); }
+  
   .index-page .card-header { margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;}
   .index-page .date-badge { 
     color: var(--brand-primary); font-size: 0.85rem; font-weight: 700; 
@@ -383,7 +376,7 @@
         });
     </script>
 <a href="#" class="back-to-top" id="backToTop" aria-label="返回顶部">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
 </a>
 <script>
     const backToTopButton = document.getElementById('backToTop');
