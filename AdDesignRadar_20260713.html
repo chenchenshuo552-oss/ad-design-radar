@@ -4,66 +4,122 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ad Design Radar | Intelligence</title>
 <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   :root {
-    --bg: #ffffff;
-    --text: #111111;
-    --text-muted: #666666;
-    --border: #eaeaea;
+    --bg: #F3F4F6;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --card-bg: #FFFFFF;
+    
+    /* 高级办公配色方案 (Notion / Linear 风格) */
+    --brand-primary: #2563EB; /* 沉稳的商务蓝 */
+    --accent-red: #EF4444;    /* 避坑雷达的警示红 */
+    --accent-green: #10B981;  /* 专属资产的成功绿 */
+    --tag-bg: #F3F4F6;
+    --tag-text: #4B5563;
   }
+  
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    line-height: 1.7;
+    line-height: 1.6;
     margin: 0;
     padding: 60px 20px;
     -webkit-font-smoothing: antialiased;
   }
-  .container { max-width: 680px; margin: 0 auto; }
-  .back-link {
-    display: inline-block; margin-bottom: 50px; color: var(--text-muted);
-    text-decoration: none; font-size: 0.95rem; font-weight: 500;
-    transition: color 0.2s;
-  }
-  .back-link:hover { color: var(--text); }
-  .header { margin-bottom: 50px; }
-  .header h1 { font-size: 2.2rem; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.02em; }
-  .header p { color: var(--text-muted); font-size: 1rem; margin: 0; }
   
-  .summary-box { padding: 0 0 40px 0; margin-bottom: 50px; border-bottom: 1px solid var(--border); }
-  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.1rem; font-weight: 600; }
+  .container { max-width: 800px; margin: 0 auto; }
+  
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; 
+    color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500;
+    padding: 8px 16px; border-radius: 8px; transition: background 0.2s;
+  }
+  .back-link:hover { background: #E5E7EB; color: var(--text); }
+  
+  .header { margin-bottom: 50px; text-align: center; }
+  .header h1 { font-size: 2.5rem; font-weight: 700; margin: 0 0 10px 0; color: #111827; letter-spacing: -0.02em; }
+  .header p { color: var(--brand-primary); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+  
+  /* 区块大标题 */
+  .section-title { 
+    font-size: 1.5rem; font-weight: 700; margin: 60px 0 25px 0; 
+    display: flex; align-items: center; gap: 10px; color: #111827;
+  }
+  
+  /* 摘要区 */
+  .summary-box { 
+    background: var(--card-bg); padding: 30px; border-radius: 12px; 
+    border-left: 4px solid var(--brand-primary); box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    margin-bottom: 60px;
+  }
+  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
   .summary-box p { margin: 0; font-size: 1.05rem; color: var(--text-muted); }
   
-  .section-title { font-size: 1.4rem; font-weight: 700; margin: 60px 0 30px 0; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+  /* 工具卡片列表 */
+  .grid { display: flex; flex-direction: column; gap: 30px; margin-bottom: 60px; }
+  .card { 
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; 
+    padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    display: flex; flex-direction: column;
+  }
   
-  .grid { display: flex; flex-direction: column; gap: 60px; margin-bottom: 60px; }
-  .card { display: flex; flex-direction: column; }
+  .tags { margin-bottom: 15px; }
+  .tag { 
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; 
+    color: var(--tag-text); background: var(--tag-bg); padding: 4px 10px; border-radius: 6px;
+  }
   
-  .tags { margin-bottom: 12px; }
-  .tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+  .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+  .tool-name { font-size: 1.4rem; font-weight: 700; margin: 0; color: #111827; }
   
-  .tool-name { font-size: 1.3rem; font-weight: 700; margin: 0 0 12px 0; }
-  .tool-name a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s; padding-bottom: 2px; }
-  .tool-name a:hover { border-bottom-color: var(--text); }
+  /* 官方链接按钮 */
+  .official-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+    background: #EFF6FF; color: var(--brand-primary); border-radius: 6px;
+    text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;
+  }
+  .official-link:hover { background: #DBEAFE; }
   
-  .insight-text { font-size: 1.05rem; color: var(--text); margin-bottom: 20px; }
+  .insight-text { font-size: 1.05rem; color: var(--text); margin-bottom: 25px; }
   
-  .feature-list { list-style: none; padding: 0; margin: 0 0 20px 0; border-left: 2px solid var(--border); padding-left: 20px; }
-  .feature-list li { margin-bottom: 16px; font-size: 0.95rem; color: var(--text-muted); }
-  .feature-list strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 4px; }
+  .feature-list { list-style: none; padding: 0; margin: 0 0 20px 0; display: grid; gap: 15px; }
+  .feature-list li { 
+    background: #F9FAFB; padding: 16px; border-radius: 8px; border: 1px solid #F3F4F6;
+    font-size: 0.95rem; color: var(--text-muted); display: flex; flex-direction: column;
+  }
+  .feature-list strong { color: #111827; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
   
-  .recommendation { margin-top: 10px; font-size: 0.95rem; font-weight: 600; color: var(--text); }
+  .recommendation { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.95rem; font-weight: 600; color: var(--brand-primary); display: flex; align-items: center; gap: 8px;}
   
-  .workflow-card { padding: 35px; background: #fafafa; border-radius: 12px; margin-bottom: 60px; }
-  .step-container { margin-top: 30px; display: flex; flex-direction: column; gap: 24px; }
-  .step { display: flex; gap: 20px; }
-  .step-num { font-weight: 600; color: #999; font-family: monospace; font-size: 1.1rem; padding-top: 2px; }
-  .step-content { flex-grow: 1; font-size: 0.95rem; color: var(--text-muted); }
-  .step-content strong { color: var(--text); display: block; margin-bottom: 4px; font-weight: 600; font-size: 1.05rem; }
+  /* 工作流卡片 */
+  .workflow-card { 
+    padding: 40px; background: #111827; border-radius: 16px; margin-bottom: 60px; color: #F3F4F6;
+  }
+  .workflow-card .tool-name { color: #FFFFFF; }
+  .step-container { margin-top: 30px; display: flex; flex-direction: column; gap: 20px; }
+  .step { display: flex; gap: 20px; align-items: flex-start; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; }
+  .step-num { 
+    background: #374151; color: #D1D5DB; width: 32px; height: 32px; border-radius: 8px; 
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0;
+  }
+  .step-content { font-size: 0.95rem; color: #9CA3AF; }
+  .step-content strong { color: #F9FAFB; display: block; margin-bottom: 6px; font-weight: 600; font-size: 1.05rem; }
   
-  .final-summary { padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px; }
-  .final-summary h2 { font-size: 1.2rem; margin: 0 0 15px 0; }
+  /* 避坑雷达 */
+  .anti-hype-card { border-left: 4px solid var(--accent-red); }
+  .anti-hype-card h3 { color: var(--accent-red); margin-top: 0; }
+  
+  /* 专属资产 */
+  .asset-card { border-left: 4px solid var(--accent-green); }
+  .asset-card h3 { color: var(--accent-green); margin-top: 0; }
+  .code-block { background: #F3F4F6; color: #1F2937; padding: 16px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; border: 1px solid #E5E7EB; overflow-x: auto; margin-top: 15px; line-height: 1.5; }
+
+  /* 底部总结 */
+  .final-summary { padding: 30px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); margin-top: 40px; }
+  .final-summary h2 { font-size: 1.2rem; margin: 0 0 15px 0; color: #111827; }
   .final-summary p { color: var(--text-muted); margin: 0; font-size: 1.05rem; }
 
 </style>
@@ -90,51 +146,81 @@
     
     <div class="card software">
       <div class="tags"><span class="tag software">Editing Software</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Opus%20Clip%20Pro%20ai%20tool" target="_blank"   >01. Opus Clip Pro</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">01. Opus Clip Pro</h3>
+                  <a href="https://www.google.com/search?q=Opus%20Clip%20Pro" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">最顶级的长视频转短视频 AI 切片工具，新增了 B-roll 自动覆盖功能和更强的钩子预测。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 将甲方提供的长达 30 分钟无聊的产品介绍直播，一键切成 20 条自带爆点钩子、自带花式字幕和过场 B-roll 的 30 秒 TikTok 广告片。</li>
-        <li><strong>优缺点分析:</strong> AI 选择的爆点有时会显得断章取义，需要人工审核剔除。</li>
+        <li><strong>🎯 商业实战:</strong> 将甲方提供的长达 30 分钟无聊的产品介绍直播，一键切成 20 条自带爆点钩子、自带花式字幕和过场 B-roll 的 30 秒 TikTok 广告片。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> AI 选择的爆点有时会显得断章取义，需要人工审核剔除。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 播客、直播切片素材团队的核武器。</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Workflow</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Meta%20Advantage%2B%20Creative%20ai%20tool" target="_blank"   >02. Meta Advantage+ Creative</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">02. Meta Advantage+ Creative</h3>
+                  <a href="https://www.google.com/search?q=Meta%20Advantage%2B%20Creative" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">Meta 广告后台的创意自动优化选项大升级，引入了基于 AI 的元素级排列组合测试。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 只需上传 1 张底图、3 段文案、2 个不同的按钮。Meta 会自动拼接成几十种排列组合投放，并把预算集中在转化最好的那张拼图上。</li>
-        <li><strong>优缺点分析:</strong> 完全放弃了对最终成片外观的控制权。</li>
+        <li><strong>🎯 商业实战:</strong> 只需上传 1 张底图、3 段文案、2 个不同的按钮。Meta 会自动拼接成几十种排列组合投放，并把预算集中在转化最好的那张拼图上。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 完全放弃了对最终成片外观的控制权。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 跑量阶段闭眼开启的功能，让算法决定排版。</div>
     </div>
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">Plugin</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Vidyo.ai%20Virality%20Score%20ai%20tool" target="_blank"   >03. Vidyo.ai Virality Score</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">03. Vidyo.ai Virality Score</h3>
+                  <a href="https://www.google.com/search?q=Vidyo.ai%20Virality%20Score" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">在剪辑素材时，实时预测该片段在社交媒体上可能获得的“病毒传播评分”。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 在素材完成粗剪后，通过该工具审查哪一段对话可能掉粉，哪里需要补充强音效，指导二次精剪。</li>
-        <li><strong>优缺点分析:</strong> 评分基于过往数据模型，对极其创新的反常识创意容易误判。</li>
+        <li><strong>🎯 商业实战:</strong> 在素材完成粗剪后，通过该工具审查哪一段对话可能掉粉，哪里需要补充强音效，指导二次精剪。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 评分基于过往数据模型，对极其创新的反常识创意容易误判。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 给设计师提供理性的改稿依据，告别玄学。</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Creative Software</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Canva%20Bulk%20Create%20ai%20tool" target="_blank"   >04. Canva Bulk Create</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">04. Canva Bulk Create</h3>
+                  <a href="https://www.google.com/search?q=Canva%20Bulk%20Create" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">虽然是老功能，但上周深度集成了 ChatGPT 接口，可以直接在表格里用大模型生成成百上千条不同的文案并直接灌入海报。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 制作 100 张覆盖不同城市、不同年龄段痛点的细分图文广告（例如：纽约程序员必买.../德州主妇必看...），一键生成下载打包。</li>
-        <li><strong>优缺点分析:</strong> 排版形式高度一致，容易被平台判定为重复素材限流。</li>
+        <li><strong>🎯 商业实战:</strong> 制作 100 张覆盖不同城市、不同年龄段痛点的细分图文广告（例如：纽约程序员必买.../德州主妇必看...），一键生成下载打包。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 排版形式高度一致，容易被平台判定为重复素材限流。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 图文广告裂变的效率天花板。</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Workflow</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Frame.io%20AI%20Tagger%20ai%20tool" target="_blank"   >05. Frame.io AI Tagger</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">05. Frame.io AI Tagger</h3>
+                  <a href="https://www.google.com/search?q=Frame.io%20AI%20Tagger" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">视频审阅平台加入了 AI 自动打标签和搜索能力。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 在一个拥有几千条历史素材的素材库里，直接搜索“一个戴眼镜的男人在笑”，瞬间定位到具体视频的具体秒数，极速复用老素材。</li>
-        <li><strong>优缺点分析:</strong> 对复杂隐喻和动作的识别还不够精准。</li>
+        <li><strong>🎯 商业实战:</strong> 在一个拥有几千条历史素材的素材库里，直接搜索“一个戴眼镜的男人在笑”，瞬间定位到具体视频的具体秒数，极速复用老素材。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 对复杂隐喻和动作的识别还不够精准。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 中大型买量团队的素材库盘活神器。</div>
     </div>
@@ -168,16 +254,16 @@
 
   
   <h2 class="section-title" style="color: #e11d48;">🚨 避坑雷达 (Anti-Hype Radar)</h2>
-  <div class="card" style="margin-bottom: 40px; border-left: 4px solid var(--text-muted);">
+  <div class="card anti-hype-card">
     <h3 style="margin-top:0; color: var(--text-muted);">⚠️ 警惕：过度包装的“全自动多镜头生成”噱头</h3>
     <p>上周被各路博主吹爆的某“一键生成短剧”AI 工具，在实际买量测试中表现极差。它的角色一致性（Consistency）在跨镜头时会发生严重的衣服、脸型穿帮。作为信息流广告，这种级别的穿帮会瞬间打断用户的购买信任。<strong>千万不要把预算浪费在跑这种素材上</strong>，现阶段仍然建议用单镜头生成 + 后期混剪来维持高质量。</p>
   </div>
 
   <h2 class="section-title">💎 本周专属资产 (Free Assets)</h2>
-  <div class="card" style="margin-bottom: 60px; background: linear-gradient(145deg, #f0fdf4 0%, #ffffff 100%); border-left: 4px solid var(--accent-green);">
+  <div class="card asset-card">
     <h3 style="margin-top:0; color: var(--accent-green);">Midjourney 极品商业产品垫图 Prompt (直接复制)</h3>
     <p class="insight-text">这套参数专门用于生成极具购买欲的电商海报底图（自带高级展示台和丁达尔光效）：</p>
-    <div style="background: #1e293b; color: #38bdf8; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.95rem; overflow-x: auto; line-height: 1.5; border: 1px solid #0f172a;">
+    <div class="code-block">
       Commercial product photography, a sleek modern display podium in the center, dramatic volumetric lighting, cinematic neon edge lighting, ultra-detailed, 8k, unreal engine 5 render, clean background with subtle bokeh --ar 16:9 --style raw --v 6.0
     </div>
   </div>

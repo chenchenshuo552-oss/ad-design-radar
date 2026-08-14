@@ -4,66 +4,122 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ad Design Radar | Intelligence</title>
 <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   :root {
-    --bg: #ffffff;
-    --text: #111111;
-    --text-muted: #666666;
-    --border: #eaeaea;
+    --bg: #F3F4F6;
+    --text: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --card-bg: #FFFFFF;
+    
+    /* 高级办公配色方案 (Notion / Linear 风格) */
+    --brand-primary: #2563EB; /* 沉稳的商务蓝 */
+    --accent-red: #EF4444;    /* 避坑雷达的警示红 */
+    --accent-green: #10B981;  /* 专属资产的成功绿 */
+    --tag-bg: #F3F4F6;
+    --tag-text: #4B5563;
   }
+  
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    line-height: 1.7;
+    line-height: 1.6;
     margin: 0;
     padding: 60px 20px;
     -webkit-font-smoothing: antialiased;
   }
-  .container { max-width: 680px; margin: 0 auto; }
-  .back-link {
-    display: inline-block; margin-bottom: 50px; color: var(--text-muted);
-    text-decoration: none; font-size: 0.95rem; font-weight: 500;
-    transition: color 0.2s;
-  }
-  .back-link:hover { color: var(--text); }
-  .header { margin-bottom: 50px; }
-  .header h1 { font-size: 2.2rem; font-weight: 700; margin: 0 0 8px 0; letter-spacing: -0.02em; }
-  .header p { color: var(--text-muted); font-size: 1rem; margin: 0; }
   
-  .summary-box { padding: 0 0 40px 0; margin-bottom: 50px; border-bottom: 1px solid var(--border); }
-  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.1rem; font-weight: 600; }
+  .container { max-width: 800px; margin: 0 auto; }
+  
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 40px; 
+    color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500;
+    padding: 8px 16px; border-radius: 8px; transition: background 0.2s;
+  }
+  .back-link:hover { background: #E5E7EB; color: var(--text); }
+  
+  .header { margin-bottom: 50px; text-align: center; }
+  .header h1 { font-size: 2.5rem; font-weight: 700; margin: 0 0 10px 0; color: #111827; letter-spacing: -0.02em; }
+  .header p { color: var(--brand-primary); font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+  
+  /* 区块大标题 */
+  .section-title { 
+    font-size: 1.5rem; font-weight: 700; margin: 60px 0 25px 0; 
+    display: flex; align-items: center; gap: 10px; color: #111827;
+  }
+  
+  /* 摘要区 */
+  .summary-box { 
+    background: var(--card-bg); padding: 30px; border-radius: 12px; 
+    border-left: 4px solid var(--brand-primary); box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    margin-bottom: 60px;
+  }
+  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
   .summary-box p { margin: 0; font-size: 1.05rem; color: var(--text-muted); }
   
-  .section-title { font-size: 1.4rem; font-weight: 700; margin: 60px 0 30px 0; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+  /* 工具卡片列表 */
+  .grid { display: flex; flex-direction: column; gap: 30px; margin-bottom: 60px; }
+  .card { 
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; 
+    padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    display: flex; flex-direction: column;
+  }
   
-  .grid { display: flex; flex-direction: column; gap: 60px; margin-bottom: 60px; }
-  .card { display: flex; flex-direction: column; }
+  .tags { margin-bottom: 15px; }
+  .tag { 
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; 
+    color: var(--tag-text); background: var(--tag-bg); padding: 4px 10px; border-radius: 6px;
+  }
   
-  .tags { margin-bottom: 12px; }
-  .tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+  .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+  .tool-name { font-size: 1.4rem; font-weight: 700; margin: 0; color: #111827; }
   
-  .tool-name { font-size: 1.3rem; font-weight: 700; margin: 0 0 12px 0; }
-  .tool-name a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); transition: border-color 0.2s; padding-bottom: 2px; }
-  .tool-name a:hover { border-bottom-color: var(--text); }
+  /* 官方链接按钮 */
+  .official-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px;
+    background: #EFF6FF; color: var(--brand-primary); border-radius: 6px;
+    text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: background 0.2s;
+  }
+  .official-link:hover { background: #DBEAFE; }
   
-  .insight-text { font-size: 1.05rem; color: var(--text); margin-bottom: 20px; }
+  .insight-text { font-size: 1.05rem; color: var(--text); margin-bottom: 25px; }
   
-  .feature-list { list-style: none; padding: 0; margin: 0 0 20px 0; border-left: 2px solid var(--border); padding-left: 20px; }
-  .feature-list li { margin-bottom: 16px; font-size: 0.95rem; color: var(--text-muted); }
-  .feature-list strong { color: var(--text); font-weight: 600; display: block; margin-bottom: 4px; }
+  .feature-list { list-style: none; padding: 0; margin: 0 0 20px 0; display: grid; gap: 15px; }
+  .feature-list li { 
+    background: #F9FAFB; padding: 16px; border-radius: 8px; border: 1px solid #F3F4F6;
+    font-size: 0.95rem; color: var(--text-muted); display: flex; flex-direction: column;
+  }
+  .feature-list strong { color: #111827; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
   
-  .recommendation { margin-top: 10px; font-size: 0.95rem; font-weight: 600; color: var(--text); }
+  .recommendation { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.95rem; font-weight: 600; color: var(--brand-primary); display: flex; align-items: center; gap: 8px;}
   
-  .workflow-card { padding: 35px; background: #fafafa; border-radius: 12px; margin-bottom: 60px; }
-  .step-container { margin-top: 30px; display: flex; flex-direction: column; gap: 24px; }
-  .step { display: flex; gap: 20px; }
-  .step-num { font-weight: 600; color: #999; font-family: monospace; font-size: 1.1rem; padding-top: 2px; }
-  .step-content { flex-grow: 1; font-size: 0.95rem; color: var(--text-muted); }
-  .step-content strong { color: var(--text); display: block; margin-bottom: 4px; font-weight: 600; font-size: 1.05rem; }
+  /* 工作流卡片 */
+  .workflow-card { 
+    padding: 40px; background: #111827; border-radius: 16px; margin-bottom: 60px; color: #F3F4F6;
+  }
+  .workflow-card .tool-name { color: #FFFFFF; }
+  .step-container { margin-top: 30px; display: flex; flex-direction: column; gap: 20px; }
+  .step { display: flex; gap: 20px; align-items: flex-start; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; }
+  .step-num { 
+    background: #374151; color: #D1D5DB; width: 32px; height: 32px; border-radius: 8px; 
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; flex-shrink: 0;
+  }
+  .step-content { font-size: 0.95rem; color: #9CA3AF; }
+  .step-content strong { color: #F9FAFB; display: block; margin-bottom: 6px; font-weight: 600; font-size: 1.05rem; }
   
-  .final-summary { padding: 40px 0; border-top: 1px solid var(--border); margin-top: 40px; }
-  .final-summary h2 { font-size: 1.2rem; margin: 0 0 15px 0; }
+  /* 避坑雷达 */
+  .anti-hype-card { border-left: 4px solid var(--accent-red); }
+  .anti-hype-card h3 { color: var(--accent-red); margin-top: 0; }
+  
+  /* 专属资产 */
+  .asset-card { border-left: 4px solid var(--accent-green); }
+  .asset-card h3 { color: var(--accent-green); margin-top: 0; }
+  .code-block { background: #F3F4F6; color: #1F2937; padding: 16px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; border: 1px solid #E5E7EB; overflow-x: auto; margin-top: 15px; line-height: 1.5; }
+
+  /* 底部总结 */
+  .final-summary { padding: 30px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); margin-top: 40px; }
+  .final-summary h2 { font-size: 1.2rem; margin: 0 0 15px 0; color: #111827; }
   .final-summary p { color: var(--text-muted); margin: 0; font-size: 1.05rem; }
 
 </style>
@@ -90,51 +146,81 @@
     
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">UI / Workflow</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Figma%20Auto%20Layout%20AI%20ai%20tool" target="_blank"   >01. Figma Auto Layout AI</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">01. Figma Auto Layout AI</h3>
+                  <a href="https://www.google.com/search?q=Figma%20Auto%20Layout%20AI" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">基于图层语义自动猜测并应用响应式 Auto Layout 布局。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 做出一套主视觉后，一键生成 1:1, 4:5, 16:9, 9:16 等所有广告版位，并且文本和按钮自动安全适配边缘。</li>
-        <li><strong>优缺点分析:</strong> 复杂的非规则排版仍需手动调整 Constraint。</li>
+        <li><strong>🎯 商业实战:</strong> 做出一套主视觉后，一键生成 1:1, 4:5, 16:9, 9:16 等所有广告版位，并且文本和按钮自动安全适配边缘。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 复杂的非规则排版仍需手动调整 Constraint。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 设计团队告别重复劳动、准时下班的救星。</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Workflow</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=DeepL%20Pro%20Ad%20Translator%20ai%20tool" target="_blank"   >02. DeepL Pro Ad Translator</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">02. DeepL Pro Ad Translator</h3>
+                  <a href="https://www.google.com/search?q=DeepL%20Pro%20Ad%20Translator" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">专为营销语境优化的翻译 API，懂得保留行业俚语和 CTA 按钮规范。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 将英文的 'Shop Now' 准确翻译为符合当地购物习惯的缩略语，而不是机械直译，极大提升本地转化率。</li>
-        <li><strong>优缺点分析:</strong> 对极其小众的文化梗理解有时不到位。</li>
+        <li><strong>🎯 商业实战:</strong> 将英文的 'Shop Now' 准确翻译为符合当地购物习惯的缩略语，而不是机械直译，极大提升本地转化率。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 对极其小众的文化梗理解有时不到位。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 多国家并行买量的首选翻译引擎。</div>
     </div>
     <div class="card plugin">
       <div class="tags"><span class="tag plugin">Plugin</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Smartmockups%20AI%20Match%20ai%20tool" target="_blank"   >03. Smartmockups AI Match</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">03. Smartmockups AI Match</h3>
+                  <a href="https://www.google.com/search?q=Smartmockups%20AI%20Match" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">智能将你的 UI 设计或产品图完美贴合到全球各地的实拍场景样机中。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 制作针对中东市场的广告，一键将产品 UI 放入中东模特手持的手机屏幕中，光影、透视、手指遮挡自动计算。</li>
-        <li><strong>优缺点分析:</strong> 部分高精度样机的渲染速度较慢。</li>
+        <li><strong>🎯 商业实战:</strong> 制作针对中东市场的广告，一键将产品 UI 放入中东模特手持的手机屏幕中，光影、透视、手指遮挡自动计算。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 部分高精度样机的渲染速度较慢。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 低成本建立本地化视觉信任感的神器。</div>
     </div>
     <div class="card image">
       <div class="tags"><span class="tag image">AI Image</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=PS%20Generative%20Fill%20Localization%20ai%20tool" target="_blank"   >04. PS Generative Fill Localization</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">04. PS Generative Fill Localization</h3>
+                  <a href="https://www.google.com/search?q=PS%20Generative%20Fill%20Localization" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">利用创成式填充局部替换广告图中的文化敏感元素。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 将欧美广告原片背景中的“圣诞树”框选，输入 'Lunar New Year decorations'，无缝将其替换为亚洲新年元素。</li>
-        <li><strong>优缺点分析:</strong> 需要仔细检查生成元素的细节光影连贯性。</li>
+        <li><strong>🎯 商业实战:</strong> 将欧美广告原片背景中的“圣诞树”框选，输入 'Lunar New Year decorations'，无缝将其替换为亚洲新年元素。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 需要仔细检查生成元素的细节光影连贯性。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 一张神图走天下的必备修改工具。</div>
     </div>
     <div class="card software">
       <div class="tags"><span class="tag software">Creative Software</span></div>
-      <h3 class="tool-name"><a href="https://www.google.com/search?q=Canva%20Brand%20Hub%20AI%20ai%20tool" target="_blank"   >05. Canva Brand Hub AI</a></h3>
+      <div class="tool-header">
+                  <h3 class="tool-name">05. Canva Brand Hub AI</h3>
+                  <a href="https://www.google.com/search?q=Canva%20Brand%20Hub%20AI" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
       <p class="insight-text">自动抓取你品牌的颜色和字体规范，一键套用到任意 AI 生成的草图上。</p>
       <ul class="feature-list">
-        <li><strong>商业实战:</strong> 保证外包或初级设计师利用 AI 生成的几百张图，其色调和排版都严格符合公司的 Brand Guidelines。</li>
-        <li><strong>优缺点分析:</strong> 高级复杂的图形特效无法完全被规范化。</li>
+        <li><strong>🎯 商业实战:</strong> 保证外包或初级设计师利用 AI 生成的几百张图，其色调和排版都严格符合公司的 Brand Guidelines。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 高级复杂的图形特效无法完全被规范化。</li>
       </ul>
       <div class="recommendation">🌟 <strong>行业建议:</strong> 控制大批量素材视觉下限的品控工具。</div>
     </div>
@@ -168,16 +254,16 @@
 
   
   <h2 class="section-title" style="color: #e11d48;">🚨 避坑雷达 (Anti-Hype Radar)</h2>
-  <div class="card" style="margin-bottom: 40px; border-left: 4px solid var(--text-muted);">
+  <div class="card anti-hype-card">
     <h3 style="margin-top:0; color: var(--text-muted);">⚠️ 警惕：过度包装的“全自动多镜头生成”噱头</h3>
     <p>上周被各路博主吹爆的某“一键生成短剧”AI 工具，在实际买量测试中表现极差。它的角色一致性（Consistency）在跨镜头时会发生严重的衣服、脸型穿帮。作为信息流广告，这种级别的穿帮会瞬间打断用户的购买信任。<strong>千万不要把预算浪费在跑这种素材上</strong>，现阶段仍然建议用单镜头生成 + 后期混剪来维持高质量。</p>
   </div>
 
   <h2 class="section-title">💎 本周专属资产 (Free Assets)</h2>
-  <div class="card" style="margin-bottom: 60px; background: linear-gradient(145deg, #f0fdf4 0%, #ffffff 100%); border-left: 4px solid var(--accent-green);">
+  <div class="card asset-card">
     <h3 style="margin-top:0; color: var(--accent-green);">Midjourney 极品商业产品垫图 Prompt (直接复制)</h3>
     <p class="insight-text">这套参数专门用于生成极具购买欲的电商海报底图（自带高级展示台和丁达尔光效）：</p>
-    <div style="background: #1e293b; color: #38bdf8; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.95rem; overflow-x: auto; line-height: 1.5; border: 1px solid #0f172a;">
+    <div class="code-block">
       Commercial product photography, a sleek modern display podium in the center, dramatic volumetric lighting, cinematic neon edge lighting, ultra-detailed, 8k, unreal engine 5 render, clean background with subtle bokeh --ar 16:9 --style raw --v 6.0
     </div>
   </div>
