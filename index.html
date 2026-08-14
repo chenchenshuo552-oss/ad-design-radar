@@ -8,98 +8,98 @@
     <meta property="og:description" content="每周精选海外广告实战 AI 工具与高转化工作流拆解" />
     <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         
         :root {
-            --bg-main: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --accent-blue: #0ea5e9;
-            --accent-purple: #8b5cf6;
+            --bg-main: #f4f4f5;
+            --text-main: #18181b;
+            --text-muted: #52525b;
+            --accent-blue: #2563eb;
             --card-bg: rgba(255, 255, 255, 0.6);
             --card-border: rgba(255, 255, 255, 0.8);
         }
         
         body { 
-            font-family: 'Inter', system-ui, sans-serif; 
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif; 
             background-color: var(--bg-main); 
-            background-image: radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.08), transparent 30%), 
-                              radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 30%); 
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,0.05) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,0.05) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,0.05) 0, transparent 50%);
             background-attachment: fixed;
             color: var(--text-main); 
             margin: 0; 
-            padding: 60px 20px; 
+            padding: 80px 20px; 
         }
         
-        .container { max-width: 800px; margin: 0 auto; }
+        .container { max-width: 1000px; margin: 0 auto; }
         
-        .header-section { text-align: center; margin-bottom: 50px; }
+        .header-section { text-align: center; margin-bottom: 60px; }
         .header-section h1 {
-            font-size: 3.5rem; font-weight: 800; margin: 0 0 15px 0;
-            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
+            font-size: 4rem; font-weight: 800; margin: 0 0 15px 0;
+            color: #18181b; letter-spacing: -1.5px;
         }
         .subtitle {
-            font-size: 1.2rem; color: var(--accent-blue); font-weight: 600;
-            letter-spacing: 2px; text-transform: uppercase; margin: 0;
+            font-size: 1.2rem; color: var(--accent-blue); font-weight: 700;
+            letter-spacing: 3px; text-transform: uppercase; margin: 0;
         }
 
-        .search-container { position: relative; margin-bottom: 50px; }
+        .search-container { position: relative; margin-bottom: 60px; max-width: 600px; margin-left: auto; margin-right: auto;}
         .search-icon {
             position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
             color: var(--text-muted); font-size: 1.2rem;
         }
         .search-box { 
             width: 100%; padding: 20px 20px 20px 50px; font-size: 1.1rem; 
-            border: 1px solid var(--card-border); border-radius: 20px; outline: none; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-sizing: border-box; 
+            border: 1px solid var(--card-border); border-radius: 100px; outline: none; 
+            transition: all 0.3s ease; box-sizing: border-box; 
             background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05); color: var(--text-main);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); color: var(--text-main);
         }
         .search-box:focus { 
             border-color: var(--accent-blue); 
-            box-shadow: 0 10px 30px -5px rgba(14, 165, 233, 0.15);
-            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.15);
+            background: rgba(255, 255, 255, 0.95);
         }
-        .search-box::placeholder { color: #94a3b8; }
         
-        .report-list { display: flex; flex-direction: column; gap: 25px; }
+        /* Changed to CSS Grid for a 2-column layout */
+        .report-list { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; 
+        }
         
         .report-card { 
-            text-decoration: none; background: var(--card-bg); padding: 30px; 
-            border-radius: 24px; border: 1px solid var(--card-border);
-            box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05); backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: block;
-            position: relative; overflow: hidden;
-        }
-        
-        .report-card::before {
-            content: ''; position: absolute; left: 0; top: 0; width: 4px; height: 100%;
-            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
-            opacity: 0; transition: opacity 0.3s;
+            text-decoration: none; background: var(--card-bg); padding: 40px; 
+            border-radius: 32px; border: 1px solid var(--card-border);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.04); backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; height: 100%; box-sizing: border-box;
         }
         
         .report-card:hover { 
-            transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.1); 
-            background: rgba(255, 255, 255, 0.9); border-color: #e2e8f0;
+            transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); 
+            background: rgba(255, 255, 255, 0.9); border-color: #fff;
         }
-        .report-card:hover::before { opacity: 1; }
 
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .card-header { margin-bottom: 20px; }
         
         .date-badge { 
-            display: inline-block; background: rgba(14, 165, 233, 0.1); color: var(--accent-blue); 
-            padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.5px;
+            display: inline-block; background: #e2e8f0; color: #475569; 
+            padding: 8px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.5px;
         }
         
-        .read-more { color: var(--text-muted); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
-        .report-card:hover .read-more { color: var(--accent-blue); }
+        .report-card:hover .date-badge { background: #dbeafe; color: var(--accent-blue); }
         
-        .report-title { color: var(--text-main); font-size: 1.5rem; font-weight: 800; margin: 0 0 12px 0; }
-        .preview-text { color: var(--text-muted); font-size: 1.05rem; margin: 0; line-height: 1.7; }
+        .report-title { color: var(--text-main); font-size: 1.8rem; font-weight: 800; margin: 0 0 15px 0; }
+        .preview-text { color: var(--text-muted); font-size: 1.05rem; margin: 0 0 30px 0; line-height: 1.7; flex-grow: 1;}
         
-        .no-results { text-align: center; padding: 40px; color: var(--text-muted); font-size: 1.1rem; display: none; }
+        .read-more { 
+            color: var(--accent-blue); font-weight: 700; font-size: 1rem; 
+            display: inline-flex; align-items: center; gap: 5px;
+            margin-top: auto;
+        }
+        .report-card:hover .read-more { gap: 8px; }
+        
+        .no-results { text-align: center; padding: 40px; color: var(--text-muted); font-size: 1.1rem; display: none; width: 100%; grid-column: 1 / -1;}
     </style>
 </head>
 <body>
@@ -119,82 +119,82 @@
             <a href="AdDesignRadar_20260810.html" class="report-card" data-title="Ad Design Radar 2026-08-10" data-desc="week of august 10, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-08-10</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260810</h2>
+                <h2 class="report-title">Vol.20260810</h2>
                 <p class="preview-text">Week of August 10, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260803.html" class="report-card" data-title="Ad Design Radar 2026-08-03" data-desc="week of august 03, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-08-03</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260803</h2>
+                <h2 class="report-title">Vol.20260803</h2>
                 <p class="preview-text">Week of August 03, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260727.html" class="report-card" data-title="Ad Design Radar 2026-07-27" data-desc="week of july 27, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-07-27</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260727</h2>
+                <h2 class="report-title">Vol.20260727</h2>
                 <p class="preview-text">Week of July 27, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260720.html" class="report-card" data-title="Ad Design Radar 2026-07-20" data-desc="week of july 20, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-07-20</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260720</h2>
+                <h2 class="report-title">Vol.20260720</h2>
                 <p class="preview-text">Week of July 20, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260713.html" class="report-card" data-title="Ad Design Radar 2026-07-13" data-desc="week of july 13, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-07-13</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260713</h2>
+                <h2 class="report-title">Vol.20260713</h2>
                 <p class="preview-text">Week of July 13, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260706.html" class="report-card" data-title="Ad Design Radar 2026-07-06" data-desc="week of july 06, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-07-06</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260706</h2>
+                <h2 class="report-title">Vol.20260706</h2>
                 <p class="preview-text">Week of July 06, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260629.html" class="report-card" data-title="Ad Design Radar 2026-06-29" data-desc="week of june 29, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-06-29</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260629</h2>
+                <h2 class="report-title">Vol.20260629</h2>
                 <p class="preview-text">Week of June 29, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260622.html" class="report-card" data-title="Ad Design Radar 2026-06-22" data-desc="week of june 22, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-06-22</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260622</h2>
+                <h2 class="report-title">Vol.20260622</h2>
                 <p class="preview-text">Week of June 22, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260615.html" class="report-card" data-title="Ad Design Radar 2026-06-15" data-desc="week of june 15, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-06-15</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260615</h2>
+                <h2 class="report-title">Vol.20260615</h2>
                 <p class="preview-text">Week of June 15, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <a href="AdDesignRadar_20260608.html" class="report-card" data-title="Ad Design Radar 2026-06-08" data-desc="week of june 08, 2026">
                 <div class="card-header">
                     <span class="date-badge">🗓 2026-06-08</span>
-                    <span class="read-more">阅读报告 &rarr;</span>
                 </div>
-                <h2 class="report-title">Ad Design Radar Vol.20260608</h2>
+                <h2 class="report-title">Vol.20260608</h2>
                 <p class="preview-text">Week of June 08, 2026</p>
+                <div class="read-more">阅读报告 &rarr;</div>
             </a>
             <div class="no-results" id="noResults">没有找到相关的报告内容...</div>
         </div>
@@ -209,7 +209,7 @@
             items.forEach(item => {
                 const text = item.getAttribute('data-desc') + " " + item.getAttribute('data-title');
                 if (text.includes(term)) {
-                    item.style.display = 'block';
+                    item.style.display = 'flex';
                     hasVisible = true;
                 } else {
                     item.style.display = 'none';
