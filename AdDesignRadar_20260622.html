@@ -159,4 +159,58 @@
     <p>AI 数字人和语音技术已经跨越了“恐怖谷”。在讲究“原生感（Native-looking）”的短视频广告时代，<strong>看起来像普通人随手拍的视频往往比精美的棚拍广告转化率更高</strong>。掌握这套 UGC 仿真工作流，意味着你的素材产能将不再受制于演员档期和拍摄预算。</p>
   </div>
 </div>
-</body></html>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="回到顶部">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <style>
+    #backToTop {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+    }
+    #backToTop.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    #backToTop:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+    }
+    @media (max-width: 768px) {
+      #backToTop { bottom: 20px; right: 20px; }
+    }
+  </style>
+  <script>
+    const backToTopBtn = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add("visible");
+      } else {
+        backToTopBtn.classList.remove("visible");
+      }
+    });
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
