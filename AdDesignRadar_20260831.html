@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Design Radar | Intelligence</title>
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg: #F8FAFC;
+    --text: #0F172A;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-hover: #FFFFFF;
+    
+    --brand-primary: #2563EB; 
+    --accent-red: #EF4444;    
+    --accent-green: #10B981;  
+  }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+    padding: 80px 20px;
+    -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.05), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.08), transparent 25%);
+  }
+  
+  .container { max-width: 1280px; margin: 0 auto; position: relative; }
+  
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 50px; 
+    color: #FFFFFF; text-decoration: none; font-size: 0.95rem; font-weight: 700;
+    padding: 12px 20px; border-radius: 12px; transition: all 0.3s ease;
+    background: var(--brand-primary); box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  }
+  .back-link:hover { transform: translateY(-2px); box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4); }
+  
+  .header { margin-bottom: 60px; text-align: center; }
+  .header h1 { 
+    font-size: 3.2rem; font-weight: 800; margin: 0 0 12px 0; 
+    color: var(--brand-primary);
+    letter-spacing: -0.03em; 
+  }
+  .header p { color: var(--text-muted); font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+  
+  .section-title { 
+    font-size: 1.8rem; font-weight: 800; margin: 70px 0 30px 0; 
+    color: var(--text); letter-spacing: -0.02em;
+  }
+  
+  /* 摘要区 */
+  .summary-box { 
+    background: var(--card-bg); padding: 35px; border-radius: 24px; 
+    border: 1px solid var(--border); border-left: 6px solid var(--brand-primary);
+    backdrop-filter: blur(12px); margin-bottom: 60px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.2rem; font-weight: 700; color: var(--text); }
+  .summary-box p { margin: 0; font-size: 1.1rem; color: #334155; line-height: 1.7; }
+  
+  /* 工具卡片列表 Grid */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 60px; align-items: stretch; }
+  
+  .card { 
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; 
+    padding: 32px; backdrop-filter: blur(12px); display: flex; flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+  
+  
+
+  .card:hover { 
+    transform: translateY(-6px) scale(1.01); background: var(--card-hover); border-color: #CBD5E1; 
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+  }
+  
+  
+  .tags { margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
+  /* 给工具分类 tag 加上颜色底色 */
+  .tag { 
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; 
+    color: var(--brand-primary); background: #EFF6FF; padding: 6px 12px; border-radius: 8px; border: 1px solid #BFDBFE;
+    display: inline-block; white-space: nowrap;
+  }
+  
+  .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 16px; }
+  .tool-name { font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--text); letter-spacing: -0.02em; line-height: 1.3; }
+  
+  /* 官方链接按钮防止换行，并防止被挤压 */
+  .official-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px;
+    background: var(--brand-primary); color: #FFFFFF; border-radius: 12px; border: none;
+    text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .official-link:hover { transform: translateY(-2px); box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4); }
+  .official-link svg { stroke: #FFFFFF !important; }
+  
+  .insight-text { font-size: 1.05rem; color: #334155; margin-bottom: 25px; line-height: 1.7; }
+  
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; display: flex; flex-direction: column; gap: 16px; }
+  .feature-list li { 
+    background: rgba(248, 250, 252, 0.5); padding: 18px; border-radius: 12px; border: 1px solid #E2E8F0;
+    font-size: 0.95rem; color: #475569; display: flex; flex-direction: column;
+  }
+  .feature-list strong { color: #0F172A; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  
+  /* 行业建议去除 flex 以防内部文本节点换行错位 */
+  .recommendation { margin-top: auto; padding-top: 24px; border-top: 1px solid #E2E8F0; font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.6;}
+  .recommendation strong { color: var(--brand-primary); font-weight: 800; display: inline; margin-right: 4px; }
+  
+  /* 工作流卡片 */
+  .workflow-card { 
+    padding: 45px; background: rgba(255, 255, 255, 0.95); border: 1px solid #E2E8F0; border-radius: 24px; 
+    margin-bottom: 60px; backdrop-filter: blur(12px); position: relative; overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.05);
+  }
+  .workflow-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--brand-primary), #60A5FA);
+  }
+  
+  .workflow-card .tool-name { color: var(--text); font-size: 2rem; margin-bottom: 12px;}
+  .step-container { margin-top: 40px; display: flex; flex-direction: column; gap: 24px; }
+  .step { display: flex; gap: 24px; align-items: flex-start; background: #F8FAFC; padding: 24px; border-radius: 16px; border: 1px solid #E2E8F0; }
+  .step-num { 
+    background: var(--brand-primary) !important; color: #FFFFFF; width: 36px; height: 36px; border-radius: 10px; 
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  }
+  .step-content { font-size: 1rem; color: #475569; line-height: 1.6; }
+  .step-content strong { color: var(--text); display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.1rem; }
+  
+  /* 避坑 & 资产 */
+  .anti-hype-card { border-left: 6px solid var(--accent-red) !important; }
+  .asset-card { border-left: 6px solid var(--accent-green) !important; }
+  
+  .code-block { background: #0F172A; color: #F8FAFC; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.9rem; border: 1px solid #1E293B; overflow-x: auto; margin-top: 15px; line-height: 1.6; }
+
+  /* 底部总结 */
+  .final-summary { padding: 35px; background: var(--card-bg); border-radius: 24px; border: 1px solid var(--border); margin-top: 50px; backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+  .final-summary h2 { font-size: 1.4rem; margin: 0 0 15px 0; color: var(--text); font-weight: 800;}
+  .final-summary p { color: #334155; margin: 0; font-size: 1.1rem; line-height: 1.7; }
+  
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
+
+</style>
+
+<meta property="og:title" content="Ad Design Radar | 2026-08-31" />
+<meta property="og:description" content="Week of August 24 2026 recap of AI video image avatar and editing tools for TikTok and Meta ads" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chenchenshuo552-oss.github.io/ad-design-radar/AdDesignRadar_20260831.html" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" />
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<div class="container">
+  <a href="index.html" class="back-link">← 返回目录</a>
+  <div class="header">
+    <h1>Ad Design Radar</h1>
+    <p>Last Week Recap · Aug 24 – 30, 2026</p>
+  </div>
+
+  <div class="summary-box">
+    <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
+    <p>上周的行业迭代可以概括为一次集体“<strong>回归投放本质</strong>”：生成式 AI 不再比拼谁的画面更炸，而是比拼谁能更低成本地产出可投放、可续量、合规率更高的素材。Runway 把旗舰生成引擎提速至实时级并开放 API，可灵 Kling 2.5 正式支持多语种口型同步，Ideogram 3.0 把多语种排版文字渲染拉到商用级，HeyGen 5.0 则让数字人 UGC 无限接近真人出镜，而 CapCut 专业版用 AI 工作台把“粗剪+字幕+多版位”压进同一条流水线。整体信号非常明确：<strong>上周是“素材工业化”的一周</strong>，设计师的核心竞争力正从“会抽卡”转向“会搭流水线”。</p>
+  </div>
+
+  <h2 class="section-title">🔥 Top 5 Tools of Last Week & Deep Dive</h2>
+
+  <div class="grid">
+    <!-- Card 1 -->
+    <div class="card video">
+      <div class="tags"><span class="tag video">AI Video</span></div>
+      <div class="tool-header">
+                  <h3 class="tool-name">01. Runway Gen-4 Turbo</h3>
+                  <a href="https://runwayml.com" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
+      <p class="insight-text">上周 Runway 把旗舰视频生成引擎升级到 Turbo 档位，主打<strong>近乎实时的推理速度 + 原生 4K 输出 + 开放 API</strong>。对广告团队来说，这不再是“抽一张好图等五分钟”的体验，而是可以把文生视频直接塞进批量生成管线里滚动出片。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> 在 Meta 广告素材测试期，你可以一次性在 API 里并发跑 20 组 9:16 的“产品特写 + 动态背景”变体，用同一 prompt 结构 + 不同 seed 做 A/B 素材矩阵，把单条素材成本摊薄到分钟级。配合其局部编辑能力，只重抽崩坏的镜头，不再整条返工。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 速度与画质的平衡是目前第一梯队，物理一致性优于多数竞品；但复杂多角色剧情、长镜头运镜仍容易逻辑崩坏，且按 API 用量计费，重度批量使用成本不低。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 把它作为 90% 常规 B-roll 与商品演示素材的“主力发动机”，重活交给 API 批量，精品交给人工精修</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card video">
+      <div class="tags"><span class="tag video">AI Video</span></div>
+      <div class="tool-header">
+                  <h3 class="tool-name">02. 可灵 Kling 2.5</h3>
+                  <a href="https://klingai.com" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
+      <p class="insight-text">上周可灵最大更新是<strong>多语种口型同步（lip-sync）正式全量上线</strong>，英文、西班牙语、日语等语种的说话视频口型准确率大幅提升，并且新增了“首尾帧锁定”的强化版本，让产品镜头可以精准首尾衔接。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> 做 TikTok 出海 UGC 口播时，你可以先录一段真人英文口播拿到音频，再用人像图 + 该音频在可灵里生成“真人出镜说话”的画面，嘴型对得上、发音零口音，彻底解决外包口播演员成本高、档期紧的痛点。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 口型与语种覆盖是当前最强之一，价格相对亲民；但手势与面部微表情仍不如真人自然，且长句连读时偶有唇部轻微漂移。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 出海多语种口播素材的“虚拟演员工厂”，尤其适合小语种市场快速铺量</div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card image">
+      <div class="tags"><span class="tag image">AI Image</span></div>
+      <div class="tool-header">
+                  <h3 class="tool-name">03. Ideogram 3.0</h3>
+                  <a href="https://ideogram.ai" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
+      <p class="insight-text">Ideogram 3.0 上周把<strong>多语种文字渲染</strong>提升到了真正的商用级：英文、法文、德文、日文、韩文甚至阿拉伯文的标题排版都能稳定呈现，且推出了批量版位输出，直接解决电商主图/横幅上“AI 写错字”这个老大难。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> Meta 广告横幅和电商详情页经常需要“大字促销标题 + 无违和排版”。过去要么让设计师手工 PS，要么接受 AI 乱码。现在直接输入“50% OFF · Free Shipping”这类文案，Ideogram 3.0 能把它以品牌化的排版渲染进画面，再一键输出 1:1 / 1.91:1 / 4:5 三个版位。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 文字排版能力无可争议地领先；但复杂矢量插画、以及超长段落文字的排版仍有限制，中文长文案偶尔丢笔画。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 电商促销主视觉与多语种横幅的“文字排版定海神针”，可替代部分低价值的套版设计工作</div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card avatar">
+      <div class="tags"><span class="tag avatar">AI Avatar</span></div>
+      <div class="tool-header">
+                  <h3 class="tool-name">04. HeyGen 5.0</h3>
+                  <a href="https://heygen.com" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
+      <p class="insight-text">HeyGen 5.0 上周发布的是“<strong>真人级微表情 + 无绿幕虚拟影棚</strong>”组合更新：数字人可以有自然的眨眼、点头、情绪起伏，并且可以直接把产品图“拿”在手里演示，观感上几乎和真人实拍无异。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> 对于真人出镜成本高的中小卖家，可以创建品牌专属数字人，让它用多语种讲解产品卖点，配合产品手持演示生成一条条“伪真人 UGC”，用于 TikTok 信息流和 Meta 再营销，一周产出几十条不同话术的变体也不在话下。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 出片效率和语种切换是杀手锏；但受众与平台审核对“明显是数字人”的内容有天然警惕，若话术机械、背景违和，CTR 会明显低于真人素材。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 用来做“真人素材的替补产能”，而非替代品——与真人实拍混合使用，性价比最高</div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card editing">
+      <div class="tags"><span class="tag editing">Editing</span></div>
+      <div class="tool-header">
+                  <h3 class="tool-name">05. CapCut 专业版 AI 工作台</h3>
+                  <a href="https://www.capcut.com" target="_blank" class="official-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    访问工具
+                  </a>
+                </div>
+      <p class="insight-text">上周 CapCut 专业版把零散的 AI 能力整合成一条“<strong>单素材进、多版位出</strong>”的工作台：AI 粗剪、自动口播字幕、智能 B-roll 匹配、一键 9:16 / 4:5 / 1:1 重排，全部在同一个项目里完成，并且与剪映素材库打通。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> 把一条 2 分钟的实拍素材丢进去，AI 自动标出高光片段、生成 TikTok 风格的快节奏粗剪，同时根据关键词自动插入 B-roll 与大字报字幕。你只需要在导出前微调节奏，就能在一个小时内批量交付当天投放所需的全部版位。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 把“剪辑流水线”的重复劳动几乎清零，对海量铺素材的团队是质变；但 AI 粗剪的叙事取舍仍偏套路化，品牌定制转场、复杂 Motion Graphics 还是得回到 AE。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 建议作为每日素材“中台”，负责量产与多版位，把设计师的时间释放给真正需要创意判断的部分</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">⚡ 深度实战: 高效工作流拆解 (High-Yield Workflow)</h2>
+
+  <div class="workflow-card">
+    <div class="workflow-badge" style="display:inline-block;background:#EFF6FF;color:#2563EB;font-weight:800;font-size:0.75rem;letter-spacing:0.05em;padding:6px 12px;border-radius:8px;border:1px solid #BFDBFE;margin-bottom:20px;">META / TIKTOK AD WORKFLOW</div>
+    <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text);">“真人级数字人口播 + 工业批量版位”的出海出片流水线</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">组合上周更新的 4 款工具，把一条真人音频变成一条可批量复制的多语种广告生产线：</p>
+    
+    <div class="step-container">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>录制一段真人口播音频 (CapCut 录音)</strong>
+          用手机/麦克风按脚本录一段 30–45 秒的英文口播，语气自然、带情绪起伏。这段音频是整条流水线的“金种子”，后续所有版本都复用它，保证品牌调性统一。
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>生成数字人出镜画面 (HeyGen 5.0)</strong>
+          将音频 + 品牌人设形象导入 HeyGen 5.0，选择微表情自然的数字人，让它“手持产品”讲解。同一音频可切换 5–10 种语种生成不同市场版本，无需重录。
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>补齐产品特写 B-roll (Runway Gen-4 Turbo)</strong>
+          用文生视频批量生成产品特写、使用场景、细节镜头，作为口播画面的穿插 B-roll，提高完播率与真实感。不满意单镜头就局部重抽，不整条返工。
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>批量多版位出片 (CapCut AI 工作台)</strong>
+          把口播 + B-roll 拖入 CapCut 工作台，AI 自动添加大字报字幕、匹配节奏，一键导出 9:16（TikTok / Reels）、1:1 与 4:5（Meta Feed）多套成品，直接进入投放队列。
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <strong>标题横幅素材 (Ideogram 3.0)</strong>
+          针对每个市场用 Ideogram 3.0 生成带当地语言促销文案的主视觉横幅，作为落地页头图与广告封面，保证“语言正确、排版专业”。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="color: #e11d48;">🚨 避坑雷达 (Anti-Hype Radar)</h2>
+  <div class="card anti-hype-card">
+    <h3 style="margin-top:0; color: var(--accent-red);">⚠️ 警惕：上周被疯转的“AI 自动剪辑无限出片”全家桶</h3>
+    <p class="insight-text">上周海外营销社群密集推广某套“一键上传素材、AI 自动生成一百条投放视频”的自动化工具。实测发现其所谓“无限出片”只是把同一组模板素材做了机械化的变速、换背景和随机抽帧，生成内容同质化严重，<strong>被 TikTok 判定为低质重复内容的概率极高</strong>，而且没有提供任何真正可编辑的时间线，后期修都无从修起。<strong>不要用这类工具替代你的人工判断</strong>，平台算法对“量”的容忍度正在快速下降，对“质与原创”的要求在持续上升。</p>
+  </div>
+
+  <h2 class="section-title" style="color: #059669;">💎 上周专属资产 (Exclusive Assets)</h2>
+  <div class="card asset-card">
+    <h3 style="margin-top:0; color: var(--accent-green);">出海电商“产品特写 + 动态渐变背景”文生视频公式 (直接复制)</h3>
+    <p class="insight-text">这是配合 Runway Gen-4 Turbo / 可灵使用的通用商品演示 prompt，强调真实材质、干净背景与可控运动，适合作为投流 B-roll 素材：</p>
+    <div class="code-block">
+      Cinematic macro shot of [PRODUCT] slowly rotating on a clean seamless studio background, soft gradient light from top-left, shallow depth of field, realistic material texture, subtle dust particles floating, high-end commercial product photography look, 4k, photorealistic, stable camera, no text --ar 9:16 --dur 6s
+    </div>
+  </div>
+  
+  <div class="final-summary">
+    <h2>📘 上周总结 Weekly Review</h2>
+    <p>过去 7 天的行业节奏清晰地指向“<strong>工业化</strong>”：Runway 提速、可灵解决口型、Ideogram 解决文字、HeyGen 解决出镜、CapCut 解决量产，五个环节拼起来就是一条完整的出海素材流水线。能拉开差距的不再是单点工具，而是谁能把这条流水线搭建、跑通、并持续产出可投放素材。下周建议：先把本周的“数字人口播 + 多版位”流程在 2–3 个主力 SKU 上跑一遍，用数据验证后再铺开到全品类。</p>
+  </div>
+
+</div>
+<a href="#" class="back-to-top" id="backToTop" aria-label="返回顶部">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</a>
+<script>
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
