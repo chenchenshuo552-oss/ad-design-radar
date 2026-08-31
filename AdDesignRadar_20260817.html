@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Design Radar | Intelligence</title>
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg: #F8FAFC;
+    --text: #0F172A;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-hover: #FFFFFF;
+    
+    --brand-primary: #2563EB; 
+    --accent-red: #EF4444;    
+    --accent-green: #10B981;  
+  }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+    padding: 80px 20px;
+    -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.05), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.08), transparent 25%);
+  }
+  
+  .container { max-width: 1280px; margin: 0 auto; position: relative; }
+  
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 50px; 
+    color: #FFFFFF; text-decoration: none; font-size: 0.95rem; font-weight: 700;
+    padding: 12px 20px; border-radius: 12px; transition: all 0.3s ease;
+    background: var(--brand-primary); box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  }
+  .back-link:hover { transform: translateY(-2px); box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4); }
+  
+  .header { margin-bottom: 60px; text-align: center; }
+  .header h1 { 
+    font-size: 3.2rem; font-weight: 800; margin: 0 0 12px 0; 
+    color: var(--brand-primary);
+    letter-spacing: -0.03em; 
+  }
+  .header p { color: var(--text-muted); font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+  
+  .section-title { 
+    font-size: 1.8rem; font-weight: 800; margin: 70px 0 30px 0; 
+    color: var(--text); letter-spacing: -0.02em;
+  }
+  
+  /* 摘要区 */
+  .summary-box { 
+    background: var(--card-bg); padding: 35px; border-radius: 24px; 
+    border: 1px solid var(--border); border-left: 6px solid var(--brand-primary);
+    backdrop-filter: blur(12px); margin-bottom: 60px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.2rem; font-weight: 700; color: var(--text); }
+  .summary-box p { margin: 0; font-size: 1.1rem; color: #334155; line-height: 1.7; }
+  
+  /* 工具卡片列表 Grid */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 60px; align-items: stretch; }
+  
+  .card { 
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; 
+    padding: 32px; backdrop-filter: blur(12px); display: flex; flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+  
+  
+
+  .card:hover { 
+    transform: translateY(-6px) scale(1.01); background: var(--card-hover); border-color: #CBD5E1; 
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+  }
+  
+  
+  .tags { margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
+  /* 给工具分类 tag 加上颜色底色 */
+  .tag { 
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; 
+    color: var(--brand-primary); background: #EFF6FF; padding: 6px 12px; border-radius: 8px; border: 1px solid #BFDBFE;
+    display: inline-block; white-space: nowrap;
+  }
+  
+  .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 16px; }
+  .tool-name { font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--text); letter-spacing: -0.02em; line-height: 1.3; }
+  
+  /* 官方链接按钮防止换行，并防止被挤压 */
+  .official-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px;
+    background: var(--brand-primary); color: #FFFFFF; border-radius: 12px; border: none;
+    text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .official-link:hover { transform: translateY(-2px); box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4); }
+  .official-link svg { stroke: #FFFFFF !important; }
+  
+  .insight-text { font-size: 1.05rem; color: #334155; margin-bottom: 25px; line-height: 1.7; }
+  
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; display: flex; flex-direction: column; gap: 16px; }
+  .feature-list li { 
+    background: rgba(248, 250, 252, 0.5); padding: 18px; border-radius: 12px; border: 1px solid #E2E8F0;
+    font-size: 0.95rem; color: #475569; display: flex; flex-direction: column;
+  }
+  .feature-list strong { color: #0F172A; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  
+  /* 行业建议去除 flex 以防内部文本节点换行错位 */
+  .recommendation { margin-top: auto; padding-top: 24px; border-top: 1px solid #E2E8F0; font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.6;}
+  .recommendation strong { color: var(--brand-primary); font-weight: 800; display: inline; margin-right: 4px; }
+  
+  /* 工作流卡片 */
+  .workflow-card { 
+    padding: 45px; background: rgba(255, 255, 255, 0.95); border: 1px solid #E2E8F0; border-radius: 24px; 
+    margin-bottom: 60px; backdrop-filter: blur(12px); position: relative; overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.05);
+  }
+  .workflow-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--brand-primary), #60A5FA);
+  }
+  
+  .workflow-card .tool-name { color: var(--text); font-size: 2rem; margin-bottom: 12px;}
+  .step-container { margin-top: 40px; display: flex; flex-direction: column; gap: 24px; }
+  .step { display: flex; gap: 24px; align-items: flex-start; background: #F8FAFC; padding: 24px; border-radius: 16px; border: 1px solid #E2E8F0; }
+  .step-num { 
+    background: var(--brand-primary) !important; color: #FFFFFF; width: 36px; height: 36px; border-radius: 10px; 
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  }
+  .step-content { font-size: 1rem; color: #475569; line-height: 1.6; }
+  .step-content strong { color: var(--text); display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.1rem; }
+  
+  /* 避坑 & 资产 */
+  .anti-hype-card { border-left: 6px solid var(--accent-red) !important; }
+  .asset-card { border-left: 6px solid var(--accent-green) !important; }
+  
+  .code-block { background: #0F172A; color: #F8FAFC; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.9rem; border: 1px solid #1E293B; overflow-x: auto; margin-top: 15px; line-height: 1.6; }
+
+  /* 底部总结 */
+  .final-summary { padding: 35px; background: var(--card-bg); border-radius: 24px; border: 1px solid var(--border); margin-top: 50px; backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+  .final-summary h2 { font-size: 1.4rem; margin: 0 0 15px 0; color: var(--text); font-weight: 800;}
+  .final-summary p { color: #334155; margin: 0; font-size: 1.1rem; line-height: 1.7; }
+
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
+
+</style>
+
+<meta property="og:title" content="Ad Design Radar | 2026-08-17" />
+<meta property="og:description" content="Week of August 17, 2026" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chenchenshuo552-oss.github.io/ad-design-radar/AdDesignRadar_20260817.html" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" />
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<div class="container">
+  <a href="index.html" class="back-link">← 返回目录</a>
+  <div class="header">
+    <h1>Ad Design Radar</h1>
+    <p>Week of August 17, 2026</p>
+  </div>
+
+  <div class="summary-box">
+    <h3><span style="font-size: 1.2em;">📊</span> 深度洞察 Executive Summary</h3>
+    <p>上周（8.10–8.16）行业的主线是<strong>“可控性”与“本地化”</strong>的加速落地。Luma 与 Pika 不约而同地强化了关键帧与镜头路径控制，让 AI 视频从“抽卡”转向“运镜调度”；Midjourney 则通过区域重绘把“改商品、留背景”这类广告刚需变成了点一下就能完成的动作。与此同时，视频本地化工具（多语种配音 + 口型适配）在上周集中升级，直接解决了出海团队“一条片改多语言”的重复劳动。整体信号：上周是“把 AI 素材改造成可批量、可投放的工业化素材”的一周，谁能把控制和本地化串成流水线，谁就能在 Meta/TikTok 的量产测试里先吃到红利。</p>
+  </div>
+
+  <h2 class="section-title">🔥 Top 5 Tools & Deep Dive</h2>
+
+  <div class="grid">
+    <!-- Card 1 -->
+    <div class="card video">
+      <div class="tags"><span class="tag video">AI Video</span></div>
+      <div class="tool-header">
+        <h3 class="tool-name">01. Luma Keyframe Director</h3>
+        <a href="https://www.google.com/search?q=Luma%20Keyframe%20Director" target="_blank" class="official-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          访问工具
+        </a>
+      </div>
+      <p class="insight-text">Luma 上周把关键帧控制升级为可视化的“镜头路径导演”模式：你可以在时间轴上直接拖拽镜头推拉、横移、环绕的路径节点，模型按你画的轨迹运镜，而不是随机发挥。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> 做 Meta 广告的产品特写时，先画一条“从包装 Logo 平移到产品正面再环绕到成分表”的镜头路径，一次性产出有明确叙事顺序的 8 秒展示，替掉了过去“生成几十条再碰运气”的低效流程。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 运镜轨迹非常可控，转场节奏干净；但复杂的人物表演仍不稳定，更擅长静物与产品镜头。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 作为电商 3C / 美妆产品镜头的“导演式”出片首选，路径可控意味着可批量复现
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card image">
+      <div class="tags"><span class="tag image">AI Image</span></div>
+      <div class="tool-header">
+        <h3 class="tool-name">02. Midjourney Region Refine</h3>
+        <a href="https://www.google.com/search?q=Midjourney%20Region%20Refine" target="_blank" class="official-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          访问工具
+        </a>
+      </div>
+      <p class="insight-text">Midjourney 新增的区域编辑功能支持圈选局部后单独重绘，且能锁定未选中区域的一致性。对“改包装标签、换背景色、替换某个道具”这类广告高频修改，终于不用重抽整张。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> 电商场景图常见的“换背景适配不同投放版位”需求，直接用 Region Refine 圈出背景重绘为北欧风 / 户外风 / 极简风各出几张，商品本体保持像素级一致，一套主图秒变多套投放素材。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 局部一致性极佳；但圈选边界复杂（如发丝、透明物体）时仍可能有轻微接缝，需要后期 PS 微修。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 把它当作“主图多版位适配”的批处理引擎，配合预设色板即可量产不同投放风格的视觉
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card audio">
+      <div class="tags"><span class="tag audio">AI Localization</span></div>
+      <div class="tool-header">
+        <h3 class="tool-name">03. Rask AI 4.0</h3>
+        <a href="https://www.google.com/search?q=Rask%20AI%204.0" target="_blank" class="official-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          访问工具
+        </a>
+      </div>
+      <p class="insight-text">Rask 4.0 把“视频一键多语种”又往前推了一步：不仅自动翻译、克隆口音，还提升了说话人画面里<strong>口型与字幕的同步精度</strong>，并支持保留 B-roll 画面的时间轴导出。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> 一条英文 UGC 口播视频，直接转出西语、法语、德语三个版本做 TikTok 分地区投流，口型自然不穿帮，相比“重拍三条”成本降了一个数量级，尤其适合高投量、低客单的爆品铺量打法。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 多语种成本极低、交付快；但俚语和双关语的翻译仍需要人工审校，极端口音下情绪会略打折。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 出海电商素材“一鱼多吃”的关键工具，先跑英文验证跑量，再批量克隆多语种放量
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card video">
+      <div class="tags"><span class="tag video">AI Video</span></div>
+      <div class="tool-header">
+        <h3 class="tool-name">04. Pika Motion Brush 2.0</h3>
+        <a href="https://www.google.com/search?q=Pika%20Motion%20Brush%202.0" target="_blank" class="official-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          访问工具
+        </a>
+      </div>
+      <p class="insight-text">Pika 上周把“动效笔刷”升级为可指定<strong>多个独立运动区域</strong>：在静态图上分别刷出“水在流、烟雾在飘、Logo 在发光”等不同区域，各自给不同的运动强度和方向，实现“一张图多层级动效”。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> 广告主视觉动效化利器：把静态产品图刷出“杯身冒热气 + 背景光线扫过 + 标题光效”三层运动，产出高点击率的动态头图，适配 TikTok Spark Ads 和 Meta 的动态展示位。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 多层运动叠加效果惊艳、可控性强；但运动物体间的遮挡关系偶尔会错乱，复杂场景需逐层渲染再合成。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 作为“静态主图→动态广告头图”的快速放大镜，适合需要高频 A/B 动效测试的团队
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card workflow">
+      <div class="tags"><span class="tag workflow">Creative Ops</span></div>
+      <div class="tool-header">
+        <h3 class="tool-name">05. Frame.io Camera to Cloud 增强</h3>
+        <a href="https://www.google.com/search?q=Frame.io%20Camera%20to%20Cloud" target="_blank" class="official-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          访问工具
+        </a>
+      </div>
+      <p class="insight-text">Frame.io 上周强化了与 AI 后期工具的联动：实拍素材通过 Camera to Cloud 直传后，可直接挂接自动转写、AI 粗剪与版本对比，把“拍摄-审片-剪辑”链路压缩在云端实时完成。</p>
+      <ul class="feature-list">
+        <li><strong>🎯 商业实战:</strong> UGC 团队实拍 50 条口播后，素材自动上云并生成转写稿，剪辑组按关键词定位到“讲到折扣那句”的镜头，直接拖进时间线，大幅缩短“拍摄日→初剪”的周期，适合多账户、多 SKU 的高频实拍项目。</li>
+        <li><strong>⚖️ 优缺点分析:</strong> 协作与版本管理一流；但订阅成本偏高，且强依赖稳定的上行带宽，海外节点体验更好。</li>
+      </ul>
+      <div class="recommendation">
+        🌟 <strong>行业建议:</strong> 有固定实拍团队的广告工作室值得引入，它解决的不是“画质”而是“协作效率”这个隐形成本
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">⚡ 深度实战: 高效工作流拆解</h2>
+
+  <div class="workflow-card">
+    <div class="workflow-badge">META / TIKTOK AD WORKFLOW</div>
+    <h3 class="tool-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main);">“一图多层动效”的产品动态头图流水线</h3>
+    <p style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0;">把静态电商主图快速变成高点击动态头图，且能批量复用的确定性流程：</p>
+    
+    <div class="step-container">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>定稿主视觉 (Midjourney Region Refine)</strong>
+          先用 Region Refine 产出干净的商品主图，并针对不同投放版位（9:16 / 1:1 / 4:5）圈选背景重绘出对应版本，确保商品本体一致。
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>分层注入动效 (Pika Motion Brush 2.0)</strong>
+          将定稿图导入 Pika，用动效笔刷分别给“产品高光”“背景氛围”“文字标题”刷上不同方向的运动，一次性产出多版本动态头图。
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>多语种放量 (Rask AI 4.0)</strong>
+          将测试跑量的英文版视频交给 Rask 转出西语、法语等版本，口型同步后直接分地区铺量，一套创意覆盖多市场。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="color: #e11d48;">🚨 避坑雷达 (Anti-Hype Radar)</h2>
+  <div class="card anti-hype-card">
+    <h3 style="margin-top:0; color: var(--accent-red);">⚠️ 警惕：被吹上天的“自动换脸 + 数字人口播全自动带货”</h3>
+    <p class="insight-text">上周海外社媒密集投放“输入商品链接，AI 自动生成百万播放带货视频”的广告，实测底层仍是老式模板拼接 + 廉价数字人，画面重复率高，极易被 TikTok 判为低质营销内容限流；且口播内容缺少真实卖点与信任感，跑量数据普遍极差。<strong>建议不要用在主力爆品上</strong>，数字人素材适合做“量”，不适合做“信”，主推品仍需真人 UGC 或高质量实拍。</p>
+  </div>
+
+  <h2 class="section-title">💎 本周专属资产 (Free Assets)</h2>
+  <div class="card asset-card">
+    <h3 style="margin-top:0; color: var(--accent-green);">电商“环绕运镜 + 层次光”产品展示 Prompt（直接复制）</h3>
+    <p class="insight-text">配合 Luma Keyframe Director 使用的产品展示提示词，画面干净、商业感强，适合 3C 与美妆类 Meta 广告主视觉：</p>
+    <div class="code-block">
+      Cinematic orbiting camera path around a premium product on a clean studio pedestal, soft rim lighting, subtle reflection on glossy surface, shallow depth of field, product in sharp focus, warm accent light from behind, 4k commercial product photography style --camera orbit --keyframes: [close on logo] -> [front 3/4 view] -> [top-down detail]
+    </div>
+  </div>
+  
+  <div class="final-summary">
+    <h2>📘 每周总结 Weekly Summary</h2>
+    <p>上周的工具更新关键词是“控制”和“本地化”。从关键帧运镜、区域重绘到多层动效，AI 素材终于可以被设计师精确“指挥”而不是“祈祷”；而多语种配音与云端协作则把成本重心从“重复制作”转移到“一次制作、多端复用”。对海外广告团队而言，真正拉开差距的已经不再是会不会抽卡，而是能不能把控制、动效、本地化串成一条可复制的量产流水线。</p>
+  </div>
+
+</div>
+<a href="#" class="back-to-top" id="backToTop" aria-label="返回顶部">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</a>
+<script>
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
