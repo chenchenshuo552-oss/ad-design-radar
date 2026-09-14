@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Ad Design Radar | Intelligence</title><meta content="回顾9月7日至13日的产品更新与行业信号，五个工具的广告应用、证据边界与可复用工作流" name="description"/><meta content="article" property="og:type"/><meta content="Ad Design Radar | 2026-09-14 上周回顾：音乐、声音与视频模型的集中换代" property="og:title"/><meta content="回顾9月7日至13日的产品更新与行业信号，五个工具的广告应用、证据边界与可复用工作流" property="og:description"/><meta content="https://chenchenshuo552-oss.github.io/ad-design-radar/AdDesignRadar_20260914.html" property="og:url"/><meta content="#F3F4F6" name="theme-color"/><style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg: #F8FAFC;
+    --text: #0F172A;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-hover: #FFFFFF;
+
+    --brand-primary: #2563EB;
+    --accent-red: #EF4444;
+    --accent-green: #10B981;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+    padding: 80px 20px;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.05), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.08), transparent 25%);
+  }
+
+  .container { max-width: 1280px; margin: 0 auto; position: relative; }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 50px;
+    color: #FFFFFF; text-decoration: none; font-size: 0.95rem; font-weight: 700;
+    padding: 12px 20px; border-radius: 12px; transition: all 0.3s ease;
+    background: var(--brand-primary); box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  }
+  .back-link:hover { transform: translateY(-2px); box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4); }
+
+  .header { margin-bottom: 60px; text-align: center; }
+  .header h1 {
+    font-size: 3.2rem; font-weight: 800; margin: 0 0 12px 0;
+    color: var(--brand-primary);
+    letter-spacing: -0.03em;
+  }
+  .header p { color: var(--text-muted); font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+
+  .section-title {
+    font-size: 1.8rem; font-weight: 800; margin: 70px 0 30px 0;
+    color: var(--text); letter-spacing: -0.02em;
+  }
+
+  /* 摘要区 */
+  .summary-box {
+    background: var(--card-bg); padding: 35px; border-radius: 24px;
+    border: 1px solid var(--border); border-left: 6px solid var(--brand-primary);
+    backdrop-filter: blur(12px); margin-bottom: 60px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.2rem; font-weight: 700; color: var(--text); }
+  .summary-box p { margin: 0; font-size: 1.1rem; color: #334155; line-height: 1.7; }
+
+  /* 工具卡片列表 Grid */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 60px; align-items: stretch; }
+
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px;
+    padding: 32px; backdrop-filter: blur(12px); display: flex; flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+
+  .card:hover {
+    transform: translateY(-6px) scale(1.01); background: var(--card-hover); border-color: #CBD5E1;
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+  }
+
+  .tags { margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
+  /* 给工具分类 tag 加上颜色底色 */
+  .tag {
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--brand-primary); background: #EFF6FF; padding: 6px 12px; border-radius: 8px; border: 1px solid #BFDBFE;
+    display: inline-block; white-space: nowrap;
+  }
+
+  .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 16px; }
+  .tool-name { font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--text); letter-spacing: -0.02em; line-height: 1.3; }
+
+  /* 官方链接按钮防止换行，并防止被挤压 */
+  .official-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px;
+    background: var(--brand-primary); color: #FFFFFF; border-radius: 12px; border: none;
+    text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .official-link:hover { transform: translateY(-2px); box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4); }
+  .official-link svg { stroke: #FFFFFF !important; }
+
+  .insight-text { font-size: 1.05rem; color: #334155; margin-bottom: 25px; line-height: 1.7; }
+
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; display: flex; flex-direction: column; gap: 16px; }
+  .feature-list li {
+    background: rgba(248, 250, 252, 0.5); padding: 18px; border-radius: 12px; border: 1px solid #E2E8F0;
+    font-size: 0.95rem; color: #475569; display: flex; flex-direction: column;
+  }
+  .feature-list strong { color: #0F172A; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
+  /* 行业建议去除 flex 以防内部文本节点换行错位 */
+  .recommendation { margin-top: auto; padding-top: 24px; border-top: 1px solid #E2E8F0; font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.6;}
+  .recommendation strong { color: var(--brand-primary); font-weight: 800; display: inline; margin-right: 4px; }
+
+  /* 工作流卡片 */
+  .workflow-card {
+    padding: 45px; background: rgba(255, 255, 255, 0.95); border: 1px solid #E2E8F0; border-radius: 24px;
+    margin-bottom: 60px; backdrop-filter: blur(12px); position: relative; overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.05);
+  }
+  .workflow-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--brand-primary), #60A5FA);
+  }
+
+  .workflow-card .tool-name { color: var(--text); font-size: 2rem; margin-bottom: 12px;}
+  .step-container { margin-top: 40px; display: flex; flex-direction: column; gap: 24px; }
+  .step { display: flex; gap: 24px; align-items: flex-start; background: #F8FAFC; padding: 24px; border-radius: 16px; border: 1px solid #E2E8F0; }
+  .step-num {
+    background: var(--brand-primary) !important; color: #FFFFFF; width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  }
+  .step-content { font-size: 1rem; color: #475569; line-height: 1.6; }
+  .step-content strong { color: var(--text); display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.1rem; }
+
+  /* 避坑 & 资产 */
+  .anti-hype-card { border-left: 6px solid var(--accent-red) !important; }
+  .asset-card { border-left: 6px solid var(--accent-green) !important; }
+
+  .code-block { background: #0F172A; color: #F8FAFC; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.9rem; border: 1px solid #1E293B; overflow-x: auto; margin-top: 15px; line-height: 1.6; }
+
+  /* 底部总结 */
+  .final-summary { padding: 35px; background: var(--card-bg); border-radius: 24px; border: 1px solid var(--border); margin-top: 50px; backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+  .final-summary h2 { font-size: 1.4rem; margin: 0 0 15px 0; color: var(--text); font-weight: 800;}
+  .final-summary p { color: #334155; margin: 0; font-size: 1.1rem; line-height: 1.7; }
+
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
+
+</style></head><body><div class="container"><a class="back-link" href="index.html">← 返回目录</a>
+<div class="header"><h1>Ad Design Radar</h1><p>Last Week Recap · Sep 7 – Sep 13, 2026</p></div>
+<section class="summary-box" id="summary"><h3>📊 深度洞察 Executive Summary</h3><p>上周（9.7–9.13）最集中的信号是“生成能力开始围绕可修改、可迁移和可追踪打补丁”，而不是再发一个炫目但不可控的模型榜单。音乐侧，Suno 在 9 月 9 日发布 v6 模型家族，把“改一段副歌、抽一句歌词”变成自然语言操作；OpenAI 在 9 月 9—10 日连续发布 GPT-6 Astra 与 GPT-Live-1 语音 API，分别指向“按品牌语气干活的智能体”和“可打断的全双工语音”；ElevenLabs 在 9 月 7 日把 CLI 升级到 v1.2 并让 eleven_v3 成为默认音色模型，9 月 11 日又上线 Scribe v2 Medical。</p><p>视频侧，Kling 3.0 系列（视频 3.0 / 3.0 Omni / 3.0 Turbo 与图像 3.0）已在官方文档与官网出现，主打同步音视频、智能分镜、元素参考与一致性，同时官方通知 9 月 15 日退役 1.0—2.1 系列旧模型和 Virtual Try-On API——这是一条对现网生产链路更紧迫的消息。<strong>需要明确：Kling 3.0 的确切首发日期我们未能从官方页面确认，因此不把它写成“上周首发”，只作为近期已上线能力回顾，并提示迁移截止时间。</strong>以上是基于官方资料的行业解读，<strong>不是 TikTok / Meta 全平台趋势统计，也不包含未经实测的转化率结论</strong>。</p>
+<div class="fact fine"><strong>时间与证据口径</strong><br/>本期在周一（9 月 14 日）运行，因此“上周”统一指执行日前一个完整自然周（9 月 7 日至 13 日），不预测未来。所有来源于 9 月 14 日访问；按页面标注日期归档，未提供时区的来源不推断精确发布时间。全文明确区分“区间内产品更新”“文章/文档更新”与“近期已上线但日期未确认的能力”。未登录付费产品实测，功能描述依据官方资料；实战方案与风险判断为编辑建议。</div></section>
+<h2 class="section-title" id="tools">🔥 Top 5 Tools of Last Week &amp; Deep Dive</h2><div class="grid"><section class="card"><div class="tags"><span class="tag">区间内更新 · 09/09</span><span class="tag gray">音乐生成 / 广告配乐 / 局部编辑</span></div><div class="tool-header"><h3 class="tool-name">01. Suno v6 · 把“改一首歌”变成改一句话</h3><a class="official-link" href="https://suno.com/release-notes" rel="noopener" target="_blank">访问工具 ↗</a></div>
+<div class="fact"><strong>已确认的更新</strong><p class="insight-text">9 月 9 日官方 Release Notes 发布 v6 模型家族：v6 是旗舰模型，官方描述为可靠、精准、跨风格稳定；v6-wild 面向探索，输出更不可预测；v6-mini 更快更省，对所有用户开放。新能力包括：用自然语言局部编辑现有歌曲（例如“把副歌改成福音合唱”）、多源 mashup（取 A 的人声、B 的鼓、加新歌词）、采样/分离/构建 beat 的单流程操作、按 vibe/风格/参考创建，以及从文本、音频、图片、视频多模态输入创作。v6 与 v6-wild 仅对付费用户开放。</p></div>
+<h3>行业洞察与广告价值</h3><p class="insight-text">广告配乐的真实瓶颈不是“生成不出歌”，而是“改一处就要重新生成整首”：钩子时长变了、CTA 节奏要压点、某个市场觉得副歌太吵。v6 的局部编辑直接回应这个返工循环，把配乐版本管理从“整首重来”降到“段落级修改”。对同时维护多市场版本的团队，这比音色数量或曲风标签更有实际意义。</p>
+<h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">以 15 秒 TikTok 信息流广告为例：先用 v6 生成 2—3 个方向的完整 demo（节拍速度、情绪标签不同），选定方向后只改副歌或开头 3 秒，不动已确认的主歌与音色。TikTok 侧裁出带强节拍的 8—15 秒循环段并做响度归一；Meta 4:5 信息流静音播放时配乐仍承担情绪层，字幕与包装文字单独核对。生成前先在 v6 里用“Change only the chorus to …”式指令做段落级修改测试，确认一致性后再进入批量版本。</p>
+<h3>⚖️ 优缺点分析</h3><p class="insight-text"><strong>优势：</strong>局部编辑与多源 mashup 显著减少“整首重来”；v6-mini 降低探索成本，适合方向筛选。<strong>限制：</strong>v6-wild 的不可预测性意味着需要人工筛选；mini 与旗舰质量有差距；歌词发音、节拍对齐与最终混音仍需人审，生成快不等于免混音。付费套餐的商用授权与下载限制须在正式投放前核对，官方近期有下载政策调整的公开讨论，本文未逐一核验具体条款。</p>
+<h3>建议</h3><p class="insight-text"><strong>优先级：高，适合配乐返工多的项目。</strong>先拿一支正在返工的广告做小样：记录“改一处副歌”从指令到可用版本的耗时与重试次数，与整首重生成对比。验收标准是段落修改后与母版在调性、速度、人声上的一致性，以及导出文件是否符合平台响度与时长要求。</p><p class="insight-text">来源：<a href="https://suno.com/release-notes/introducing-v6">Suno 官方 Release Notes · Introducing v6</a>（2026-09-09）；套餐与商用条款以官方实时页面为准</p></section><section class="card"><div class="tags"><span class="tag">区间内更新 · 09/09</span><span class="tag gray">智能体 / 文案矩阵 / 创意运营</span></div><div class="tool-header"><h3 class="tool-name">02. OpenAI GPT-6 Astra · 按品牌语气干活的智能体模型</h3><a class="official-link" href="https://openai.com/index/gpt-6-astra-next-generation-work/" rel="noopener" target="_blank">访问工具 ↗</a></div>
+<div class="fact"><strong>已确认的更新</strong><p class="insight-text">9 月 9 日官方发布 GPT-6 Astra，在 ChatGPT Work、Codex 与 API 提供。官方描述为在 computer use、浏览、专业工作、软件工程、网络安全与科学上达到前沿水平；定价自 $10 / 百万输入 token、$50 / 百万输出 token 起。企业端默认关闭，需管理员按合同开启；部分端点可申请 Zero Data Retention。官方安全数据：内部 computer use 安全基准中，意外结果比 GPT-5.6 Sol 少 89%、比 Claude Fable 5.1 少 74.7%。官方文章还提到其开发与市场团队用 Astra + Codex 把三小时多机位素材剪成宣传片，并称 Astra 更擅长遵循公司的语气、模板与设计标准。</p></div>
+<h3>行业洞察与广告价值</h3><p class="insight-text">对广告团队，Astra 的意义不是“又一个聊天模型”，而是“能操作真实工具的工作模型”：computer use 意味着它可以操作没有 API 的桌面软件，语气与模板遵循意味着多市场文案初稿更接近可用状态。真正的生产瓶颈在多语言文案矩阵与品牌语气一致性——把 brief 变成 30 条符合品牌语气的初稿、再让人工只做事实与合规审校，是比“让 AI 写广告词”更现实的用法。</p>
+<h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">以一次 5 市场投放为例：在 ChatGPT Work / Codex 中建立品牌语气与事实清单（功效、价格、免责声明），让 Astra 为每个市场生成 3 个钩子 × 2 个 CTA 的初稿矩阵，并返回“需人工核验”清单而非自行补全。官方“多机位素材提炼成片”的例子说明它可用于素材整理的辅助环节，但成片仍由剪辑师在 PR/AE 完成。TikTok 文案先测钩子，Meta 文案先测首图与标题；所有生成稿在投放前必须通过人工事实核验，敏感品类不直接采用模型输出。</p>
+<h3>⚖️ 优缺点分析</h3><p class="insight-text"><strong>优势：</strong>语气/模板遵循度高，适合批量初稿；computer use 可触达无 API 的既有工具；官方安全基准显示错误率显著下降。<strong>限制：</strong>不是创意替身，产品事实与合规仍需人工；computer use 在企业环境需要审批与权限边界管理；token 计费需要预算上限；安全与部署数据（ZDR、企业开关）须逐项向官方确认。未实测，模型自述性能不构成项目验收。</p>
+<h3>建议</h3><p class="insight-text"><strong>优先级：中高，适合 3 人以上、多市场文案重复的团队。</strong>先做“brief → 初稿矩阵 → 人工审校”的单项目试点，记录品牌语气命中率、事实错误数与单条生成成本；不把效率倍数当承诺，不直接替换现有创意流程。</p><p class="insight-text">来源：<a href="https://openai.com/index/gpt-6-astra-next-generation-work/">OpenAI 官方发布 · GPT-6 Astra</a>（2026-09-09）；价格与可用范围以官方实时页面为准</p></section><section class="card"><div class="tags"><span class="tag">区间内更新 · 09/10</span><span class="tag gray">语音 API / 全双工 / 交互式广告</span></div><div class="tool-header"><h3 class="tool-name">03. OpenAI GPT-Live-1 · 可打断的全双工语音 API</h3><a class="official-link" href="https://openai.com/index/introducing-gpt-live-1-in-the-api/" rel="noopener" target="_blank">访问工具 ↗</a></div>
+<div class="fact"><strong>已确认的更新</strong><p class="insight-text">9 月 10 日 OpenAI 将 GPT-Live-1 开放到 API：单模型同时完成听与说（全双工），具备打断处理、静音与背景噪音容忍、长会话稳定性与电话（telephony）支持；推理与工具调用可委托给后端文本模型（如 GPT-6 Astra）；通过 system prompt 控制语气、语速与对话风格；原生提供 ASR 转写文本与响应文本。官方称 Full Duplex Bench 得分比 GPT-Realtime-2.1 高 30 个百分点，并新增一批音色（Quartz、Ripple、Vesper、Willow、Stone、Gleam、Meridian、Bossa、Tempo、Beacon、Delta、Cinder）。</p></div>
+<h3>行业洞察与广告价值</h3><p class="insight-text">需要先划清边界：<strong>GPT-Live-1 是交互式语音模型，不是预录音广告配音工具。</strong>它的价值在交互场景——语音优先的互动广告、App 内品牌语音助手、IVR/客服语音体验的原型与 A/B 测试。对广告设计师的启发是“语音体验也可以像素材一样被设计”：用 system prompt 定义品牌语气，用音色列表做听觉品牌资产。常规信息流广告的批量口播仍应走 TTS/配音管线，不要拿它当 ElevenLabs 的替代品。</p>
+<h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">适合有 App 或互动广告产线的团队：例如品牌 quiz 式互动广告的语音导览，或落地页里的语音助手原型。开发侧需要工程集成与计费评估，设计师负责品牌语气定义（system prompt）与音色选择，并用真实用户会话测试打断与语速。TikTok / Meta 标准信息流版位目前不直接使用该 API；若用于投放实验，需先确认平台对交互式语音广告的政策与披露要求。</p>
+<h3>⚖️ 优缺点分析</h3><p class="insight-text"><strong>优势：</strong>打断自然、端到端延迟低、音色选择多；单模型简化了 STT–LLM–TTS 级联架构。<strong>限制：</strong>需要工程集成，不适合无开发资源的小团队；并发与计费须评估；音色授权与商用条款需核对；不可用于批量预录口播，也不保证翻译与文案质量。</p>
+<h3>建议</h3><p class="insight-text"><strong>优先级：低—中，仅在确有交互语音场景时评估。</strong>验收指标建议为：打断正确率、平均回复延迟、单会话成本与语气一致性；先做最小原型再决定是否进入正式产品，不把“语音 API 上线”等同于“广告语音素材问题被解决”。</p><p class="insight-text">来源：<a href="https://openai.com/index/introducing-gpt-live-1-in-the-api/">OpenAI 官方发布 · GPT-Live-1 in the API</a>（2026-09-10）；基准与客户数据来自官方文章，非独立实测</p></section><section class="card"><div class="tags"><span class="tag">区间内更新 · 09/07、09/11</span><span class="tag gray">配音 CLI / 语音转写 / 版本管理</span></div><div class="tool-header"><h3 class="tool-name">04. ElevenLabs · CLI v1.2 与 Scribe v2 Medical 双更</h3><a class="official-link" href="https://elevenlabs.io/docs/changelog" rel="noopener" target="_blank">访问工具 ↗</a></div>
+<div class="fact"><strong>已确认的更新</strong><p class="insight-text">9 月 7 日官方 Changelog：ElevenLabs CLI 升到 v1.2.0，新增 <code>elevenlabs say</code> 命令及其 agent skill，重新生成 API 命令绑定，并让 <code>eleven_v3</code> 成为默认 TTS 模型；同日还有 ElevenAgents 与 Workspaces 的多项 API 更新（工作区级对话工单、动态变量过滤、Twilio 应答机检测等）。9 月 11 日：Scribe v2 Medical 正式可用（GA），是面向医疗/临床音频的批量语音识别模型，按 Scribe v2 相同费率计费，使用 <code>scribe_v2_medical</code> 作为 model_id。</p></div>
+<h3>行业洞察与广告价值</h3><p class="insight-text">这是上期 CLI v1 故事的增量跟进：CLI 让“脚本 → 音色 → 输出文件”可脚本化、可追踪，v1.2 的 <code>elevenlabs say</code> 降低了单条配音的命令行门槛，<code>eleven_v3</code> 默认化意味着新用户开箱即用新一代模型。Scribe v2 Medical 对绝大多数广告团队用途有限，主要价值在健康医疗类广告的专家口播/客户访谈转录——专业术语的识别质量决定字幕与引用是否可靠。</p>
+<h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">沿用上期方案并升级：先人工锁定英文母版与品牌名读法，用 <code>elevenlabs say</code> 把已审批脚本批量生成多语言试听，每条记录 creative_id、脚本版本、voice_id 与输出路径；试听通过后进入剪辑。医疗健康类广告的访谈素材用 Scribe v2 Medical 转录，人工校正药品/成分名词后再生成字幕。TikTok 9:16 的字幕按实际语音校准，Meta 静音观看场景的字幕独立可读；所有功效表述保持与获批文案一致。</p>
+<h3>⚖️ 优缺点分析</h3><p class="insight-text"><strong>优势：</strong>CLI 提升批量与版本管理效率；默认模型升级降低选型成本；STT 增加行业化选项。<strong>限制：</strong>CLI 不自动改善情感、翻译与口型；Scribe Medical 仅适用于特定行业场景；API 权限、额度与商用许可须逐项核实，失败重试若无去重可能重复计费。本文未运行该 CLI 或任何付费语音调用。</p>
+<h3>建议</h3><p class="insight-text"><strong>优先级：中，多版本配音团队优先。</strong>承接上期判断：先建立脚本审批与文件命名规范，再引入 CLI 自动化；密钥不得进入公共仓库，克隆音色须有授权。验收：脚本与音频文件映射完整率、音色授权记录、单条生成成本。</p><p class="insight-text">来源：<a href="https://elevenlabs.io/docs/changelog/2026/9/7.md">ElevenLabs 官方 Changelog · 2026-09-07</a>、<a href="https://elevenlabs.io/docs/changelog/2026/9/11.md">2026-09-11</a>（查阅 2026-09-14）</p></section><section class="card"><div class="tags"><span class="tag gray">近期已上线 · 首发日期未确认</span><span class="tag gray">AI 视频 / 音画同步 / 模型迁移</span></div><div class="tool-header"><h3 class="tool-name">05. Kling 3.0 系列 · 换代信号与 9/15 迁移截止</h3><a class="official-link" href="https://kling.ai/document-api/updates" rel="noopener" target="_blank">访问工具 ↗</a></div>
+<div class="fact"><strong>明确的证据边界</strong><p class="insight-text">访问到的官方资料（9 月 14 日查阅）显示 Kling 3.0 系列已上线：视频 3.0 与 3.0 Omni 主打同步音视频生成、智能分镜、元素参考、高一致性与提示词遵循；3.0 Turbo 定位更快、更低成本；图像 3.0 与 3.0 Omni 支持系列化生成、批量优化与 2K/4K 输出。官网首页亦有“可灵 AI 3.0 系列 All in One”横幅。同时官方发布退役预告：9 月 15 日起退役 Kling Image 1.0—2.0、视频 1.0—2.1（含 Master 系列）、Virtual Try-On API 与 119 个视频特效模板。<strong>我们未能从官方页面确认 3.0 的确切首发日期，因此不声称它在上周首发，只作为近期已上线能力回顾。</strong></p></div>
+<h3>行业洞察与广告价值</h3><p class="insight-text">3.0 的宣传重点直击广告视频两大痛点：音画同步（口型与动作）与一致性（角色、产品、元素参考）。但比“新模型更强”更紧迫的是迁移事项：依赖 2.x API 的现网链路在 9 月 15 日后会直接不可用，这是一周内的硬性操作，不是效果优化。对广告团队的启示：模型换代期应把“迁移清单”排在“新功能尝鲜”前面。</p>
+<h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">三步走：第一步做迁移盘点——检查代码与工作流中的 model 字段（2.x → 3.0 / 3.0 Turbo）、特效模板 ID 与 Virtual Try-On 调用；第二步用真实产品图加元素参考做 3—5 秒测试镜头，验证一致性、口型与音画同步，并和 2.x 的历史输出对比返工率；第三步把通过测试的镜头接入现有 TikTok 9:16 与 Meta 4:5 模板。Virtual Try-On 场景迁移到图像 3.0 Omni 或等待官方新一代方案，不在 9/15 前强行切换生产链路。</p>
+<h3>⚖️ 优缺点分析</h3><p class="insight-text"><strong>优势：</strong>官方宣称同步音视频与元素参考能力，Turbo 档位提供成本选择；旧模型退役公告明确，迁移窗口清楚。<strong>限制：</strong>以上能力描述来自官方文档，本文未实测生成；复杂场景、品牌文字与手部细节仍需抽查；具体定价、地区可用性与积分规则以官方控制台为准，本文不编造数字。</p>
+<h3>建议</h3><p class="insight-text"><strong>优先级：高（因 9/15 迁移截止）。</strong>先完成迁移盘点与关键链路切换，再做 3.0 小样对比；验收指标是迁移后无中断、小样与 2.x 相比的返工率变化，以及每镜成本；未通过验收的环节保留人工合成或实拍兜底。</p><p class="insight-text">来源：<a href="https://kling.ai/document-api/updates">Kling 官方 API 文档 · 模型列表与退役预告</a>、<a href="https://kling.ai/">官网 3.0 系列页面</a>（查阅 2026-09-14）；首发日期未确认</p></section></div>
+<h2 class="section-title">⚡ 深度实战: 高效工作流拆解 (High-Yield Workflow)</h2><section class="workflow-card" id="workflow"><h3>工作流 A：先定调、后局部改——Suno v6 广告配乐管线</h3><p class="insight-text">组合：Suno v6 + CapCut / Premiere Pro · 适合 15—30 秒信息流广告配乐</p><ol><li><strong>方向筛选：</strong>用 v6 生成 2—3 个完整 demo（不同节拍与情绪标签），全部导出为母版参照；此阶段用 v6-mini 或探索档控制成本，不直接进精修。</li><li><strong>局部编辑：</strong>选定方向后只改副歌或开头 3 秒，用段落级指令修改，保持主歌、音色与速度不变；每次修改另存版本，记录指令与输出文件。</li><li><strong>压点与裁切：</strong>在 CapCut / PR 中按画面节奏裁 8—15 秒循环段，做响度归一与淡入淡出；TikTok 强调节拍钩子，Meta 静音播放时以旋律情绪为主，字幕独立可读。</li><li><strong>商用与验收闸门：</strong>核对套餐商用授权与下载限制后再投放；验收以“段落修改后与母版的一致性、导出规格合规”为准，不把生成速度当质量证明。</li></ol>
+<h3>工作流 B：审批驱动的品牌配音与转写管线</h3><p class="insight-text">组合：GPT-6 Astra（初稿）+ ElevenLabs CLI v1.2 + Scribe · 适合多语言口播广告</p><ol><li><strong>初稿生成（人审前）：</strong>用 Astra 按品牌语气与事实清单生成多市场钩子与 CTA 初稿，返回“需人工核验”清单；未经人工审校的文案不进配音环节。</li><li><strong>脚本审批：</strong>锁定英文母版与品牌名读法，建立 creative_id、脚本版本、voice_id、语言与输出路径的映射表。</li><li><strong>批量生成与转写：</strong>用 <code>elevenlabs say</code> 批量生成试听；访谈/专家素材用 Scribe 转录并人工校正术语（医疗类用 Scribe v2 Medical），再生成字幕。</li><li><strong>版本入库与发布：</strong>试听通过后进入剪辑，按平台版位校准字幕与 CTA；记录单条成本与返工原因，达到预算上限即停止，不无条件自动重跑。</li></ol><p class="insight-text">这里的“自动化”指审批、版本与成本闸门可控的自动化，不意味着生成结果或广告表现确定。文中未提供虚构的 ROAS 或 CTR 提升幅度。</p></section>
+<h2 class="section-title">🚨 避坑雷达 (Anti-Hype Radar)</h2><section class="card anti-hype-card" id="risks"><h3>风险一：“模型换代 = 效果自动更好，先换再说”</h3><p class="insight-text">Kling 3.0 官方页面宣传一致性与音画同步提升，但官方资料没有证明复杂场景、品牌文字和手部细节都自动正确；更关键的是 9 月 15 日旧模型退役是迁移事项，不是效果保证。先用 3 个目标镜头做验证（口型、产品文字、手与产品接触），对比 2.x 历史输出的返工率；迁移前保留已交付资产与参数记录，未通过验证的环节用人工合成或实拍兜底。这个止损方法是建议，未声称已对 Kling 3.0 做过负面实测。</p><h3>风险二：“语音 API 上线，等于配音问题解决”</h3><p class="insight-text">GPT-Live-1 是全双工交互语音 API，适合互动语音体验，不是预录音广告口播工具；ElevenLabs CLI 默认模型变化也不等于音色质量自动提升。把交互 API 当批量配音工具、或把默认模型当免检理由，都会在交付环节返工。配音管线以已审批文案、音色授权与人工试听为准，交互语音以真实会话测试为准，两者不要混用。</p></section>
+<h2 class="section-title">💎 上周专属资产 (Exclusive Assets)</h2><section class="card asset-card" id="assets"><h3>资产 A：Suno v6 局部编辑 Prompt 模板</h3><p class="insight-text">用途：在不重建整首歌的前提下做段落级修改。以下是原创通用提示词模板，不是工具专属参数保证；实际指令需在 Suno 界面中按版本能力核对。</p><pre class="code-block" lang="en">Keep the intro, verse and existing vocal tone unchanged.
+Change ONLY the chorus section: make it [CHORUS CHANGE, e.g. "sung by a gospel choir / more percussive / half the length"].
+Preserve the original key, tempo and overall energy of the track.
+Do not touch the outro or the final CTA beat drop.
+Export the edited version as a new file; keep the previous version for comparison.</pre><p class="insight-text">先生成一个样本核对调性与人声一致性，再进入批量版本；不要假定自然语言指令必然被模型精确遵守。</p>
+<h3>资产 B：品牌语气文案矩阵 Prompt 模板</h3><p class="insight-text">用途：让工作模型按品牌语气生成多市场初稿并标注核验点。原创通用模板，输出仍须人工审校。</p><pre class="code-block" lang="en">Act as a senior copywriter following our brand voice guide for [PRODUCT] in [TARGET MARKET].
+Use ONLY these verified facts: [FACT LIST].
+Produce 3 hook variants and 2 CTA variants for a 15-second ad, conversational English, 30-38 words total as a starting point.
+Keep product claims, pricing and disclaimers identical to the approved copy.
+Do not invent testimonials, personal experience, discounts, urgency, medical outcomes or performance claims.
+Return a table with: creative_id, hook, CTA, on-screen text, claim-check notes.
+If evidence is missing, mark NEEDS VERIFICATION instead of filling the gap.</pre><p class="insight-text">初稿须经人工事实与合规审校后进入配音与投放；敏感品类以平台政策为准。</p></section>
+<section class="card"><h2>来源与核验说明</h2><p>本期采用英文官方更新页与公告，避免将二手转述当作发布日期。功能事实来自来源；具体广告流程、推荐优先级与止损条件为本文分析。没有访问客户素材、广告账户或付费生成记录。因网络访问限制，Adobe、Pika、CapCut 与 Midjourney 的当周更新未能核验到可靠日期，未写入本期。</p><ul><li><a href="https://suno.com/release-notes/introducing-v6">Suno Release Notes · Introducing v6</a>：9 月 9 日 v6 模型家族，属于回顾区间内的更新。</li><li><a href="https://openai.com/index/gpt-6-astra-next-generation-work/">OpenAI · GPT-6 Astra</a>：9 月 9 日发布；价格与基准数据来自官方文章。</li><li><a href="https://openai.com/index/introducing-gpt-live-1-in-the-api/">OpenAI · GPT-Live-1 in the API</a>：9 月 10 日发布；基准与客户数据来自官方文章。</li><li><a href="https://elevenlabs.io/docs/changelog/2026/9/7.md">ElevenLabs Changelog · 09/07</a> 与 <a href="https://elevenlabs.io/docs/changelog/2026/9/11.md">09/11</a>：CLI v1.2.0、eleven_v3 默认化、Scribe v2 Medical GA。</li><li><a href="https://kling.ai/document-api/updates">Kling 官方 API 文档</a>：3.0 系列模型列表与 9 月 15 日退役预告；首发日期未确认，按近期已上线能力处理。</li></ul><p class="fine">Kling 3.0 的首发日期、Adobe/Pika/CapCut/Midjourney 的当周更新均因官方页面访问限制或未标注日期而无法确认，如实标注而非猜测。官方页面属于厂商陈述，并非独立性能测评。价格、地区、套餐与授权条件可能变化，下单或迁移前再次核对。</p></section>
+<section class="final-summary" id="review"><h2>📘 上周总结 Weekly Review</h2><p>回顾 9 月 7—13 日，已确认的上周更新集中在音乐、声音与工作模型：<strong>Suno v6 的段落级编辑、OpenAI GPT-6 Astra 与 GPT-Live-1、ElevenLabs CLI v1.2 与 Scribe v2 Medical</strong>，它们共同指向“生成结果可修改、可追踪、可迁移”。视频侧的 Kling 3.0 系列已上线但首发日期未确认，而 9 月 15 日的旧模型退役是本周最需要动手的事项。</p><p>最值得落地的行动顺序是：<strong>先做 Kling 迁移盘点（9/15 截止），再用 Suno v6 在一个返工项目上验证段落级编辑，随后评估 ElevenLabs CLI 与 Astra 的文案管线</strong>。每个试点只改一个环节、记录工时与成本、保留人工审校，再决定是否扩大。工具的发布频率，不应替代对作品质量与投放结果的判断。</p></section>
+<footer>Ad Design Radar · 2026-09-14 · 回顾 9 月 7—13 日完整自然周 · 官方资料核验 + 编辑分析 · 非付费产品实测</footer></div><a aria-label="返回顶部" class="back-to-top" href="#" id="backToTop">
+<svg fill="none" height="28" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="28"><line x1="12" x2="12" y1="19" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</a><script>
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script></body></html>
