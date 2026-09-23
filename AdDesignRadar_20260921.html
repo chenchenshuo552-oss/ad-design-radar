@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ad Design Radar | 2026-09-21</title><meta name="description" content="回顾2026年9月14日至20日海外广告素材设计工具的官方更新"><style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg: #F8FAFC;
+    --text: #0F172A;
+    --text-muted: #64748B;
+    --border: #E2E8F0;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-hover: #FFFFFF;
+
+    --brand-primary: #2563EB;
+    --accent-red: #EF4444;
+    --accent-green: #10B981;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    margin: 0;
+    padding: 80px 20px;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.05), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.08), transparent 25%);
+  }
+
+  .container { max-width: 1280px; margin: 0 auto; position: relative; }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 50px;
+    color: #FFFFFF; text-decoration: none; font-size: 0.95rem; font-weight: 700;
+    padding: 12px 20px; border-radius: 12px; transition: all 0.3s ease;
+    background: var(--brand-primary); box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  }
+  .back-link:hover { transform: translateY(-2px); box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4); }
+
+  .header { margin-bottom: 60px; text-align: center; }
+  .header h1 {
+    font-size: 3.2rem; font-weight: 800; margin: 0 0 12px 0;
+    color: var(--brand-primary);
+    letter-spacing: -0.03em;
+  }
+  .header p { color: var(--text-muted); font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+
+  .section-title {
+    font-size: 1.8rem; font-weight: 800; margin: 70px 0 30px 0;
+    color: var(--text); letter-spacing: -0.02em;
+  }
+
+  /* 摘要区 */
+  .summary-box {
+    background: var(--card-bg); padding: 35px; border-radius: 24px;
+    border: 1px solid var(--border); border-left: 6px solid var(--brand-primary);
+    backdrop-filter: blur(12px); margin-bottom: 60px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+  .summary-box h3 { margin: 0 0 15px 0; font-size: 1.2rem; font-weight: 700; color: var(--text); }
+  .summary-box p { margin: 0; font-size: 1.1rem; color: #334155; line-height: 1.7; }
+
+  /* 工具卡片列表 Grid */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 60px; align-items: stretch; }
+
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px;
+    padding: 32px; backdrop-filter: blur(12px); display: flex; flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  }
+
+  .card:hover {
+    transform: translateY(-6px) scale(1.01); background: var(--card-hover); border-color: #CBD5E1;
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+  }
+
+  .tags { margin-bottom: 20px; display: flex; gap: 8px; flex-wrap: wrap; }
+  /* 给工具分类 tag 加上颜色底色 */
+  .tag {
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--brand-primary); background: #EFF6FF; padding: 6px 12px; border-radius: 8px; border: 1px solid #BFDBFE;
+    display: inline-block; white-space: nowrap;
+  }
+
+  .tool-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 16px; }
+  .tool-name { font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--text); letter-spacing: -0.02em; line-height: 1.3; }
+
+  /* 官方链接按钮防止换行，并防止被挤压 */
+  .official-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px;
+    background: var(--brand-primary); color: #FFFFFF; border-radius: 12px; border: none;
+    text-decoration: none; font-size: 0.9rem; font-weight: 700; transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .official-link:hover { transform: translateY(-2px); box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4); }
+  .official-link svg { stroke: #FFFFFF !important; }
+
+  .insight-text { font-size: 1.05rem; color: #334155; margin-bottom: 25px; line-height: 1.7; }
+
+  .feature-list { list-style: none; padding: 0; margin: 0 0 25px 0; display: flex; flex-direction: column; gap: 16px; }
+  .feature-list li {
+    background: rgba(248, 250, 252, 0.5); padding: 18px; border-radius: 12px; border: 1px solid #E2E8F0;
+    font-size: 0.95rem; color: #475569; display: flex; flex-direction: column;
+  }
+  .feature-list strong { color: #0F172A; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
+  /* 行业建议去除 flex 以防内部文本节点换行错位 */
+  .recommendation { margin-top: auto; padding-top: 24px; border-top: 1px solid #E2E8F0; font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.6;}
+  .recommendation strong { color: var(--brand-primary); font-weight: 800; display: inline; margin-right: 4px; }
+
+  /* 工作流卡片 */
+  .workflow-card {
+    padding: 45px; background: rgba(255, 255, 255, 0.95); border: 1px solid #E2E8F0; border-radius: 24px;
+    margin-bottom: 60px; backdrop-filter: blur(12px); position: relative; overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.05);
+  }
+  .workflow-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--brand-primary), #60A5FA);
+  }
+
+  .workflow-card .tool-name { color: var(--text); font-size: 2rem; margin-bottom: 12px;}
+  .step-container { margin-top: 40px; display: flex; flex-direction: column; gap: 24px; }
+  .step { display: flex; gap: 24px; align-items: flex-start; background: #F8FAFC; padding: 24px; border-radius: 16px; border: 1px solid #E2E8F0; }
+  .step-num {
+    background: var(--brand-primary) !important; color: #FFFFFF; width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  }
+  .step-content { font-size: 1rem; color: #475569; line-height: 1.6; }
+  .step-content strong { color: var(--text); display: block; margin-bottom: 8px; font-weight: 700; font-size: 1.1rem; }
+
+  /* 避坑 & 资产 */
+  .anti-hype-card { border-left: 6px solid var(--accent-red) !important; }
+  .asset-card { border-left: 6px solid var(--accent-green) !important; }
+
+  .code-block { background: #0F172A; color: #F8FAFC; padding: 20px; border-radius: 12px; font-family: monospace; font-size: 0.9rem; border: 1px solid #1E293B; overflow-x: auto; margin-top: 15px; line-height: 1.6; }
+
+  /* 底部总结 */
+  .final-summary { padding: 35px; background: var(--card-bg); border-radius: 24px; border: 1px solid var(--border); margin-top: 50px; backdrop-filter: blur(12px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02); }
+  .final-summary h2 { font-size: 1.4rem; margin: 0 0 15px 0; color: var(--text); font-weight: 800;}
+  .final-summary p { color: #334155; margin: 0; font-size: 1.1rem; line-height: 1.7; }
+
+  .back-to-top {
+    position: fixed; bottom: 50px; right: 50px; width: 64px; height: 64px;
+    background: var(--brand-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    opacity: 0; pointer-events: none; transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 50;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.4); }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
+
+</style></head><body><div class="container"><a class="back-link" href="index.html">← 返回目录</a><div class="header"><h1>Ad Design Radar</h1><p>Last Week Recap · Sep 14 – Sep 20, 2026</p></div><section class="summary-box" id="summary"><h3>📊 深度洞察 Executive Summary</h3><p>回顾 2026 年 9 月 14—20 日完整自然周。可核实的变化集中在 Figma Weave 将设计母版纳入生成流程、Runway 的帧率增强与 Kling 模型 MCP 接入、Suno Studio 的 MIDI 改进，以及 OpenAI 推出分阶段的 ChatGPT Ads 工具链。它们分别对应品牌模板维护、镜头技术交付、模型采购、配乐改编和新广告渠道；不能概括成同一种“自动生成广告”。本文只依据官方公告判断发布日期与能力，尚未登录付费功能或做投放实测。</p><p><strong>时间与证据：</strong>上周指 9/14—9/20；资料查阅 9/23。9/21 及之后更新不纳入；未做工具付费实测、广告投放或客户素材上传。</p></section><h2 class="section-title" id="tools">🔥 Top 5 Tools of Last Week &amp; Deep Dive</h2><div class="grid"><section class="card"><div class="tags"><span class="tag">09/17 · 新发布</span><span class="tag gray">模板 / 多尺寸 / 本地化</span></div><div class="tool-header"><h3 class="tool-name">01. Figma Weave · 品牌母版接入工作流</h3><a class="official-link" href="https://www.figma.com/release-notes/" target="_blank" rel="noopener">访问官方来源 ↗</a></div><div class="fact"><strong>已核实的变化与时间边界</strong><p class="insight-text">官方 9 月 17 日推出 Figma node：把设计画板复制到 Weave 工作流，指定可变文字与图像层，保留字体、排版和样式；原设计更新可同步至连接资产。9 月 16 日另允许发布 Weave 自定义工具至 Community，但 Figma Design 内只可使用图像与矢量生成输出；不能把所有视频工具写成在画布直接可用。</p></div><h3>行业洞察与广告价值</h3><p class="insight-text">把模板当生产约束，而不是让模型重新猜品牌。适合每周大量更新促销文案、地区货币和商品图的团队；节约的是重复摆版、链接母版与审稿协调，而非保证生成图文无误。</p><h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">选一张真实授权商品图与一个 Figma Design 画板，锁住 logo、声明与价格区域，仅开放背景图与一句 Hook；在 Weave 输出 TikTok 9:16 和 Meta 4:5 两版，分别复核安全区、英文与西语断行。真正的商品与价格仍用原素材/文字层，不让生成模型凭空画包装。</p><h3>⚖️ 优势、限制与成本合规</h3><p class="insight-text">优势是可变层界限清楚、母版可同步；限制是素材尺寸改变后仍需人工复核裁切与可读性。涉及品牌文件上传、团队权限与生成额度，先查当前套餐；不得将草稿或客户未授权资产投放到公开 Community。</p><h3>建议与验收</h3><p class="insight-text">先做一套 2 比例×2 语言×2 文案的小样，对照手工模板的修改时间、错字数、返工次数；一旦同步改动破坏已定稿素材，改为冻结版本。</p><p class="insight-text">来源：<a href="https://www.figma.com/release-notes/" target="_blank" rel="noopener">官方记录（发布日期见卡片）</a>；本期查阅：2026-09-23。生产建议为编辑推演，非付费实测。</p></section><section class="card"><div class="tags"><span class="tag">09/17 · Max+ 方案</span><span class="tag gray">视频后期 / 帧率转换</span></div><div class="tool-header"><h3 class="tool-name">02. Runway · Enhance Frame Rate</h3><a class="official-link" href="https://runway.com/changelog" target="_blank" rel="noopener">访问官方来源 ↗</a></div><div class="fact"><strong>已核实的变化与时间边界</strong><p class="insight-text">9 月 17 日官方日志：Enhance Frame Rate 可将 Runway 或外部视频转换为 25、30、48、60、120 或 59.94 fps，最高 4K、5 分钟；入口覆盖 Enhance、Tool Mode、Workflows、Agent，日志标注 Max+。它不是新视频模型，也未宣称提升原始动作真实性。</p></div><h3>行业洞察与广告价值</h3><p class="insight-text">同一广告在不同输出规格之间的帧率统一是可见痛点，但插帧并不能修复原镜头手部畸形、错位或主体漂移。更适合为已经锁定画面的交付片准备技术规格，而不是以高帧率掩盖生成缺陷。</p><h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">输入经 PR 审核的 10 秒商品演示片，保留原始 25/30 fps 母版，只为特定渠道交付生成一份目标帧率版本。逐帧比对快速挥手、字幕、logo 边缘和运动模糊；TikTok 竖屏与 Meta 4:5 分别从干净母版构图，切勿以插帧代替重剪。</p><h3>⚖️ 优势、限制与成本合规</h3><p class="insight-text">优势是同一入口支持外部视频并可接工作流；限制是运动伪影、码率和音画同步须实测。Max+ 权限、每次积分及可商用条款按账户页面核对，本报告未登录或付费试用。</p><h3>建议与验收</h3><p class="insight-text">先在同一 10 秒片段做原版/30fps/60fps 三份盲审，记录伪影帧数、输出时长和积分；有明显重影便停止给正式版加帧。</p><p class="insight-text">来源：<a href="https://runway.com/changelog" target="_blank" rel="noopener">官方记录（发布日期见卡片）</a>；本期查阅：2026-09-23。生产建议为编辑推演，非付费实测。</p></section><section class="card"><div class="tags"><span class="tag">09/18 · 接入非首发</span><span class="tag gray">跨模型调度 / 动作镜头</span></div><div class="tool-header"><h3 class="tool-name">03. Kling 3.0 · Runway MCP 平台接入</h3><a class="official-link" href="https://runway.com/changelog" target="_blank" rel="noopener">访问官方来源 ↗</a></div><div class="fact"><strong>已核实的变化与时间边界</strong><p class="insight-text">Runway 9 月 18 日日志将 Kling O3 4K、Kling 3.0 Standard、O3 Standard 和 Kling 3.0 Motion Control 加入 Runway MCP，标注 Paid Plans。这是 Runway 的平台接入日期，不是 Kling 模型的首次发布日期；也不等于每个账号已有相同权限。</p></div><h3>行业洞察与广告价值</h3><p class="insight-text">多模型采购的实际收益是把同一个可控 brief 与参考帧在既有工作流中试跑，减少平台切换；但模型名称相近不代表动作一致。对广告而言，MCP 更像制作入口而不是质量认证。</p><h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">为 6 秒非品牌包装过场准备一张合规参考帧和固定镜头说明，在 Runway MCP 选两种已列出的 Kling 选项各跑一个小样。检查手部、运动方向与主体身份；真实包装、界面和售价在 PR/AE 后期叠加。TikTok 保持人物与产品在安全区，Meta 另行改 4:5，不机械裁切。</p><h3>⚖️ 优势、限制与成本合规</h3><p class="insight-text">优势是将外部模型并入代理式流程；限制是跨模型种子与参数不保证一一对应，4K 标签也不保证文字准确。付费方案、重试成本、参考图授权与权限必须当场核对，不上传客户敏感素材做试探。</p><h3>建议与验收</h3><p class="insight-text">只以公开或自有参考帧做 2×2 小样，记录每条总积分、可用镜头比例和后期修复成本；如果所需真实产品细节无法保留，停止用该路线承担主产品镜头。</p><p class="insight-text">来源：<a href="https://runway.com/changelog" target="_blank" rel="noopener">官方记录（发布日期见卡片）</a>；本期查阅：2026-09-23。生产建议为编辑推演，非付费实测。</p></section><section class="card"><div class="tags"><span class="tag">09/17 · 工具更新</span><span class="tag gray">配乐 / 短片节奏 / 多版本</span></div><div class="tool-header"><h3 class="tool-name">04. Suno Studio · MIDI 改进</h3><a class="official-link" href="https://suno.com/release-notes/studio-improved-midi" target="_blank" rel="noopener">访问官方来源 ↗</a></div><div class="fact"><strong>已核实的变化与时间边界</strong><p class="insight-text">9 月 17 日官方 Release Notes 指出 Studio 对 MIDI-to-audio 的转写更快、更多音乐上下文且更贴近原 MIDI；聊天栏从 MIDI 生成音频 stem 和从零提示 MIDI 的结果更稳定，并支持单独或通过聊天栏重命名 clip。Suno v6 在 9 月 9 日发布，不应作为本周新模型。</p></div><h3>行业洞察与广告价值</h3><p class="insight-text">广告配乐常需要与前三秒 Hook、产品揭示和 CTA 卡点；已有 MIDI 草稿时先固定节奏结构再换音色，比反复生成整首歌更方便版本比较。但这属于官方描述的工作流能力，不保证音乐能自动匹配真实剪辑节奏。</p><h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">把自写 15 秒 MIDI 节奏导入 Studio，为口播空出频段，试合成柔和合成器与木吉他两个 stem；在 PR 将产品揭示卡在同一拍点。TikTok 保留前三秒人声可懂度；Meta 4:5 版调整结尾 CTA 时间后再复核音乐衔接。</p><h3>⚖️ 优势、限制与成本合规</h3><p class="insight-text">优势是保留自写结构、可独立更换音色；限制是 MIDI 转写风格和动态音量需要主观审核，若使用参考歌曲须核权。付费导出权益、广告商用授权及上传私有旋律范围以当期条款为准，本报告没有实测费用。</p><h3>建议与验收</h3><p class="insight-text">先试 2 条自有旋律×2 种配器，用响度、前 3 秒口播遮蔽、结尾剪辑点与授权文件齐备性验收；若无法清楚保留口播，回退原授权配乐。</p><p class="insight-text">来源：<a href="https://suno.com/release-notes/studio-improved-midi" target="_blank" rel="noopener">官方记录（发布日期见卡片）</a>；本期查阅：2026-09-23。生产建议为编辑推演，非付费实测。</p></section><section class="card"><div class="tags"><span class="tag">09/16 · 分阶段上线</span><span class="tag gray">广告创建 / 对话承接 / 合规</span></div><div class="tool-header"><h3 class="tool-name">05. OpenAI · ChatGPT Ads 工具链</h3><a class="official-link" href="https://openai.com/index/reimagining-advertising-with-ai/" target="_blank" rel="noopener">访问官方来源 ↗</a></div><div class="fact"><strong>已核实的变化与时间边界</strong><p class="insight-text">9 月 16 日 OpenAI 发布 ChatGPT Ads 新能力：Sponsored Agents 仅在美国选定广告主中测试；Ads Manager plugin 可由自然语言创建、修改和分析广告；Ads Manager 生成落地页/目标驱动的文案与图像建议并由广告主审阅。HubSpot 与 Shopify 是该体系的连接伙伴，不能说这些能力已对所有地区全面开放。</p></div><h3>行业洞察与广告价值</h3><p class="insight-text">这是一条与 TikTok/Meta 不同的对话式广告渠道，不应直接拿现有短视频转化率类比。对素材设计师可借鉴的是“看广告后继续提问”的信息组织方式，把卖点、证据、常见问题与下一步入口连起来。</p><h3>🎯 商业实战 · TikTok / Meta</h3><p class="insight-text">先从公开产品功能与已核准的 FAQ 写一版广告 brief，列三种用户疑问及有证据的回应，再在 TikTok 真人口播和 Meta 静态卡中分别测试“问题—演示—下一步”的结构；若账号有权限，再单独小额测试 ChatGPT Ads，不能把平台间数据混为同一实验。</p><h3>⚖️ 优势、限制与成本合规</h3><p class="insight-text">优势是从 brief 到多版文案的连接及后续问答；限制是 Sponsored Agents 的受测资格、对话边界和事实准确性。任何输入的客户数据、账号权限、归因和转化追踪必须遵循公司规范；本文未登录 Ads Manager，也不判断实际 ROAS。</p><h3>建议与验收</h3><p class="insight-text">先用公开虚构 brief 做 3 版内容；人工核对事实、价格和承诺，取得渠道权限后才做真实投放。若生成的回答越过核准 FAQ 或无法标明赞助身份，立即停用该版本。</p><p class="insight-text">来源：<a href="https://openai.com/index/reimagining-advertising-with-ai/" target="_blank" rel="noopener">官方记录（发布日期见卡片）</a>；本期查阅：2026-09-23。生产建议为编辑推演，非付费实测。</p></section></div><section class="workflow-card" id="workflow"><h2 class="tool-name">高效工作流 · 两条可执行小样</h2><div class="step-container"><div class="step"><span class="step-num">1</span><div class="step-content"><strong>模板先行：Figma → 手工审稿 → 两版位输出</strong>输入一套已批准的公开演示商品图和品牌模板；Figma Weave 只开放背景和标题变量，做 9:16 与 4:5 各两版。逐版检查价格、英文断行、Logo、安全区；输出定稿图和修改记录，固定母版版本号。若同步损伤定稿层则回退静态模板。</div></div><div class="step"><span class="step-num">2</span><div class="step-content"><strong>镜头与声音：Kling 平台接入 → Runway 帧率 → Suno Studio → PR/AE</strong>从自有参考帧生成 6 秒非产品过场，标记模型、积分与错误帧；合格镜头才做目标帧率转换，并用自有 MIDI 做两条不同配乐。PR/AE 插入真实产品录屏与合规文字，按 TikTok / Meta 分别裁切、审查同步、授权与最终码率。以可用镜头率、返工和总成本判断是否复用。</div></div></div></section><section class="card anti-hype-card" id="risks"><h2>⚠️ 避坑雷达</h2><p><strong>接入≠模型首发：</strong>Runway 9/18 的 Kling 条目是平台可用性变化，Suno v6 则于 9/9 发布；不能写成上周两款新模型首发。<strong>生成≠合规交付：</strong>OpenAI Sponsored Agents 仅面向美国选定广告主测试，Figma Community 发布可能公开工作流，客户素材、真人肖像、音乐授权和定价仍应逐项审查。</p></section><section class="card asset-card" id="assets"><h2>🧰 可复用资产</h2><p><strong>英文短视频镜头 brief：</strong>“Create a 6-second, vertical atmospheric transition around [non-branded object]. Keep the center clear for a real product overlay. Avoid any logos, text, faces, or invented packaging. Maintain one continuous camera move from [start] to [end].” 用于自有参考帧的小样；真实产品另行后期叠加。</p><p><strong>模板变量规范：</strong>锁定 logo／价格／法律声明，开放 hook_text、background_asset 与 locale 三个输入；先做两比例两语言，导出前检查字数、色彩对比、商店入口与安全区。此为制作规范，不是某厂商自动保证的参数。</p></section><section class="card"><h2>来源与核验说明</h2><p>Figma Release Notes（9/16—17）、Runway Changelog（9/15—18）、Suno Release Notes（9/17）、OpenAI 官方公告（9/16），均为英文官方原始页面。来源支持功能与日期；具体广告操作、测试阈值和风险评估为本文编辑建议。未纳入 9/21 以后发布项。</p></section><section class="final-summary" id="review"><h2>📘 上周总结 Weekly Review</h2><p>优先将 Figma 模板变量用于现有广告矩阵，再小规模测试 Runway 镜头后期与 Suno MIDI 配乐；Kling 接入只用作受控镜头小样，ChatGPT Ads 应作为独立渠道评估资格。每个测试保留母版、来源、成本与人工审核记录；不以生成速度替代点击、安装或实际转化证据。</p></section><a href="#" class="back-to-top" aria-label="返回顶部">↑</a></div><script>const topButton=document.querySelector('.back-to-top');window.addEventListener('scroll',()=>topButton.classList.toggle('visible',window.scrollY>400),{passive:true});topButton.addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})});</script></body></html>
