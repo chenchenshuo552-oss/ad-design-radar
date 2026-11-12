@@ -1,6 +1,6 @@
 {
-  "name": "Scripture Deck - Bible Quiz",
-  "short_name": "Scripture Deck",
+  "name": "Bible Note",
+  "short_name": "Bible Note",
   "description": "Interactive Bible Scripture Quiz with stacked cards, 3D flips, swipe gestures, and review mode.",
   "start_url": "./",
   "scope": "./",

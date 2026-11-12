@@ -1,8 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#FAF5E8"/>
-  <rect x="112" y="92" width="276" height="328" rx="40" fill="#D97706" transform="rotate(5 250 256)"/>
-  <rect x="132" y="112" width="276" height="328" rx="40" fill="#2E4057" transform="rotate(-7 270 276)"/>
-  <rect x="112" y="92" width="276" height="328" rx="40" fill="#D97706"/>
-  <path d="M166 256h168M166 304h122" stroke="#fff" stroke-width="24" stroke-linecap="round" opacity=".9"/>
-  <circle cx="256" cy="190" r="28" fill="#fff" opacity=".9"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+  <defs>
+    <clipPath id="round"><rect width="1200" height="1200" rx="122"/></clipPath>
+  </defs>
+  <g clip-path="url(#round)">
+    <rect width="1200" height="1200" fill="#51392e"/>
+    <path fill="#ffffff" d="M241 222h492c180 0 300 87 300 213 0 75-39 139-106 177 68 37 106 102 106 184 0 132-122 228-310 228H241V222Zm158 154v494h323c93 0 151-46 151-117 0-68-57-111-151-111H399v-139h286c83 0 135-40 135-103 0-79-69-124-178-124H399Z"/>
+    <path fill="#cfcfcf" d="M241 694 464 465c-42 56-65 133-65 220v276H241V694Z"/>
+    <circle cx="585" cy="600" r="196" fill="#ff5c48"/>
+  </g>
 </svg>
